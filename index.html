@@ -583,6 +583,86 @@
     }
 
     /* ============================================
+       WRITING
+    ============================================ */
+    #writing { background: var(--bg); }
+
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .post-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      text-decoration: none;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+    }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+      border-color: var(--accent);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .post-tag {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--accent);
+      letter-spacing: 0.03em;
+    }
+
+    .post-title {
+      font-size: 0.975rem;
+      font-weight: 500;
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .post-excerpt {
+      font-size: 0.825rem;
+      color: #555552;
+      line-height: 1.68;
+    }
+
+    .post-cta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+
+    .writing-empty {
+      font-size: 0.875rem;
+      color: var(--muted);
+      padding: 2rem 0;
+    }
+
+    /* ============================================
        RESPONSIVE
     ============================================ */
     @media (max-width: 768px) {
@@ -615,6 +695,7 @@
         <li><a href="#expertise"  data-en="Expertise"  data-it="Competenze">Expertise</a></li>
         <li><a href="#experience" data-en="Experience" data-it="Esperienza">Experience</a></li>
         <li><a href="#projects"   data-en="Projects"   data-it="Progetti">Projects</a></li>
+        <li><a href="#writing"    data-en="Writing"    data-it="Articoli">Writing</a></li>
         <li><a href="#contact"    data-en="Contact"    data-it="Contatti">Contact</a></li>
       </ul>
       <div class="lang-toggle">
@@ -940,6 +1021,21 @@
     </div>
   </section>
 
+  <!-- ===================== WRITING ===================== -->
+  <section id="writing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-en="Writing" data-it="Articoli">Writing</span>
+        <h2 class="section-title"
+            data-en="Thoughts on<br>tech & architecture."
+            data-it="Riflessioni su<br>tech & architettura.">Thoughts on<br>tech & architecture.</h2>
+      </div>
+      <div class="writing-grid reveal" id="posts-grid" style="transition-delay:0.1s">
+        <p class="writing-empty" data-en="Loading posts..." data-it="Caricamento...">Loading posts...</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== CONTACT ===================== -->
   <section id="contact">
     <div class="container">
@@ -958,11 +1054,11 @@
         </div>
 
         <div class="contact-links reveal" style="transition-delay:0.15s">
-          <a href="/cdn-cgi/l/email-protection#771f181b031e59151e03051e371802031b18181c5914181a" class="contact-link">
+          <a href="mailto:holti.bitri@outlook.com" class="contact-link">
             <span class="contact-link-icon">✉</span>
             <div class="contact-link-info">
               <span class="contact-link-label" data-en="Email" data-it="Email">Email</span>
-              <span class="contact-link-value"><span class="__cf_email__" data-cfemail="472f282b332e69252e33352e072832332b28282c6924282a">holti.bitri@outlook.com</span></span>
+              <span class="contact-link-value">holti.bitri@outlook.com</span>
             </div>
           </a>
           <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener" class="contact-link">
@@ -997,10 +1093,42 @@
 
   <!-- ===================== JS ===================== -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    /* ---- LOAD POSTS ---- */
+    async function loadPosts(lang) {
+      const grid = document.getElementById('posts-grid');
+      try {
+        const res = await fetch('posts.json');
+        const posts = await res.json();
+        if (!posts.length) {
+          grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo ancora.' : 'No posts yet.'}</p>`;
+          return;
+        }
+        grid.innerHTML = posts.map(p => {
+          const title   = lang === 'it' ? p.title_it   : p.title;
+          const excerpt = lang === 'it' ? p.excerpt_it : p.excerpt;
+          const dateObj = new Date(p.date);
+          const dateStr = dateObj.toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+          return `
+          <a href="${p.url}" target="_blank" rel="noopener" class="post-card">
+            <div class="post-meta">
+              <span class="post-date">${dateStr}</span>
+              <span class="post-tag">${p.tag}</span>
+            </div>
+            <div class="post-title">${title}</div>
+            <div class="post-excerpt">${excerpt}</div>
+            <div class="post-cta">${lang === 'it' ? 'Leggi su LinkedIn →' : 'Read on LinkedIn →'}</div>
+          </a>`;
+        }).join('');
+      } catch(e) {
+        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Impossibile caricare gli articoli.' : 'Could not load posts.'}</p>`;
+      }
+    }
+
     /* ---- LANGUAGE AUTO-DETECT ---- */
     const browserLang = navigator.language || navigator.userLanguage;
     const defaultLang = browserLang.toLowerCase().startsWith('it') ? 'it' : 'en';
     setLanguage(defaultLang);
+    loadPosts(defaultLang);
 
     /* ---- LANGUAGE TOGGLE ---- */
     function setLanguage(lang) {
@@ -1016,7 +1144,10 @@
     }
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+      btn.addEventListener('click', () => {
+        setLanguage(btn.dataset.lang);
+        loadPosts(btn.dataset.lang);
+      });
     });
 
     /* ---- SCROLL REVEAL ---- */
