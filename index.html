@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holti Bitri — Innovation Director & Cloud Architect</title>
+  <meta name="description" content="Innovation Director & Cloud Architect with 15+ years in the Microsoft ecosystem. Expertise in Azure, Power Platform, .NET, and AI-enabled transformation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       RESET & VARIABLES
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #F9F7F3;
+      --bg-card: #FFFFFF;
+      --text:    #111110;
+      --accent:  #0038FF;
+      --muted:   #7A7A73;
+      --border:  #E5E3DE;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+      --max-w: 1100px;
+      --pad: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    section { padding: clamp(4rem, 10vw, 8rem) 0; }
+
+    /* ============================================
+       NAV
+    ============================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(249, 247, 243, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--border); }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 2rem; }
+
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.65rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.15s;
+      letter-spacing: 0.05em;
+    }
+    .lang-btn.active { background: var(--text); color: var(--bg); }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 55%; height: 90%;
+      background: radial-gradient(ellipse at 70% 30%, rgba(0, 56, 255, 0.055) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: 'HB';
+      position: absolute;
+      right: -0.02em;
+      bottom: -0.15em;
+      font-family: var(--font-display);
+      font-size: clamp(14rem, 30vw, 28rem);
+      font-weight: 300;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(0,0,0,0.05);
+      pointer-events: none;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .hero-inner { width: 100%; position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.7s 0.2s forwards;
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 9vw, 8.5rem);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.2em;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.8s 0.35s forwards;
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 500px;
+      margin-bottom: 2.75rem;
+      line-height: 1.65;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.7s 0.5s forwards;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.7s 0.65s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      border-radius: 4px;
+      transition: all 0.2s;
+      letter-spacing: 0.025em;
+    }
+    .btn-primary { background: var(--text); color: var(--bg); }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-secondary { border: 1px solid var(--border); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--text); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: var(--pad);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      opacity: 0;
+      animation: fadeUp 0.7s 1s forwards;
+    }
+    .hero-scroll::before {
+      content: '';
+      width: 36px; height: 1px;
+      background: var(--muted);
+    }
+
+    /* ============================================
+       SECTION HEADER
+    ============================================ */
+    .section-header { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+    .section-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    /* ============================================
+       ABOUT
+    ============================================ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    .about-text { font-size: 1.02rem; line-height: 1.82; color: #35352F; }
+    .about-text p + p { margin-top: 1.25em; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .stat-card {
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--bg-card);
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--accent); }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    /* ============================================
+       EXPERTISE (dark section)
+    ============================================ */
+    #expertise {
+      background: var(--text);
+      color: var(--bg);
+    }
+    #expertise .section-label { color: rgba(100, 140, 255, 0.8); }
+    #expertise .section-title { color: var(--bg); }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .expertise-item {
+      background: var(--text);
+      padding: 1.75rem 1.5rem;
+      transition: background 0.22s;
+    }
+    .expertise-item:hover { background: #1c1c1b; }
+
+    .expertise-icon {
+      font-size: 1.35rem;
+      margin-bottom: 0.8rem;
+      display: block;
+      filter: grayscale(0.2);
+    }
+
+    .expertise-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #F9F7F3;
+      margin-bottom: 0.4rem;
+    }
+
+    .expertise-desc {
+      font-size: 0.78rem;
+      color: rgba(249, 247, 243, 0.4);
+      line-height: 1.55;
+    }
+
+    /* ============================================
+       EXPERIENCE
+    ============================================ */
+    .timeline {
+      position: relative;
+      padding-left: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 2rem;
+      padding-bottom: 3rem;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 180px;
+      top: 0.55rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item:last-child::after { display: none; }
+
+    .timeline-left { padding-top: 0.1rem; }
+
+    .timeline-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      white-space: nowrap;
+    }
+
+    .timeline-right {
+      padding-left: 2.5rem;
+      position: relative;
+    }
+    .timeline-right::before {
+      content: '';
+      position: absolute;
+      left: -0.4rem;
+      top: 0.5rem;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid #ccc;
+      z-index: 1;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .timeline-item:hover .timeline-right::before {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+
+    .timeline-role { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.2rem; }
+    .timeline-company { font-size: 0.875rem; color: var(--accent); margin-bottom: 0.7rem; }
+
+    .timeline-desc {
+      font-size: 0.875rem;
+      color: #505050;
+      line-height: 1.72;
+      max-width: 580px;
+    }
+
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.9rem;
+    }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ============================================
+       PROJECTS
+    ============================================ */
+    #projects { background: #F3F1EC; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+    }
+
+    .project-type {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 300;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: #505050;
+      line-height: 1.72;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    /* ============================================
+       CONTACT
+    ============================================ */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    .contact-text {
+      font-size: 1.02rem;
+      color: #444441;
+      line-height: 1.82;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--bg-card);
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-link:hover .contact-link-value { color: var(--accent); }
+
+    .contact-link-icon {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      width: 2rem;
+      text-align: center;
+      flex-shrink: 0;
+      color: var(--muted);
+    }
+
+    .contact-link-info { flex: 1; }
+    .contact-link-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+    .contact-link-value { font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
+
+    /* ============================================
+       FOOTER
+    ============================================ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.75rem var(--pad);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    /* ============================================
+       ANIMATIONS
+    ============================================ */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 768px) {
+      .about-grid,
+      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .nav-links { display: none; }
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+      }
+      .timeline-item::after { display: none; }
+      .timeline-right { padding-left: 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .hero::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== NAV ===================== -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">HB_</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about"      data-en="About"      data-it="Chi sono">About</a></li>
+        <li><a href="#expertise"  data-en="Expertise"  data-it="Competenze">Expertise</a></li>
+        <li><a href="#experience" data-en="Experience" data-it="Esperienza">Experience</a></li>
+        <li><a href="#projects"   data-en="Projects"   data-it="Progetti">Projects</a></li>
+        <li><a href="#contact"    data-en="Contact"    data-it="Contatti">Contact</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn"        data-lang="it">IT</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <p class="hero-eyebrow"
+         data-en="Innovation Director · Cloud Architect · Microsoft Ecosystem"
+         data-it="Innovation Director · Cloud Architect · Ecosistema Microsoft">
+        Innovation Director · Cloud Architect · Microsoft Ecosystem
+      </p>
+      <h1 class="hero-name">Holti <em>Bitri</em></h1>
+      <p class="hero-title"
+         data-en="Building bridges between technology vision and business impact. 15+ years at the intersection of architecture, innovation, and delivery."
+         data-it="Connettere visione tecnologica e impatto sul business. Oltre 15 anni all'intersezione tra architettura, innovazione e delivery.">
+        Building bridges between technology vision and business impact. 15+ years at the intersection of architecture, innovation, and delivery.
+      </p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-primary"
+           data-en="View Experience" data-it="Esperienza">View Experience</a>
+        <a href="#contact" class="btn btn-secondary"
+           data-en="Get in Touch" data-it="Contattami">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-scroll" data-en="SCROLL" data-it="SCORRI">SCROLL</div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="section-header">
+            <span class="section-label" data-en="About" data-it="Chi sono">About</span>
+            <h2 class="section-title"
+                data-en="Architecture meets<br>leadership."
+                data-it="Architettura e<br>leadership.">Architecture meets<br>leadership.</h2>
+          </div>
+          <div class="about-text">
+            <p data-en="I'm an Innovation &amp; Cloud Architect Director with 15+ years in the Microsoft ecosystem — evolved from enterprise .NET developer to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development."
+               data-it="Sono un Innovation &amp; Cloud Architect Director con oltre 15 anni nell'ecosistema Microsoft — da sviluppatore .NET enterprise a guida di aree di innovazione su Power Platform, Azure e sviluppo custom.">
+              I'm an Innovation &amp; Cloud Architect Director with 15+ years in the Microsoft ecosystem — evolved from enterprise .NET developer to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development.
+            </p>
+            <p data-en="Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery."
+               data-it="Oggi coordino iniziative di trasformazione digitale per clienti enterprise, supervisionando prodotti AI come AI4Teams, AI4Align e AI4Orchestration. Il mio lavoro connette architettura, strategia e delivery.">
+              Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery.
+            </p>
+            <p data-en="Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive — across banking, healthcare, logistics, and consulting."
+               data-it="Tra i clienti enterprise con cui ho lavorato: PwC, Medtronic, MPS e Nexive — nei settori banking, healthcare, logistica e consulenza.">
+              Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive — across banking, healthcare, logistics, and consulting.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-stats reveal" style="transition-delay:0.15s">
+          <div class="stat-card">
+            <div class="stat-number">15+</div>
+            <div class="stat-label" data-en="Years in the Microsoft ecosystem" data-it="Anni nell'ecosistema Microsoft">Years in the Microsoft ecosystem</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label" data-en="Innovation domains led (Power Platform, Azure, Dev)" data-it="Domini Innovation guidati (Power Platform, Azure, Dev)">Innovation domains led</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">6+</div>
+            <div class="stat-label" data-en="Microsoft certifications (MCSD, MCSA, Azure)" data-it="Certificazioni Microsoft (MCSD, MCSA, Azure)">Microsoft certifications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label" data-en="AI-powered proprietary products overseen" data-it="Prodotti AI proprietari supervisionati">AI products overseen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===================== EXPERTISE ===================== -->
+  <section id="expertise">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-en="Core Expertise" data-it="Competenze chiave">Core Expertise</span>
+        <h2 class="section-title"
+            data-en="Where I deliver<br>the most value."
+            data-it="Dove creo<br>più valore.">Where I deliver<br>the most value.</h2>
+      </div>
+
+      <div class="expertise-grid reveal" style="transition-delay:0.1s">
+        <div class="expertise-item">
+          <span class="expertise-icon">☁</span>
+          <div class="expertise-name" data-en="Microsoft Azure" data-it="Microsoft Azure">Microsoft Azure</div>
+          <div class="expertise-desc" data-en="Cloud architecture, hybrid models, governance, DevOps / CI-CD" data-it="Architettura cloud, modelli ibridi, governance, DevOps / CI-CD">Cloud architecture, hybrid models, governance, DevOps / CI-CD</div>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-icon">⚡</span>
+          <div class="expertise-name" data-en="Power Platform" data-it="Power Platform">Power Platform</div>
+          <div class="expertise-desc" data-en="Power BI, Power Apps, Power Automate, Microsoft Fabric" data-it="Power BI, Power Apps, Power Automate, Microsoft Fabric">Power BI, Power Apps, Power Automate, Microsoft Fabric</div>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-icon">🏗</span>
+          <div class="expertise-name" data-en="Solution Architecture" data-it="Solution Architecture">Solution Architecture</div>
+          <div class="expertise-desc" data-en="Cloud-first design, system integration, API layers, app modernization" data-it="Design cloud-first, integrazione sistemi, layer API, modernizzazione app">Cloud-first design, system integration, API layers, app modernization</div>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-icon">🤖</span>
+          <div class="expertise-name" data-en="AI &amp; Innovation" data-it="AI &amp; Innovazione">AI &amp; Innovation</div>
+          <div class="expertise-desc" data-en="AI-enabled transformation, LLM integration, intelligent automation" data-it="Trasformazione AI-enabled, integrazione LLM, automazione intelligente">AI-enabled transformation, LLM integration, intelligent automation</div>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-icon">⚙</span>
+          <div class="expertise-name" data-en=".NET / Custom Dev" data-it=".NET / Sviluppo Custom">.NET / Custom Dev</div>
+          <div class="expertise-desc" data-en="C#, .NET Core, ASP.NET MVC, WCF, REST APIs, SQL Server" data-it="C#, .NET Core, ASP.NET MVC, WCF, REST API, SQL Server">C#, .NET Core, ASP.NET MVC, WCF, REST APIs, SQL Server</div>
+        </div>
+        <div class="expertise-item">
+          <span class="expertise-icon">👥</span>
+          <div class="expertise-name" data-en="Leadership &amp; Strategy" data-it="Leadership &amp; Strategia">Leadership &amp; Strategy</div>
+          <div class="expertise-desc" data-en="Team management, pre-sales, stakeholder engagement, innovation roadmaps" data-it="Team management, pre-sales, stakeholder engagement, roadmap di innovazione">Team management, pre-sales, stakeholder engagement, innovation roadmaps</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EXPERIENCE ===================== -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-en="Experience" data-it="Esperienza">Experience</span>
+        <h2 class="section-title"
+            data-en="15 years,<br>one direction."
+            data-it="15 anni,<br>una direzione.">15 years,<br>one direction.</h2>
+      </div>
+
+      <div class="timeline">
+
+        <!-- 1 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-left">
+            <div class="timeline-date" data-en="2024 — Present" data-it="2024 — Oggi">2024 — Present</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role" data-en="Innovation Director" data-it="Innovation Director">Innovation Director</div>
+            <div class="timeline-company">Cloudia Research S.p.A.</div>
+            <div class="timeline-desc"
+                 data-en="Leading the Innovation Area across Power Platform, Azure/Networking, and Custom Development. Overseeing AI-powered product lines (AI4Teams, AI4Align, AI4Orchestration), enterprise pre-sales, and strategic Microsoft partnerships."
+                 data-it="Guido l'area Innovation su Power Platform, Azure/Networking e sviluppo custom. Supervisione di prodotti AI (AI4Teams, AI4Align, AI4Orchestration), pre-sales enterprise e partnership Microsoft strategiche.">
+              Leading the Innovation Area across Power Platform, Azure/Networking, and Custom Development. Overseeing AI-powered product lines (AI4Teams, AI4Align, AI4Orchestration), enterprise pre-sales, and strategic Microsoft partnerships.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Azure</span>
+              <span class="tag">Power Platform</span>
+              <span class="tag">AI Products</span>
+              <span class="tag">Innovation Leadership</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="timeline-item reveal" style="transition-delay:0.1s">
+          <div class="timeline-left">
+            <div class="timeline-date">2018 — 2023</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role" data-en="Microsoft Architect Solution Specialist" data-it="Microsoft Architect Solution Specialist">Microsoft Architect Solution Specialist</div>
+            <div class="timeline-company">Cloudia Research S.p.A.</div>
+            <div class="timeline-desc"
+                 data-en="Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership."
+                 data-it="Progettazione e implementazione di architetture cloud-first su .NET Core e Azure. Modernizzazione applicativa, automazione workflow e reportistica data-driven per clienti enterprise. Espansione progressiva verso solution architecture e leadership nella trasformazione digitale.">
+              Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">.NET Core</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Cloud Architecture</span>
+              <span class="tag">DevOps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="timeline-item reveal" style="transition-delay:0.2s">
+          <div class="timeline-left">
+            <div class="timeline-date">2013 — 2017</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role" data-en="Integration Specialist" data-it="Integration Specialist">Integration Specialist</div>
+            <div class="timeline-company">Nexive</div>
+            <div class="timeline-desc"
+                 data-en="Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO."
+                 data-it="Progettato QArc, middleware SOA custom per l'integrazione di Oracle, DB2 e Salesforce ERP. Partecipazione al progetto Nexibus — Enterprise Service Bus su TIBCO.">
+              Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">SOA / ESB</span>
+              <span class="tag">Oracle / DB2</span>
+              <span class="tag">ASP.NET MVC</span>
+              <span class="tag">TIBCO</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="timeline-item reveal" style="transition-delay:0.3s">
+          <div class="timeline-left">
+            <div class="timeline-date">2011 — 2013</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role"
+                 data-en=".NET Analyst · Enterprise Clients"
+                 data-it=".NET Analyst · Clienti Enterprise">.NET Analyst · Enterprise Clients</div>
+            <div class="timeline-company">WICE Group → PwC, Medtronic, Reply/Eurizon</div>
+            <div class="timeline-desc"
+                 data-en="Delivered enterprise solutions at PwC (WCF data access layer, SAP/AD integration, SharePoint onboarding portal) and Medtronic (SharePoint platform, multi-layer architecture, health &amp; safety tracking application)."
+                 data-it="Soluzioni enterprise per PwC (data access layer WCF, integrazione SAP/AD, portale SharePoint onboarding) e Medtronic (piattaforma SharePoint, architettura multilayer, app health &amp; safety).">
+              Delivered enterprise solutions at PwC (WCF data access layer, SAP/AD integration, SharePoint onboarding portal) and Medtronic (SharePoint platform, multi-layer architecture, health &amp; safety tracking application).
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">WCF / REST</span>
+              <span class="tag">SharePoint 2010</span>
+              <span class="tag">SAP / AD</span>
+              <span class="tag">C#</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="timeline-item reveal" style="transition-delay:0.4s">
+          <div class="timeline-left">
+            <div class="timeline-date">2008 — 2011</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role"
+                 data-en="Senior .NET Developer · Oracle DWH Developer"
+                 data-it="Senior .NET Developer · Oracle DWH Developer">Senior .NET Developer · Oracle DWH Developer</div>
+            <div class="timeline-company">Monte dei Paschi di Siena</div>
+            <div class="timeline-desc"
+                 data-en="Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions."
+                 data-it="Responsabile di pipeline ETL e gestione metadati per il data warehouse finanziario su Oracle Warehouse Builder. Reportistica web e servizi bancari nelle divisioni Anagrafe e Finanza.">
+              Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Oracle OWB</span>
+              <span class="tag">ETL / PL-SQL</span>
+              <span class="tag">Reporting Services</span>
+              <span class="tag">C# / ASP.NET</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===================== PROJECTS ===================== -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-en="Projects" data-it="Progetti">Projects</span>
+        <h2 class="section-title"
+            data-en="Building what<br>doesn't exist yet."
+            data-it="Costruire ciò che<br>non esiste ancora.">Building what<br>doesn't exist yet.</h2>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-type" data-en="Personal PoC · Open Source" data-it="PoC Personale · Open Source">Personal PoC · Open Source</div>
+          <h3 class="project-title">AI Meeting<br>Assistant</h3>
+          <p class="project-desc"
+             data-en="A fully local, privacy-first AI pipeline that processes video recordings (Teams, Zoom, Webex) to produce transcription, speaker identification, and structured meeting summaries with action items — CPU only, zero cloud dependency."
+             data-it="Pipeline AI completamente locale e privacy-first per trascrizione, identificazione speaker e summary strutturati da video meeting (Teams, Zoom, Webex) — CPU only, zero dipendenze cloud.">
+            A fully local, privacy-first AI pipeline that processes video recordings (Teams, Zoom, Webex) to produce transcription, speaker identification, and structured meeting summaries — CPU only, zero cloud dependency.
+          </p>
+          <div class="project-stack">
+            <span class="tag">Faster-Whisper</span>
+            <span class="tag">Pyannote</span>
+            <span class="tag">Ollama / Qwen 2.5</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Docker Compose</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.1s">
+          <div class="project-type" data-en="Product · Cloudia Research" data-it="Prodotto · Cloudia Research">Product · Cloudia Research</div>
+          <h3 class="project-title">AI4Teams &amp;<br>AI4Align</h3>
+          <p class="project-desc"
+             data-en="AI-powered Microsoft products designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem."
+             data-it="Prodotti Microsoft AI per migliorare collaborazione, allineamento e produttività dei team nell'ecosistema Microsoft 365.">
+            AI-powered Microsoft products designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem.
+          </p>
+          <div class="project-stack">
+            <span class="tag">Microsoft 365</span>
+            <span class="tag">Azure AI</span>
+            <span class="tag">Power Platform</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal" style="transition-delay:0.2s">
+          <div class="project-type" data-en="Product · Cloudia Research" data-it="Prodotto · Cloudia Research">Product · Cloudia Research</div>
+          <h3 class="project-title">AI4Orchestration</h3>
+          <p class="project-desc"
+             data-en="Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale."
+             data-it="Piattaforma di orchestrazione intelligente su stack Microsoft per automazione workflow enterprise e gestione AI-driven dei processi su larga scala.">
+            Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale.
+          </p>
+          <div class="project-stack">
+            <span class="tag">Azure</span>
+            <span class="tag">Power Automate</span>
+            <span class="tag">AI Orchestration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label" data-en="Contact" data-it="Contatti">Contact</span>
+        <h2 class="section-title"
+            data-en="Let's talk<br>architecture."
+            data-it="Parliamo di<br>architettura.">Let's talk<br>architecture.</h2>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-text reveal">
+          <p data-en="Whether you're looking for a cloud architecture leader, an innovation director, or a Microsoft ecosystem expert — I'm always open to meaningful conversations about challenging problems and strategic opportunities."
+             data-it="Che tu stia cercando un cloud architecture leader, un innovation director o un esperto Microsoft — sono sempre disponibile per conversazioni significative su problemi complessi e opportunità strategiche.">
+            Whether you're looking for a cloud architecture leader, an innovation director, or a Microsoft ecosystem expert — I'm always open to meaningful conversations about challenging problems and strategic opportunities.
+          </p>
+        </div>
+
+        <div class="contact-links reveal" style="transition-delay:0.15s">
+          <a href="mailto:holti.bitri@outlook.com" class="contact-link">
+            <span class="contact-link-icon">✉</span>
+            <div class="contact-link-info">
+              <span class="contact-link-label" data-en="Email" data-it="Email">Email</span>
+              <span class="contact-link-value">holti.bitri@outlook.com</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener" class="contact-link">
+            <span class="contact-link-icon">in</span>
+            <div class="contact-link-info">
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">linkedin.com/in/holtibitri</span>
+            </div>
+          </a>
+          <a href="#" class="contact-link">
+            <span class="contact-link-icon">{ }</span>
+            <div class="contact-link-info">
+              <span class="contact-link-label">GitHub</span>
+              <span class="contact-link-value"
+                    data-en="AI Meeting Assistant — coming soon"
+                    data-it="AI Meeting Assistant — coming soon">AI Meeting Assistant — coming soon</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <span>© 2026 Holti Bitri</span>
+    <span data-en="Milan, Italy · Open to senior opportunities"
+          data-it="Milano, Italia · Disponibile per opportunità senior">
+      Milan, Italy · Open to senior opportunities
+    </span>
+  </footer>
+
+  <!-- ===================== JS ===================== -->
+  <script>
+    /* ---- LANGUAGE TOGGLE ---- */
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (!val) return;
+        el.innerHTML = val;
+      });
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+      document.documentElement.lang = lang;
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+
+    /* ---- SCROLL REVEAL ---- */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ---- NAVBAR SCROLL ---- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
