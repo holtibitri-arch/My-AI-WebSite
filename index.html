@@ -7,6 +7,9 @@
   <meta name="description" content="Innovation Director & Cloud Architect with 15+ years in the Microsoft ecosystem. Expertise in Azure, Power Platform, .NET, and AI-enabled transformation.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="256x256" href="favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -262,6 +265,25 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(2rem, 5vw, 5rem);
       align-items: start;
+    }
+
+    .about-avatar-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .about-avatar {
+      width: 240px;
+      height: 240px;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .about-avatar:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
     }
 
     .about-text { font-size: 1.02rem; line-height: 1.82; color: #35352F; }
@@ -670,6 +692,9 @@
         </div>
 
         <div class="about-stats reveal" style="transition-delay:0.15s">
+          <div class="about-avatar-wrap" style="grid-column: 1 / -1;">
+            <img src="avatar.png" alt="Holti Bitri — Architect &amp; Innovator" class="about-avatar">
+          </div>
           <div class="stat-card">
             <div class="stat-number">15+</div>
             <div class="stat-label" data-en="Years in the Microsoft ecosystem" data-it="Anni nell'ecosistema Microsoft">Years in the Microsoft ecosystem</div>
@@ -949,11 +974,11 @@
         </div>
 
         <div class="contact-links reveal" style="transition-delay:0.15s">
-          <a href="mailto:holti.bitri@outlook.com" class="contact-link">
+          <a href="/cdn-cgi/l/email-protection#771f181b031e59151e03051e371802031b18181c5914181a" class="contact-link">
             <span class="contact-link-icon">✉</span>
             <div class="contact-link-info">
               <span class="contact-link-label" data-en="Email" data-it="Email">Email</span>
-              <span class="contact-link-value">holti.bitri@outlook.com</span>
+              <span class="contact-link-value"><span class="__cf_email__" data-cfemail="472f282b332e69252e33352e072832332b28282c6924282a">[email&#160;protected]</span></span>
             </div>
           </a>
           <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener" class="contact-link">
@@ -987,7 +1012,7 @@
   </footer>
 
   <!-- ===================== JS ===================== -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     /* ---- LANGUAGE TOGGLE ---- */
     function setLanguage(lang) {
       document.querySelectorAll('[data-en]').forEach(el => {
