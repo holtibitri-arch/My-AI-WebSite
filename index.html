@@ -119,10 +119,11 @@
        HERO
     ============================================ */
     .hero {
-      min-height: 100svh;
+      min-height: auto;
       display: flex;
-      align-items: center;
-      padding-top: 5rem;
+      align-items: flex-start;
+      padding-top: clamp(6rem, 12vh, 9rem);
+      padding-bottom: clamp(4rem, 8vh, 6rem);
       position: relative;
       overflow: hidden;
     }
@@ -216,25 +217,7 @@
     .btn-secondary { border: 1px solid var(--border); color: var(--text); }
     .btn-secondary:hover { border-color: var(--text); }
 
-    .hero-scroll {
-      position: absolute;
-      bottom: 2.5rem;
-      left: var(--pad);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.12em;
-      opacity: 0;
-      animation: fadeUp 0.7s 1s forwards;
-    }
-    .hero-scroll::before {
-      content: '';
-      width: 36px; height: 1px;
-      background: var(--muted);
-    }
+    .hero-scroll { display: none; }
 
     /* ============================================
        SECTION HEADER
@@ -1013,6 +996,11 @@
 
   <!-- ===================== JS ===================== -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    /* ---- LANGUAGE AUTO-DETECT ---- */
+    const browserLang = navigator.language || navigator.userLanguage;
+    const defaultLang = browserLang.toLowerCase().startsWith('it') ? 'it' : 'en';
+    setLanguage(defaultLang);
+
     /* ---- LANGUAGE TOGGLE ---- */
     function setLanguage(lang) {
       document.querySelectorAll('[data-en]').forEach(el => {
