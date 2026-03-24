@@ -257,10 +257,10 @@
     }
 
     .about-avatar {
-      width: 240px;
-      height: 240px;
+      width: auto;
+      max-width: 260px;
+      height: auto;
       border-radius: 12px;
-      object-fit: cover;
       display: block;
       transition: transform 0.3s, box-shadow 0.3s;
     }
@@ -573,13 +573,9 @@
     }
 
     .reveal {
-      opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
-    }
-    .reveal.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
+      animation: fadeUp 0.7s ease both;
     }
 
     /* ============================================
@@ -1092,12 +1088,18 @@
   </footer>
 
   <!-- ===================== JS ===================== -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     /* ---- LOAD POSTS ---- */
     async function loadPosts(lang) {
       const grid = document.getElementById('posts-grid');
+      // In locale su file:// il fetch non funziona — mostra messaggio neutro
+      if (window.location.protocol === 'file:') {
+        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Apri il sito online per vedere gli articoli.' : 'Open the live site to see posts.'}</p>`;
+        return;
+      }
       try {
         const res = await fetch('posts.json');
+        if (!res.ok) throw new Error('not found');
         const posts = await res.json();
         if (!posts.length) {
           grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo ancora.' : 'No posts yet.'}</p>`;
@@ -1120,7 +1122,7 @@
           </a>`;
         }).join('');
       } catch(e) {
-        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Impossibile caricare gli articoli.' : 'Could not load posts.'}</p>`;
+        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo disponibile.' : 'No posts available.'}</p>`;
       }
     }
 
@@ -1150,24 +1152,4 @@
       });
     });
 
-    /* ---- SCROLL REVEAL ---- */
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    /* ---- NAVBAR SCROLL ---- */
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
-  </script>
-
-</body>
-</html>
+   
