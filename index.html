@@ -573,9 +573,13 @@
     }
 
     .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
       opacity: 1;
-      transform: none;
-      animation: fadeUp 0.7s ease both;
+      transform: translateY(0);
     }
 
     /* ============================================
@@ -1152,4 +1156,24 @@
       });
     });
 
-   
+    /* ---- SCROLL REVEAL ---- */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ---- NAVBAR SCROLL ---- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
