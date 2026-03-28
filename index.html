@@ -496,18 +496,9 @@
       align-items: start;
     }
 
-    .contact-text {
-      font-size: 1.02rem;
-      color: #444441;
-      line-height: 1.82;
-    }
+    .contact-text { font-size: 1.02rem; color: #444441; line-height: 1.82; }
 
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
     .contact-link {
       display: flex;
       align-items: center;
@@ -542,121 +533,33 @@
       text-transform: uppercase;
       margin-bottom: 0.2rem;
     }
-    .contact-link-value { font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
-
-    /* ============================================
-       FOOTER
-    ============================================ */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 1.75rem var(--pad);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-    }
-
-    .section-divider {
-      height: 1px;
-      background: var(--border);
-      max-width: var(--max-w);
-      margin: 0 auto;
+    .contact-link-value {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
     }
 
     /* ============================================
        ANIMATIONS
     ============================================ */
     @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 0.75s ease, transform 0.75s ease;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ============================================
-       WRITING
+       FOOTER
     ============================================ */
-    #writing { background: var(--bg); }
-
-    .writing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .post-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem;
-      text-decoration: none;
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
-    }
-    .post-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
-      border-color: var(--accent);
-    }
-
-    .post-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .post-date {
+    footer {
+      text-align: center;
       font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-
-    .post-tag {
-      font-family: var(--font-mono);
-      font-size: 0.67rem;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      color: var(--accent);
-      letter-spacing: 0.03em;
-    }
-
-    .post-title {
-      font-size: 0.975rem;
-      font-weight: 500;
-      line-height: 1.45;
-      flex: 1;
-    }
-
-    .post-excerpt {
-      font-size: 0.825rem;
-      color: #555552;
-      line-height: 1.68;
-    }
-
-    .post-cta {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      margin-top: 0.25rem;
-    }
-
-    .writing-empty {
       font-size: 0.875rem;
       color: var(--muted);
       padding: 2rem 0;
@@ -666,17 +569,12 @@
        RESPONSIVE
     ============================================ */
     @media (max-width: 768px) {
-      .about-grid,
-      .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
       .nav-links { display: none; }
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 0.25rem;
-      }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
       .timeline-item::after { display: none; }
       .timeline-right { padding-left: 1.25rem; }
     }
-
     @media (max-width: 480px) {
       .about-stats { grid-template-columns: 1fr 1fr; }
       .hero::after { display: none; }
@@ -686,79 +584,68 @@
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
   <nav id="navbar">
     <a href="#" class="nav-logo">HB_</a>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#about"      data-en="About"      data-it="Chi sono">About</a></li>
-        <li><a href="#expertise"  data-en="Expertise"  data-it="Competenze">Expertise</a></li>
+        <li><a href="#about" data-en="About" data-it="Chi sono">About</a></li>
+        <li><a href="#featured-project" data-en="Project" data-it="Progetto">Project</a></li>
+        <li><a href="#expertise" data-en="Expertise" data-it="Competenze">Expertise</a></li>
         <li><a href="#experience" data-en="Experience" data-it="Esperienza">Experience</a></li>
-        <li><a href="#projects"   data-en="Projects"   data-it="Progetti">Projects</a></li>
-        <li><a href="#writing"    data-en="Writing"    data-it="Articoli">Writing</a></li>
-        <li><a href="#contact"    data-en="Contact"    data-it="Contatti">Contact</a></li>
+        <li><a href="#projects" data-en="Projects" data-it="Progetti">Projects</a></li>
+        <li><a href="#writing" data-en="Writing" data-it="Articoli">Writing</a></li>
+        <li><a href="#contact" data-en="Contact" data-it="Contatti">Contact</a></li>
       </ul>
       <div class="lang-toggle">
         <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn"        data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="it">IT</button>
       </div>
     </div>
   </nav>
 
-  <!-- ===================== HERO ===================== -->
-  <section class="hero" id="home">
+  <header id="home" class="hero">
     <div class="container hero-inner">
-      <p class="hero-eyebrow"
-         data-en="Innovation Director · Cloud Architect · Microsoft Ecosystem"
-         data-it="Innovation Director · Cloud Architect · Ecosistema Microsoft">
-        Innovation Director · Cloud Architect · Microsoft Ecosystem
+      <p class="hero-eyebrow" data-en="Innovation Director &middot; Cloud Architect &middot; Fintech SaaS Builder" data-it="Innovation Director &middot; Cloud Architect &middot; Sviluppatore SaaS Fintech">
+        Innovation Director &middot; Cloud Architect &middot; Fintech SaaS Builder
       </p>
-      <h1 class="hero-name">Holti <em>Bitri</em></h1>
-      <p class="hero-title"
-         data-en="Building bridges between technology vision and business impact. 15+ years at the intersection of architecture, innovation, and delivery."
-         data-it="Connettere visione tecnologica e impatto sul business. Oltre 15 anni all'intersezione tra architettura, innovazione e delivery.">
+      <h1 class="hero-name">
+        Holti Bitri<br><em>Architect &amp; Innovator</em>
+      </h1>
+      <p class="hero-title" data-en="Building bridges between technology vision and business impact. 15+ years at the intersection of architecture, innovation, and delivery." data-it="Connettere visione tecnologica e impatto sul business. Oltre 15 anni all'intersezione tra architettura, innovazione e delivery.">
         Building bridges between technology vision and business impact. 15+ years at the intersection of architecture, innovation, and delivery.
       </p>
+      <p class="hero-title" style="margin-top: -1.5rem; margin-bottom: 2.75rem;" data-en="Currently building <a href='https://tradecopilot.io' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>TradeCopilot.io</a>, the ultimate companion layer for eToro traders." data-it="Attualmente sto sviluppando <a href='https://tradecopilot.io' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>TradeCopilot.io</a>, il livello definitivo per i trader su eToro.">
+        Currently building <a href='https://tradecopilot.io' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>TradeCopilot.io</a>, the ultimate companion layer for eToro traders.
+      </p>
+      
       <div class="hero-cta">
-        <a href="#experience" class="btn btn-primary"
-           data-en="View Experience" data-it="Esperienza">View Experience</a>
-        <a href="#contact" class="btn btn-secondary"
-           data-en="Get in Touch" data-it="Contattami">Get in Touch</a>
+        <a href="#contact" class="btn btn-primary" data-en="Get in touch" data-it="Contattami">Get in touch</a>
+        <a href="#projects" class="btn btn-secondary" data-en="View projects" data-it="Vedi progetti">View projects</a>
       </div>
     </div>
-    <div class="hero-scroll" data-en="SCROLL" data-it="SCORRI">SCROLL</div>
-  </section>
+  </header>
 
-  <!-- ===================== ABOUT ===================== -->
-  <section id="about">
+  <section id="about" style="padding-top: 2rem;">
     <div class="container">
       <div class="about-grid">
-        <div class="reveal">
-          <div class="section-header">
-            <span class="section-label" data-en="About" data-it="Chi sono">About</span>
-            <h2 class="section-title"
-                data-en="Architecture meets<br>leadership."
-                data-it="Architettura e<br>leadership.">Architecture meets<br>leadership.</h2>
-          </div>
-          <div class="about-text">
-            <p data-en="I'm an Innovation &amp; Cloud Architect Director with 15+ years in the Microsoft ecosystem — evolved from enterprise .NET developer to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development."
-               data-it="Sono un Innovation &amp; Cloud Architect Director con oltre 15 anni nell'ecosistema Microsoft — da sviluppatore .NET enterprise a guida di aree di innovazione su Power Platform, Azure e sviluppo custom.">
-              I'm an Innovation &amp; Cloud Architect Director with 15+ years in the Microsoft ecosystem — evolved from enterprise .NET developer to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development.
-            </p>
-            <p data-en="Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery."
-               data-it="Oggi coordino iniziative di trasformazione digitale per clienti enterprise, supervisionando prodotti AI come AI4Teams, AI4Align e AI4Orchestration. Il mio lavoro connette architettura, strategia e delivery.">
-              Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery.
-            </p>
-            <p data-en="Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive — across banking, healthcare, logistics, and consulting."
-               data-it="Tra i clienti enterprise con cui ho lavorato: PwC, Medtronic, MPS e Nexive — nei settori banking, healthcare, logistica e consulenza.">
-              Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive — across banking, healthcare, logistics, and consulting.
-            </p>
-          </div>
+        <div class="about-text reveal">
+          <p data-en="I design resilient architectures and lead high-performing teams to turn complex challenges into scalable, future-proof solutions." data-it="Progetto architetture resilienti e guido team ad alte prestazioni per trasformare sfide complesse in soluzioni scalabili e a prova di futuro.">
+            I design resilient architectures and lead high-performing teams to turn complex challenges into scalable, future-proof solutions.
+          </p>
+          <p data-en="With over 15 years in the Microsoft ecosystem, my journey evolved from deep-dive technical development to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development." data-it="Con oltre 15 anni nell'ecosistema Microsoft, il mio percorso si è evoluto dallo sviluppo tecnico profondo alla guida di aree di innovazione cross-funzionali su Power Platform, Azure e sviluppo custom.">
+            With over 15 years in the Microsoft ecosystem, my journey evolved from deep-dive technical development to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development.
+          </p>
+          <p data-en="Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery." data-it="Oggi coordino iniziative di trasformazione digitale per clienti enterprise, supervisionando prodotti AI come AI4Teams, AI4Align e AI4Orchestration. Il mio lavoro connette architettura, strategia e delivery.">
+            Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery.
+          </p>
+          <p data-en="Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive &mdash; across banking, healthcare, logistics, and consulting." data-it="Tra i clienti enterprise con cui ho lavorato: PwC, Medtronic, MPS e Nexive &mdash; nei settori banking, healthcare, logistica e consulenza.">
+            Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive &mdash; across banking, healthcare, logistics, and consulting.
+          </p>
         </div>
-
+        
         <div class="about-stats reveal" style="transition-delay:0.15s">
           <div class="about-avatar-wrap" style="grid-column: 1 / -1;">
-            <img src="avatar.png" alt="Holti Bitri — Architect &amp; Innovator" class="about-avatar">
+            <img src="avatar.png" alt="Holti Bitri — Architect & Innovator" class="about-avatar">
           </div>
           <div class="stat-card">
             <div class="stat-number">15+</div>
@@ -766,15 +653,7 @@
           </div>
           <div class="stat-card">
             <div class="stat-number">3</div>
-            <div class="stat-label" data-en="Innovation domains led (Power Platform, Azure, Dev)" data-it="Domini Innovation guidati (Power Platform, Azure, Dev)">Innovation domains led</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">6+</div>
-            <div class="stat-label" data-en="Microsoft certifications (MCSD, MCSA, Azure)" data-it="Certificazioni Microsoft (MCSD, MCSA, Azure)">Microsoft certifications</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">3</div>
-            <div class="stat-label" data-en="AI-powered proprietary products overseen" data-it="Prodotti AI proprietari supervisionati">AI products overseen</div>
+            <div class="stat-label" data-en="Innovation domains led (Power Platform, Azure, Dev)" data-it="Domini Innovation guidati (Power Platform, Azure, Dev)">Innovation domains led (Power Platform, Azure, Dev)</div>
           </div>
         </div>
       </div>
@@ -783,26 +662,51 @@
 
   <div class="section-divider"></div>
 
-  <!-- ===================== EXPERTISE ===================== -->
+  <section id="featured-project" class="reveal" style="padding: 4rem 10%; background-color: var(--bg);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" data-en="Current Focus" data-it="Progetto Attuale">Current Focus</span>
+        <h2 class="section-title" data-en="Building for the<br>retail trader." data-it="Sviluppando per il<br>trader retail.">Building for the<br>retail trader.</h2>
+      </div>
+      <div style="border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; background-color: var(--bg-card); transition: box-shadow 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 0.5rem;">TradeCopilot</h3>
+            <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;" data-en="Founder & Lead Architect • 2026 - Present" data-it="Founder & Lead Architect • 2026 - Present">Founder & Lead Architect • 2026 - Present</p>
+          </div>
+          <a href="https://tradecopilot.io" target="_blank" class="btn btn-secondary" style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase;">Visit Waitlist &rarr;</a>
+        </div>
+        <p style="color: #505050; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;" data-en="Bridging the gap between retail trading and professional tools. TradeCopilot is an unofficial companion layer for the eToro ecosystem, bringing compound technical alerts (RSI, MACD, EMA), algorithmic automation, and advanced journaling to everyday traders." data-it="Colmo il divario tra il trading retail e gli strumenti professionali. TradeCopilot è un livello non ufficiale per l'ecosistema eToro che porta alert tecnici composti (RSI, MACD, EMA), automazione algoritmica e journaling avanzato ai trader di tutti i giorni.">
+          Bridging the gap between retail trading and professional tools. TradeCopilot is an unofficial companion layer for the eToro ecosystem, bringing compound technical alerts (RSI, MACD, EMA), algorithmic automation, and advanced journaling to everyday traders.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag">Agentic Workflows</span>
+          <span class="tag">Fintech SaaS</span>
+          <span class="tag">Trading APIs</span>
+          <span class="tag">Growth Hacking</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="expertise">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-en="Core Expertise" data-it="Competenze chiave">Core Expertise</span>
-        <h2 class="section-title"
-            data-en="Where I deliver<br>the most value."
-            data-it="Dove creo<br>più valore.">Where I deliver<br>the most value.</h2>
+        <span class="section-label" data-en="Expertise" data-it="Competenze">Expertise</span>
+        <h2 class="section-title" data-en="Connecting code,<br>cloud, and business." data-it="Connettere codice,<br>cloud e business.">Connecting code,<br>cloud, and business.</h2>
       </div>
+      <div class="expertise-grid reveal">
+        
+        <div class="expertise-item">
+          <span class="expertise-icon">🚀</span>
+          <div class="expertise-name" data-en="AI &amp; Startup Stack" data-it="AI &amp; Startup Stack">AI &amp; Startup Stack</div>
+          <div class="expertise-desc" data-en="Agentic Workflows, LLM Orchestration, SaaS Architecture, Growth Hacking" data-it="Agentic Workflows, LLM Orchestration, Architettura SaaS, Growth Hacking">Agentic Workflows, LLM Orchestration, SaaS Architecture, Growth Hacking</div>
+        </div>
 
-      <div class="expertise-grid reveal" style="transition-delay:0.1s">
         <div class="expertise-item">
           <span class="expertise-icon">☁</span>
-          <div class="expertise-name" data-en="Microsoft Azure" data-it="Microsoft Azure">Microsoft Azure</div>
-          <div class="expertise-desc" data-en="Cloud architecture, hybrid models, governance, DevOps / CI-CD" data-it="Architettura cloud, modelli ibridi, governance, DevOps / CI-CD">Cloud architecture, hybrid models, governance, DevOps / CI-CD</div>
-        </div>
-        <div class="expertise-item">
-          <span class="expertise-icon">⚡</span>
-          <div class="expertise-name" data-en="Power Platform" data-it="Power Platform">Power Platform</div>
-          <div class="expertise-desc" data-en="Power BI, Power Apps, Power Automate, Microsoft Fabric" data-it="Power BI, Power Apps, Power Automate, Microsoft Fabric">Power BI, Power Apps, Power Automate, Microsoft Fabric</div>
+          <div class="expertise-name" data-en="Microsoft Cloud" data-it="Microsoft Cloud">Microsoft Cloud</div>
+          <div class="expertise-desc" data-en="Azure PaaS, Microsoft 365 ecosystem, Power Apps, Power Automate, Microsoft Fabric" data-it="Azure PaaS, ecosistema Microsoft 365, Power Apps, Power Automate, Microsoft Fabric">Azure PaaS, Microsoft 365 ecosystem, Power Apps, Power Automate, Microsoft Fabric</div>
         </div>
         <div class="expertise-item">
           <span class="expertise-icon">🏗</span>
@@ -822,57 +726,66 @@
         <div class="expertise-item">
           <span class="expertise-icon">👥</span>
           <div class="expertise-name" data-en="Leadership &amp; Strategy" data-it="Leadership &amp; Strategia">Leadership &amp; Strategy</div>
-          <div class="expertise-desc" data-en="Team management, pre-sales, stakeholder engagement, innovation roadmaps" data-it="Team management, pre-sales, stakeholder engagement, roadmap di innovazione">Team management, pre-sales, stakeholder engagement, innovation roadmaps</div>
+          <div class="expertise-desc" data-en="Team management, pre-sales, stakeholder engagement, innovation roadmaps" data-it="Team management, pre-sales, stakeholder engagement, roadmap d'innovazione">Team management, pre-sales, stakeholder engagement, innovation roadmaps</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== EXPERIENCE ===================== -->
   <section id="experience">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label" data-en="Experience" data-it="Esperienza">Experience</span>
-        <h2 class="section-title"
-            data-en="15 years,<br>one direction."
-            data-it="15 anni,<br>una direzione.">15 years,<br>one direction.</h2>
+        <h2 class="section-title" data-en="Over a decade of<br>technical leadership." data-it="Oltre un decennio di<br>leadership tecnica.">Over a decade of<br>technical leadership.</h2>
       </div>
 
       <div class="timeline">
-
-        <!-- 1 -->
         <div class="timeline-item reveal">
           <div class="timeline-left">
-            <div class="timeline-date" data-en="2024 — Present" data-it="2024 — Oggi">2024 — Present</div>
+            <div class="timeline-date">2026 &mdash; Present</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="Innovation Director" data-it="Innovation Director">Innovation Director</div>
-            <div class="timeline-company">Cloudia Research S.p.A.</div>
-            <div class="timeline-desc"
-                 data-en="Leading the Innovation Area across Power Platform, Azure/Networking, and Custom Development. Overseeing AI-powered product lines (AI4Teams, AI4Align, AI4Orchestration), enterprise pre-sales, and strategic Microsoft partnerships."
-                 data-it="Guido l'area Innovation su Power Platform, Azure/Networking e sviluppo custom. Supervisione di prodotti AI (AI4Teams, AI4Align, AI4Orchestration), pre-sales enterprise e partnership Microsoft strategiche.">
-              Leading the Innovation Area across Power Platform, Azure/Networking, and Custom Development. Overseeing AI-powered product lines (AI4Teams, AI4Align, AI4Orchestration), enterprise pre-sales, and strategic Microsoft partnerships.
+            <div class="timeline-role" data-en="Founder &amp; Builder" data-it="Founder &amp; Builder">Founder &amp; Builder</div>
+            <div class="timeline-company">TradeCopilot.io</div>
+            <div class="timeline-desc" data-en="Architecting and bootstrapping a SaaS platform for retail traders. Implementing AI-driven agentic workflows, API integrations with financial markets, and automated lead generation funnels." data-it="Sviluppo e lancio di una piattaforma SaaS per trader retail. Implementazione di flussi di lavoro guidati dall'AI (Agentic Workflows), integrazioni API con i mercati finanziari e funnel automatizzati di lead generation.">
+              Architecting and bootstrapping a SaaS platform for retail traders. Implementing AI-driven agentic workflows, API integrations with financial markets, and automated lead generation funnels.
             </div>
             <div class="timeline-tags">
-              <span class="tag">Azure</span>
-              <span class="tag">Power Platform</span>
-              <span class="tag">AI Products</span>
-              <span class="tag">Innovation Leadership</span>
+              <span class="tag">AI Agents</span>
+              <span class="tag">SaaS Architecture</span>
+              <span class="tag">Trading APIs</span>
+              <span class="tag">Growth Hacking</span>
             </div>
           </div>
         </div>
 
-        <!-- 2 -->
         <div class="timeline-item reveal" style="transition-delay:0.1s">
           <div class="timeline-left">
-            <div class="timeline-date">2018 — 2023</div>
+            <div class="timeline-date">2021 &mdash; Present</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="Microsoft Architect Solution Specialist" data-it="Microsoft Architect Solution Specialist">Microsoft Architect Solution Specialist</div>
-            <div class="timeline-company">Cloudia Research S.p.A.</div>
-            <div class="timeline-desc"
-                 data-en="Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership."
-                 data-it="Progettazione e implementazione di architetture cloud-first su .NET Core e Azure. Modernizzazione applicativa, automazione workflow e reportistica data-driven per clienti enterprise. Espansione progressiva verso solution architecture e leadership nella trasformazione digitale.">
+            <div class="timeline-role" data-en="Innovation Director · Technical Manager" data-it="Innovation Director · Technical Manager">Innovation Director &middot; Technical Manager</div>
+            <div class="timeline-company">Cloudia Research</div>
+            <div class="timeline-desc" data-en="Direct the Microsoft Hub (18+ consultants), overseeing project execution across Azure, Custom Dev, and Power Platform. Spearhead product R&amp;D for internal SaaS solutions and act as Solution Architect for enterprise clients." data-it="Direzione del Microsoft Hub (18+ consulenti) e supervisione dell'esecuzione progetti su Azure, Custom Dev e Power Platform. Guida dell'R&amp;D per prodotti SaaS interni e ruolo di Solution Architect per clienti enterprise.">
+              Direct the Microsoft Hub (18+ consultants), overseeing project execution across Azure, Custom Dev, and Power Platform. Spearhead product R&amp;D for internal SaaS solutions and act as Solution Architect for enterprise clients.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Team Leadership</span>
+              <span class="tag">Solution Architecture</span>
+              <span class="tag">Product R&amp;D</span>
+              <span class="tag">Pre-sales</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal" style="transition-delay:0.2s">
+          <div class="timeline-left">
+            <div class="timeline-date">2017 &mdash; 2021</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role" data-en="Senior .NET / Cloud Developer · Software Architect" data-it="Senior .NET / Cloud Developer · Software Architect">Senior .NET / Cloud Developer &middot; Software Architect</div>
+            <div class="timeline-company">Cloudia Research</div>
+            <div class="timeline-desc" data-en="Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership." data-it="Progettazione e implementazione di architetture cloud-first su .NET Core e Azure. Modernizzazione applicativa, automazione workflow e reportistica data-driven per clienti enterprise. Espansione progressiva verso solution architecture e leadership nella trasformazione digitale.">
               Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership.
             </div>
             <div class="timeline-tags">
@@ -884,65 +797,33 @@
           </div>
         </div>
 
-        <!-- 3 -->
-        <div class="timeline-item reveal" style="transition-delay:0.2s">
+        <div class="timeline-item reveal" style="transition-delay:0.3s">
           <div class="timeline-left">
-            <div class="timeline-date">2013 — 2017</div>
+            <div class="timeline-date">2013 &mdash; 2017</div>
           </div>
           <div class="timeline-right">
             <div class="timeline-role" data-en="Integration Specialist" data-it="Integration Specialist">Integration Specialist</div>
             <div class="timeline-company">Nexive</div>
-            <div class="timeline-desc"
-                 data-en="Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO."
-                 data-it="Progettato QArc, middleware SOA custom per l'integrazione di Oracle, DB2 e Salesforce ERP. Partecipazione al progetto Nexibus — Enterprise Service Bus su TIBCO.">
+            <div class="timeline-desc" data-en="Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO." data-it="Progettato QArc, middleware SOA custom per l'integrazione di Oracle, DB2 e Salesforce ERP. Partecipazione al progetto Nexibus — Enterprise Service Bus su TIBCO.">
               Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO.
             </div>
             <div class="timeline-tags">
-              <span class="tag">SOA / ESB</span>
-              <span class="tag">Oracle / DB2</span>
-              <span class="tag">ASP.NET MVC</span>
+              <span class="tag">SOA Middleware</span>
               <span class="tag">TIBCO</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4 -->
-        <div class="timeline-item reveal" style="transition-delay:0.3s">
-          <div class="timeline-left">
-            <div class="timeline-date">2011 — 2013</div>
-          </div>
-          <div class="timeline-right">
-            <div class="timeline-role"
-                 data-en=".NET Analyst · Enterprise Clients"
-                 data-it=".NET Analyst · Clienti Enterprise">.NET Analyst · Enterprise Clients</div>
-            <div class="timeline-company">WICE Group → PwC, Medtronic, Reply/Eurizon</div>
-            <div class="timeline-desc"
-                 data-en="Delivered enterprise solutions at PwC (WCF data access layer, SAP/AD integration, SharePoint onboarding portal) and Medtronic (SharePoint platform, multi-layer architecture, health &amp; safety tracking application)."
-                 data-it="Soluzioni enterprise per PwC (data access layer WCF, integrazione SAP/AD, portale SharePoint onboarding) e Medtronic (piattaforma SharePoint, architettura multilayer, app health &amp; safety).">
-              Delivered enterprise solutions at PwC (WCF data access layer, SAP/AD integration, SharePoint onboarding portal) and Medtronic (SharePoint platform, multi-layer architecture, health &amp; safety tracking application).
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">WCF / REST</span>
-              <span class="tag">SharePoint 2010</span>
-              <span class="tag">SAP / AD</span>
+              <span class="tag">System Integration</span>
               <span class="tag">C#</span>
             </div>
           </div>
         </div>
 
-        <!-- 5 -->
         <div class="timeline-item reveal" style="transition-delay:0.4s">
           <div class="timeline-left">
-            <div class="timeline-date">2008 — 2011</div>
+            <div class="timeline-date">2008 &mdash; 2011</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role"
-                 data-en="Senior .NET Developer · Oracle DWH Developer"
-                 data-it="Senior .NET Developer · Oracle DWH Developer">Senior .NET Developer · Oracle DWH Developer</div>
+            <div class="timeline-role" data-en="Senior .NET Developer · Oracle DWH Developer" data-it="Senior .NET Developer · Oracle DWH Developer">Senior .NET Developer &middot; Oracle DWH Developer</div>
             <div class="timeline-company">Monte dei Paschi di Siena</div>
-            <div class="timeline-desc"
-                 data-en="Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions."
-                 data-it="Responsabile di pipeline ETL e gestione metadati per il data warehouse finanziario su Oracle Warehouse Builder. Reportistica web e servizi bancari nelle divisioni Anagrafe e Finanza.">
+            <div class="timeline-desc" data-en="Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions." data-it="Responsabile di pipeline ETL e gestione metadati per il data warehouse finanziario su Oracle Warehouse Builder. Reportistica web e servizi bancari nelle divisioni Anagrafe e Finanza.">
               Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions.
             </div>
             <div class="timeline-tags">
@@ -960,41 +841,19 @@
 
   <div class="section-divider"></div>
 
-  <!-- ===================== PROJECTS ===================== -->
   <section id="projects">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label" data-en="Projects" data-it="Progetti">Projects</span>
-        <h2 class="section-title"
-            data-en="Building what<br>doesn't exist yet."
-            data-it="Costruire ciò che<br>non esiste ancora.">Building what<br>doesn't exist yet.</h2>
+        <h2 class="section-title" data-en="Building what<br>doesn't exist yet." data-it="Costruire ciò che<br>non esiste ancora.">Building what<br>doesn't exist yet.</h2>
       </div>
 
       <div class="projects-grid">
         <div class="project-card reveal">
-          <div class="project-type" data-en="Personal PoC · Open Source" data-it="PoC Personale · Open Source">Personal PoC · Open Source</div>
-          <h3 class="project-title">AI Meeting<br>Assistant</h3>
-          <p class="project-desc"
-             data-en="A fully local, privacy-first AI pipeline that processes video recordings (Teams, Zoom, Webex) to produce transcription, speaker identification, and structured meeting summaries with action items — CPU only, zero cloud dependency."
-             data-it="Pipeline AI completamente locale e privacy-first per trascrizione, identificazione speaker e summary strutturati da video meeting (Teams, Zoom, Webex) — CPU only, zero dipendenze cloud.">
-            A fully local, privacy-first AI pipeline that processes video recordings (Teams, Zoom, Webex) to produce transcription, speaker identification, and structured meeting summaries — CPU only, zero cloud dependency.
-          </p>
-          <div class="project-stack">
-            <span class="tag">Faster-Whisper</span>
-            <span class="tag">Pyannote</span>
-            <span class="tag">Ollama / Qwen 2.5</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Docker Compose</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.1s">
           <div class="project-type" data-en="Product · Cloudia Research" data-it="Prodotto · Cloudia Research">Product · Cloudia Research</div>
-          <h3 class="project-title">AI4Teams &amp;<br>AI4Align</h3>
-          <p class="project-desc"
-             data-en="AI-powered Microsoft products designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem."
-             data-it="Prodotti Microsoft AI per migliorare collaborazione, allineamento e produttività dei team nell'ecosistema Microsoft 365.">
-            AI-powered Microsoft products designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem.
+          <h3 class="project-title">AI4Teams</h3>
+          <p class="project-desc" data-en="An AI-powered hub designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem." data-it="Un hub basato su AI progettato per migliorare la collaborazione, l'allineamento e la produttività dei team nell'ecosistema Microsoft 365.">
+            An AI-powered hub designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem.
           </p>
           <div class="project-stack">
             <span class="tag">Microsoft 365</span>
@@ -1006,9 +865,7 @@
         <div class="project-card reveal" style="transition-delay:0.2s">
           <div class="project-type" data-en="Product · Cloudia Research" data-it="Prodotto · Cloudia Research">Product · Cloudia Research</div>
           <h3 class="project-title">AI4Orchestration</h3>
-          <p class="project-desc"
-             data-en="Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale."
-             data-it="Piattaforma di orchestrazione intelligente su stack Microsoft per automazione workflow enterprise e gestione AI-driven dei processi su larga scala.">
+          <p class="project-desc" data-en="Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale." data-it="Piattaforma di orchestrazione intelligente su stack Microsoft per automazione workflow enterprise e gestione AI-driven dei processi su larga scala.">
             Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale.
           </p>
           <div class="project-stack">
@@ -1021,60 +878,46 @@
     </div>
   </section>
 
-  <!-- ===================== WRITING ===================== -->
   <section id="writing">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label" data-en="Writing" data-it="Articoli">Writing</span>
-        <h2 class="section-title"
-            data-en="Thoughts on<br>tech & architecture."
-            data-it="Riflessioni su<br>tech & architettura.">Thoughts on<br>tech & architecture.</h2>
+        <h2 class="section-title" data-en="Thoughts on<br>tech & architecture." data-it="Riflessioni su<br>tech & architettura.">Thoughts on<br>tech & architecture.</h2>
       </div>
-      <div class="writing-grid reveal" id="posts-grid" style="transition-delay:0.1s">
-        <p class="writing-empty" data-en="Loading posts..." data-it="Caricamento...">Loading posts...</p>
-      </div>
+
+      <div class="writing-grid reveal" id="posts-grid">
+        </div>
     </div>
   </section>
 
-  <!-- ===================== CONTACT ===================== -->
-  <section id="contact">
+  <div class="section-divider"></div>
+
+  <section id="contact" style="background: #FFFFFF;">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label" data-en="Contact" data-it="Contatti">Contact</span>
-        <h2 class="section-title"
-            data-en="Let's talk<br>architecture."
-            data-it="Parliamo di<br>architettura.">Let's talk<br>architecture.</h2>
+        <h2 class="section-title" data-en="Let's build<br>something together." data-it="Costruiamo<br>qualcosa insieme.">Let's build<br>something together.</h2>
       </div>
-      <div class="contact-inner">
-        <div class="contact-text reveal">
-          <p data-en="Whether you're looking for a cloud architecture leader, an innovation director, or a Microsoft ecosystem expert — I'm always open to meaningful conversations about challenging problems and strategic opportunities."
-             data-it="Che tu stia cercando un cloud architecture leader, un innovation director o un esperto Microsoft — sono sempre disponibile per conversazioni significative su problemi complessi e opportunità strategiche.">
-            Whether you're looking for a cloud architecture leader, an innovation director, or a Microsoft ecosystem expert — I'm always open to meaningful conversations about challenging problems and strategic opportunities.
+
+      <div class="contact-inner reveal">
+        <div class="contact-text">
+          <p data-en="Whether you're looking for architectural guidance, exploring AI implementation, or just want to discuss the future of the cloud ecosystem &mdash; my inbox is always open." data-it="Sia che tu stia cercando una guida architetturale, esplorando l'implementazione AI, o semplicemente voglia discutere del futuro dell'ecosistema cloud &mdash; la mia posta è sempre aperta.">
+            Whether you're looking for architectural guidance, exploring AI implementation, or just want to discuss the future of the cloud ecosystem &mdash; my inbox is always open.
           </p>
         </div>
-
-        <div class="contact-links reveal" style="transition-delay:0.15s">
-          <a href="mailto:holti.bitri@outlook.com" class="contact-link">
-            <span class="contact-link-icon">✉</span>
+        <div class="contact-links">
+          <a href="mailto:info@holtibitri.com" class="contact-link">
+            <div class="contact-link-icon">@</div>
             <div class="contact-link-info">
-              <span class="contact-link-label" data-en="Email" data-it="Email">Email</span>
-              <span class="contact-link-value">holti.bitri@outlook.com</span>
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">info@holtibitri.com</span>
             </div>
           </a>
-          <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener" class="contact-link">
-            <span class="contact-link-icon">in</span>
+          <a href="https://linkedin.com/in/holti-bitri" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <div class="contact-link-icon">in</div>
             <div class="contact-link-info">
               <span class="contact-link-label">LinkedIn</span>
-              <span class="contact-link-value">linkedin.com/in/holtibitri</span>
-            </div>
-          </a>
-          <a href="#" class="contact-link">
-            <span class="contact-link-icon">{ }</span>
-            <div class="contact-link-info">
-              <span class="contact-link-label">GitHub</span>
-              <span class="contact-link-value"
-                    data-en="AI Meeting Assistant — coming soon"
-                    data-it="AI Meeting Assistant — coming soon">AI Meeting Assistant — coming soon</span>
+              <span class="contact-link-value">linkedin.com/in/holti-bitri</span>
             </div>
           </a>
         </div>
@@ -1082,16 +925,12 @@
     </div>
   </section>
 
-  <!-- ===================== FOOTER ===================== -->
   <footer>
-    <span>© 2026 Holti Bitri</span>
-    <span data-en="Milan, Italy · Open to senior opportunities"
-          data-it="Milano, Italia · Disponibile per opportunità senior">
-      Milan, Italy · Open to senior opportunities
+    <span data-en="Milan, Italy · Open to senior opportunities" data-it="Milano, Italia · Disponibile per opportunità senior">
+      Milan, Italy &middot; Open to senior opportunities
     </span>
   </footer>
 
-  <!-- ===================== JS ===================== -->
   <script>
     /* ---- LOAD POSTS ---- */
     async function loadPosts(lang) {
@@ -1103,30 +942,31 @@
       }
       try {
         const res = await fetch('posts.json');
-        if (!res.ok) throw new Error('not found');
-        const posts = await res.json();
-        if (!posts.length) {
-          grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo ancora.' : 'No posts yet.'}</p>`;
+        if (!res.ok) throw new Error('Network response was not ok');
+        const data = await res.json();
+        
+        const posts = data[lang] || data['en'] || [];
+        
+        if (posts.length === 0) {
+          grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo trovato.' : 'No posts found.'}</p>`;
           return;
         }
-        grid.innerHTML = posts.map(p => {
-          const title   = lang === 'it' ? p.title_it   : p.title;
-          const excerpt = lang === 'it' ? p.excerpt_it : p.excerpt;
-          const dateObj = new Date(p.date);
-          const dateStr = dateObj.toLocaleDateString(lang === 'it' ? 'it-IT' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-          return `
-          <a href="${p.url}" target="_blank" rel="noopener" class="post-card">
-            <div class="post-meta">
-              <span class="post-date">${dateStr}</span>
-              <span class="post-tag">${p.tag}</span>
+
+        grid.innerHTML = posts.map(post => `
+          <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="writing-item">
+            <div class="writing-meta">
+              <span>${post.date}</span>
+              <span style="opacity: 0.5">•</span>
+              <span>${post.readTime}</span>
             </div>
-            <div class="post-title">${title}</div>
-            <div class="post-excerpt">${excerpt}</div>
-            <div class="post-cta">${lang === 'it' ? 'Leggi su LinkedIn →' : 'Read on LinkedIn →'}</div>
-          </a>`;
-        }).join('');
-      } catch(e) {
-        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo disponibile.' : 'No posts available.'}</p>`;
+            <h3 class="writing-title">${post.title}</h3>
+            <p class="writing-excerpt">${post.excerpt}</p>
+          </a>
+        `).join('');
+
+      } catch (error) {
+        console.error('Error loading posts:', error);
+        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Errore nel caricamento degli articoli.' : 'Error loading posts.'}</p>`;
       }
     }
 
@@ -1171,8 +1011,8 @@
     /* ---- NAVBAR SCROLL ---- */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
   </script>
 
 </body>
