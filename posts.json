@@ -1,0 +1,48 @@
+{
+  "en": [
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7462407955699625984/",
+      "date": "May 19, 2026",
+      "readTime": "2 min",
+      "title": "My second brain — how I stopped losing information",
+      "excerpt": "At some point, the things that matter stop accumulating in your head. They start slipping away. This is what I built to fix that."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7449789101337292802/",
+      "date": "Apr 17, 2026",
+      "readTime": "2 min",
+      "title": "AI Meeting Assistant — now open source",
+      "excerpt": "The local AI tool I built to process meetings without Copilot, without sending data to the cloud, is now public on GitHub."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7439234113213079552/",
+      "date": "Mar 17, 2026",
+      "readTime": "2 min",
+      "title": "Copilot wasn't enough. So I built my own meeting AI.",
+      "excerpt": "Microsoft Copilot for meetings only works if you're the organizer, everyone has a license, and the meeting is on Teams. Mine works anywhere, locally, with no data leaving your machine."
+    }
+  ],
+  "it": [
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7462407955699625984/",
+      "date": "19 mag 2026",
+      "readTime": "2 min",
+      "title": "Il mio secondo cervello — come ho smesso di perdere informazioni",
+      "excerpt": "Da un certo punto in su, le cose che contano smettono di accumularsi nella testa. Cominciano a scivolare via. Ecco cosa ho costruito per risolvere il problema."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7449789101337292802/",
+      "date": "17 apr 2026",
+      "readTime": "2 min",
+      "title": "AI Meeting Assistant — ora open source",
+      "excerpt": "Il tool AI locale che ho costruito per processare le riunioni senza Copilot, senza mandare dati al cloud, è ora pubblico su GitHub."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7439234113213079552/",
+      "date": "17 mar 2026",
+      "readTime": "2 min",
+      "title": "Copilot non bastava. Ho costruito il mio AI per le riunioni.",
+      "excerpt": "Microsoft Copilot per le riunioni funziona solo se sei l'organizzatore, se tutti hanno la licenza e se la riunione è su Teams. Il mio funziona ovunque, in locale, senza che nessun dato esca dalla macchina."
+    }
+  ]
+}
