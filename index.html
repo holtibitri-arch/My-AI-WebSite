@@ -555,6 +555,90 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ============================================
+       WRITING
+    ============================================ */
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .writing-item {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+    }
+    .writing-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
+      border-color: var(--accent);
+    }
+
+    .writing-number {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .writing-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .writing-excerpt {
+      font-size: 0.875rem;
+      color: #505050;
+      line-height: 1.72;
+      flex: 1;
+      margin-bottom: 1.75rem;
+    }
+
+    .writing-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .writing-meta {
+      display: flex;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .writing-cta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      transition: letter-spacing 0.2s;
+    }
+    .writing-item:hover .writing-cta { letter-spacing: 0.1em; }
+
+    .writing-empty {
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-style: italic;
+      grid-column: 1 / -1;
+    }
+
+    /* ============================================
        FOOTER
     ============================================ */
     footer {
@@ -980,15 +1064,20 @@
           return;
         }
 
-        grid.innerHTML = posts.map(post => `
+        const readLabel = lang === 'it' ? 'Leggi' : 'Read';
+        grid.innerHTML = posts.map((post, i) => `
           <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="writing-item">
-            <div class="writing-meta">
-              <span>${post.date}</span>
-              <span style="opacity: 0.5">•</span>
-              <span>${post.readTime}</span>
-            </div>
+            <div class="writing-number">${String(i + 1).padStart(2, '0')}</div>
             <h3 class="writing-title">${post.title}</h3>
             <p class="writing-excerpt">${post.excerpt}</p>
+            <div class="writing-footer">
+              <div class="writing-meta">
+                <span>${post.date}</span>
+                <span style="opacity:0.5">&bull;</span>
+                <span>${post.readTime}</span>
+              </div>
+              <span class="writing-cta">${readLabel} &rarr;</span>
+            </div>
           </a>
         `).join('');
 
