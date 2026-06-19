@@ -1,6 +1,13 @@
 {
   "en": [
     {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7472913504778346496/",
+      "date": "Jun 17, 2026",
+      "readTime": "2 min",
+      "title": "I wasn't learning to write better prompts. I was building better context.",
+      "excerpt": "Prompt engineering solves one question. Context engineering solves the next year of questions. Fifth and final episode of the series."
+    },
+    {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7462407955699625984/",
       "date": "May 19, 2026",
       "readTime": "2 min",
@@ -8,21 +15,70 @@
       "excerpt": "At some point, the things that matter stop accumulating in your head. They start slipping away. This is what I built to fix that."
     },
     {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7449789101337292802/",
-      "date": "Apr 17, 2026",
-      "readTime": "2 min",
-      "title": "AI Meeting Assistant — now open source",
-      "excerpt": "The local AI tool I built to process meetings without Copilot, without sending data to the cloud, is now public on GitHub."
+      "url": "https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/",
+      "date": "May 14, 2026",
+      "readTime": "4 min",
+      "title": "Microsoft 'lost' the OpenAI exclusivity. Why the market rewarded them anyway.",
+      "excerpt": "Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story — Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO."
     },
     {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7439234113213079552/",
-      "date": "Mar 17, 2026",
+      "url": "https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/",
+      "date": "May 12, 2026",
+      "readTime": "8 min",
+      "title": "I built a local AI Meeting Assistant. Here's how it really went.",
+      "excerpt": "Copilot didn't work for my meetings — not because it's bad, but because my meetings don't follow its rules. So I built something that works regardless of who you invite, what platform, what license."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",
+      "date": "May 7, 2026",
       "readTime": "2 min",
-      "title": "Copilot wasn't enough. So I built my own meeting AI.",
-      "excerpt": "Microsoft Copilot for meetings only works if you're the organizer, everyone has a license, and the meeting is on Teams. Mine works anywhere, locally, with no data leaving your machine."
+      "title": "Oracle closed a $16B data center deal. Now Wall Street is asking what my clients ask me.",
+      "excerpt": "AI data centers could reach 12% of US electricity by 2028. When institutional investors step back, it doesn't mean AI doesn't work — it means the real bill is arriving. Energy, water, grid — not just GPUs."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/",
+      "date": "May 5, 2026",
+      "readTime": "2 min",
+      "title": "I got a Claude Code certification. But I had already accumulated 4.6 million tokens before starting.",
+      "excerpt": "That's 7× The Lord of the Rings. In 30 days. Not experiments — real projects, real architectures. A powerful tool used without context produces fast code and slow problems."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7455515036086841344/",
+      "date": "Apr 30, 2026",
+      "readTime": "2 min",
+      "title": "Markets are betting hundreds of billions on AI. Last week a client needed an if statement.",
+      "excerpt": "Both things are true. Markets are pricing AI as infrastructure. But there's a massive gap between those who build the infrastructure and those who use it to solve real business problems. That gap is my job."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7453430093902782464/",
+      "date": "Apr 24, 2026",
+      "readTime": "2 min",
+      "title": "Today at Microsoft Reactor in Rome. Building a Copilot Studio agent at a hackathon.",
+      "excerpt": "Hands on keyboard, real problem, limited time. We built an AI agent for tracking professional certifications — the kind of problem that runs on Excel and email today, and on an agent tomorrow."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/",
+      "date": "Apr 23, 2026",
+      "readTime": "2 min",
+      "title": "A client asked for AI. After thirty minutes, I understood he needed an if statement.",
+      "excerpt": "The problem was fully defined. Fully predictable. Fully deterministic. No ambiguity. The right answer wasn't an LLM — it was a switch. Knowing when not to use AI is part of the job."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452265169868603392/",
+      "date": "Apr 23, 2026",
+      "readTime": "2 min",
+      "title": "In a pre-sales call, you can nod along. Or you can say: there are three ways to do this.",
+      "excerpt": "The second person always wins. Not because they're right — but because the client perceives one thing clearly: this person actually understood what I want. At that point, you're no longer the vendor being evaluated. You're the reference."
     }
   ],
   "it": [
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7472913504778346496/",
+      "date": "17 giu 2026",
+      "readTime": "2 min",
+      "title": "Non stavo imparando a scrivere prompt migliori. Stavo costruendo contesto migliore.",
+      "excerpt": "Un prompt migliore aiuta una volta. Un contesto migliore aiuta ogni volta dopo. Quinta e ultima puntata della serie."
+    },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7462407955699625984/",
       "date": "19 mag 2026",
@@ -31,18 +87,60 @@
       "excerpt": "Da un certo punto in su, le cose che contano smettono di accumularsi nella testa. Cominciano a scivolare via. Ecco cosa ho costruito per risolvere il problema."
     },
     {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7449789101337292802/",
-      "date": "17 apr 2026",
-      "readTime": "2 min",
-      "title": "AI Meeting Assistant — ora open source",
-      "excerpt": "Il tool AI locale che ho costruito per processare le riunioni senza Copilot, senza mandare dati al cloud, è ora pubblico su GitHub."
+      "url": "https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/",
+      "date": "14 mag 2026",
+      "readTime": "4 min",
+      "title": "Microsoft ha 'perso' l'esclusiva su OpenAI. Perché il mercato l'ha premiata lo stesso.",
+      "excerpt": "I titoli dicono che Microsoft ha perso l'esclusiva su OpenAI. La realtà finanziaria racconta una storia diversa. Azure rimane cloud primario fino al 2032, $250B di compute, e una quota da $228B in vista dell'IPO."
     },
     {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7439234113213079552/",
-      "date": "17 mar 2026",
+      "url": "https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/",
+      "date": "12 mag 2026",
+      "readTime": "8 min",
+      "title": "Ho costruito un AI Meeting Assistant locale. Ecco com'è andata davvero.",
+      "excerpt": "Copilot non funzionava per le mie riunioni. Non perché il tool sia cattivo, ma perché le mie riunioni non rispettano le sue regole. Così ho costruito qualcosa che funziona indipendentemente da chi inviti, su quale piattaforma, con quale licenza."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",
+      "date": "7 mag 2026",
       "readTime": "2 min",
-      "title": "Copilot non bastava. Ho costruito il mio AI per le riunioni.",
-      "excerpt": "Microsoft Copilot per le riunioni funziona solo se sei l'organizzatore, se tutti hanno la licenza e se la riunione è su Teams. Il mio funziona ovunque, in locale, senza che nessun dato esca dalla macchina."
+      "title": "Oracle ha chiuso un deal da $16 miliardi per data center. E Wall Street fa le stesse domande dei miei clienti.",
+      "excerpt": "I data center AI potrebbero arrivare al 12% del consumo elettrico USA entro il 2028. Quando gli investitori istituzionali fanno un passo indietro, non significa che l'AI non funzioni. Significa che il conto vero sta arrivando."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/",
+      "date": "5 mag 2026",
+      "readTime": "2 min",
+      "title": "Ho preso una certificazione su Claude Code. Ma avevo già accumulato 4.6 milioni di token prima di iniziare.",
+      "excerpt": "Sette volte il Signore degli Anelli. In 30 giorni. Non esperimenti: progetti concreti, su architetture reali. Uno strumento così potente usato senza contesto produce codice veloce e problemi lenti."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7455515036086841344/",
+      "date": "30 apr 2026",
+      "readTime": "2 min",
+      "title": "I mercati scommettono centinaia di miliardi sull'AI. La settimana scorsa un mio cliente aveva bisogno di un if.",
+      "excerpt": "Entrambe le cose sono vere. I mercati prezzano l'AI come infrastruttura. Ma c'è un gap enorme tra chi costruisce l'infrastruttura e chi deve risolvere problemi reali. Quel gap è il mio lavoro."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7453430093902782464/",
+      "date": "24 apr 2026",
+      "readTime": "2 min",
+      "title": "Oggi a Roma, al Microsoft Reactor. Costruiamo un agente Copilot Studio all'hackathon.",
+      "excerpt": "Mani sulla tastiera, problema reale, tempo limitato. Stiamo costruendo un agente AI per la gestione dei certificati professionali. Il tipo di problema che oggi si risolve con Excel e email — domani con un agente."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/",
+      "date": "23 apr 2026",
+      "readTime": "2 min",
+      "title": "Un cliente mi ha chiesto l'AI. Dopo trenta minuti, ho capito che voleva un if.",
+      "excerpt": "Il problema era tutto definito. Tutto prevedibile. Tutto deterministico. Nessuna ambiguità. La risposta giusta non era un LLM: era uno switch. Capire quando NON usare l'AI fa parte del lavoro."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452265169868603392/",
+      "date": "23 apr 2026",
+      "readTime": "2 min",
+      "title": "In una call di pre-sales puoi essere il venditore che annuisce. Oppure puoi dire: ci sono tre modi per farlo.",
+      "excerpt": "La seconda persona vince sempre. Non perché abbia ragione, ma perché il cliente percepisce una cosa precisa: questa persona ha capito davvero cosa voglio. A quel punto non sei più il fornitore da valutare. Sei il riferimento."
     }
   ]
 }
