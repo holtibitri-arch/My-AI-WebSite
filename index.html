@@ -3,14 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Holti Bitri — Innovation Director & Cloud Architect</title>
-  <meta name="description" content="Innovation Director & Cloud Architect with nearly 20 years in the Microsoft ecosystem. Expertise in Azure, Power Platform, .NET, and AI-enabled transformation.">
+  <title>Holti Bitri — CTO & AI Innovator | Fintech SaaS Architect</title>
+  <meta name="description" content="CTO & AI Innovator with nearly 20 years in the Microsoft ecosystem. Building ToroPulse, a fintech SaaS for retail eToro traders, and AI FinCast, an AI-generated financial podcast. Expertise in Azure, .NET, and agentic AI.">
+  <link rel="canonical" href="https://holtibitri.com/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://holtibitri.com/">
+  <meta property="og:title" content="Holti Bitri — CTO & AI Innovator">
+  <meta property="og:description" content="CTO & AI Innovator with nearly 20 years in the Microsoft ecosystem. Building ToroPulse (fintech SaaS for eToro traders) and AI FinCast, an AI-generated financial podcast.">
+  <meta property="og:image" content="https://holtibitri.com/avatar.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="it_IT">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Holti Bitri — CTO & AI Innovator">
+  <meta name="twitter:description" content="CTO & AI Innovator with nearly 20 years in the Microsoft ecosystem. Building ToroPulse (fintech SaaS for eToro traders) and AI FinCast, an AI-generated financial podcast.">
+  <meta name="twitter:image" content="https://holtibitri.com/avatar.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="image/png" sizes="256x256" href="favicon.ico">
   <link rel="shortcut icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Holti Bitri",
+    "jobTitle": "CTO & AI Innovator",
+    "url": "https://holtibitri.com/",
+    "image": "https://holtibitri.com/avatar.png",
+    "email": "mailto:info@holtibitri.com",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "TIG Factory"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Milan",
+      "addressCountry": "IT"
+    },
+    "sameAs": [
+      "https://linkedin.com/in/holtibitri",
+      "https://github.com/holtibitri-arch"
+    ]
+  }
+  </script>
 
   <style>
     /* ============================================
@@ -487,6 +527,28 @@
     .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     /* ============================================
+       FEATURED PROJECTS
+    ============================================ */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .featured-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      background-color: var(--bg-card);
+      transition: box-shadow 0.3s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .featured-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.07); }
+    .featured-card .timeline-tags { margin-top: auto; padding-top: 1.5rem; }
+
+    /* ============================================
        CONTACT
     ============================================ */
     .contact-inner {
@@ -653,7 +715,7 @@
        RESPONSIVE
     ============================================ */
     @media (max-width: 768px) {
-      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid, .contact-inner, .featured-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .nav-links { display: none; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
       .timeline-item::after { display: none; }
@@ -673,10 +735,10 @@
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#about" data-en="About" data-it="Chi sono">About</a></li>
-        <li><a href="#featured-project" data-en="Project" data-it="Progetto">Project</a></li>
+        <li><a href="#featured-project" data-en="Featured" data-it="In Evidenza">Featured</a></li>
         <li><a href="#expertise" data-en="Expertise" data-it="Competenze">Expertise</a></li>
         <li><a href="#experience" data-en="Experience" data-it="Esperienza">Experience</a></li>
-        <li><a href="#projects" data-en="Projects" data-it="Progetti">Projects</a></li>
+        <li><a href="#projects" data-en="Other Projects" data-it="Altri Progetti">Other Projects</a></li>
         <li><a href="#writing" data-en="Writing" data-it="Articoli">Writing</a></li>
         <li><a href="#contact" data-en="Contact" data-it="Contatti">Contact</a></li>
       </ul>
@@ -689,22 +751,18 @@
 
   <header id="home" class="hero">
     <div class="container hero-inner">
-      <p class="hero-eyebrow" data-en="Innovation Director &middot; Cloud Architect &middot; Fintech SaaS Builder" data-it="Innovation Director &middot; Cloud Architect &middot; Sviluppatore SaaS Fintech">
-        Innovation Director &middot; Cloud Architect &middot; Fintech SaaS Builder
+      <p class="hero-eyebrow" data-en="CTO &middot; AI Innovator &middot; Fintech SaaS Architect" data-it="CTO &middot; AI Innovator &middot; Architetto SaaS Fintech">
+        CTO &middot; AI Innovator &middot; Fintech SaaS Architect
       </p>
       <h1 class="hero-name">
-        Holti Bitri<br><em>Architect &amp; Innovator</em>
+        Holti Bitri<br><em>CTO, Architect &amp; Innovator</em>
       </h1>
       <p class="hero-title" data-en="Building bridges between technology vision and business impact. Nearly 20 years at the intersection of architecture, innovation, and delivery." data-it="Connettere visione tecnologica e impatto sul business. Quasi vent'anni all'intersezione tra architettura, innovazione e delivery.">
         Building bridges between technology vision and business impact. Nearly 20 years at the intersection of architecture, innovation, and delivery.
       </p>
-      <p class="hero-title" style="margin-top: -1.5rem; margin-bottom: 2.75rem;" data-en="Currently building <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — smart alerts, deep copier analytics, and social automation for eToro traders." data-it="Attualmente sviluppo <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — alert intelligenti, analytics avanzate e automazione social per i trader su eToro.">
-        Currently building <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — smart alerts, deep copier analytics, and social automation for eToro traders.
-      </p>
-      
       <div class="hero-cta">
         <a href="#contact" class="btn btn-primary" data-en="Get in touch" data-it="Contattami">Get in touch</a>
-        <a href="#projects" class="btn btn-secondary" data-en="View projects" data-it="Vedi progetti">View projects</a>
+        <a href="#featured-project" class="btn btn-secondary" data-en="View projects" data-it="Vedi progetti">View projects</a>
       </div>
     </div>
   </header>
@@ -725,11 +783,14 @@
           <p data-en="Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive &mdash; across banking, healthcare, logistics, and consulting." data-it="Tra i clienti enterprise con cui ho lavorato: PwC, Medtronic, MPS e Nexive &mdash; nei settori banking, healthcare, logistica e consulenza.">
             Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive &mdash; across banking, healthcare, logistics, and consulting.
           </p>
+          <p data-en="Currently building <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — smart alerts, deep copier analytics, and social automation for eToro traders." data-it="Attualmente sviluppo <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — alert intelligenti, analytics avanzate e automazione social per i trader su eToro.">
+            Currently building <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — smart alerts, deep copier analytics, and social automation for eToro traders.
+          </p>
         </div>
         
         <div class="about-stats reveal" style="transition-delay:0.15s">
           <div class="about-avatar-wrap" style="grid-column: 1 / -1;">
-            <img src="avatar.png" alt="Holti Bitri — Architect & Innovator" class="about-avatar">
+            <img src="avatar.png" alt="Holti Bitri — CTO, Architect & Innovator" class="about-avatar">
           </div>
           <div class="stat-card">
             <div class="stat-number">~20</div>
@@ -749,25 +810,47 @@
   <section id="featured-project" class="reveal" style="padding: 4rem 10%; background-color: var(--bg);">
     <div class="container">
       <div class="section-header">
-        <span class="section-label" data-en="Current Focus" data-it="Progetto Attuale">Current Focus</span>
-        <h2 class="section-title" data-en="Building for the<br>retail trader." data-it="Sviluppando per il<br>trader retail.">Building for the<br>retail trader.</h2>
+        <span class="section-label" data-en="Featured" data-it="In Evidenza">Featured</span>
+        <h2 class="section-title" data-en="What I'm building<br>right now." data-it="Cosa sto costruendo<br>ora.">What I'm building<br>right now.</h2>
       </div>
-      <div style="border: 1px solid var(--border); border-radius: 8px; padding: 2.5rem; background-color: var(--bg-card); transition: box-shadow 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 0.5rem;">ToroPulse</h3>
-            <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;" data-en="Lead Architect • 2026 - Present" data-it="Lead Architect • 2026 - Present">Lead Architect • 2026 - Present</p>
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 0.5rem;">ToroPulse</h3>
+              <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;" data-en="Lead Architect • 2026 - Present" data-it="Lead Architect • 2026 - Present">Lead Architect • 2026 - Present</p>
+            </div>
+            <a href="https://toropulse.app" target="_blank" class="btn btn-secondary" style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase;">Visit Waitlist &rarr;</a>
           </div>
-          <a href="https://toropulse.app" target="_blank" class="btn btn-secondary" style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase;">Visit Waitlist &rarr;</a>
+          <p style="color: #505050; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;" data-en="Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors." data-it="Il tuo account eToro, potenziato. ToroPulse è un progetto di ricerca indipendente che porta alert tecnici composti (RSI, EMA, Volume), analytics avanzate sul copier e automazione social ai trader retail e Popular Investors.">
+            Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag">Agentic Workflows</span>
+            <span class="tag">Fintech SaaS</span>
+            <span class="tag">Trading APIs</span>
+            <span class="tag">Growth Hacking</span>
+          </div>
         </div>
-        <p style="color: #505050; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;" data-en="Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors." data-it="Il tuo account eToro, potenziato. ToroPulse è un progetto di ricerca indipendente che porta alert tecnici composti (RSI, EMA, Volume), analytics avanzate sul copier e automazione social ai trader retail e Popular Investors.">
-          Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors.
-        </p>
-        <div class="timeline-tags">
-          <span class="tag">Agentic Workflows</span>
-          <span class="tag">Fintech SaaS</span>
-          <span class="tag">Trading APIs</span>
-          <span class="tag">Growth Hacking</span>
+
+        <div class="featured-card">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 0.5rem;">AI FinCast</h3>
+              <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;" data-en="Creator • 2026 - Present" data-it="Creator • 2026 - Present">Creator • 2026 - Present</p>
+            </div>
+            <a href="https://open.spotify.com/show/033j5ueQUdbVL57XTdu9TF" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase;" data-en="Listen on Spotify &rarr;" data-it="Ascolta su Spotify &rarr;">Listen on Spotify &rarr;</a>
+          </div>
+          <p style="color: #505050; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;" data-en="AI-generated financial podcast in Italian. A fully autonomous Python pipeline in the cloud: 17 RSS feeds ingested, refined by 3 specialized AI agents for news curation, fact-checking, and editorial tone, then turned into an 8-section script, synthesized via TTS, mixed, and published to Spotify every morning at 07:00." data-it="Podcast finanziario AI-generated in italiano. Pipeline Python completamente autonoma nel cloud: 17 feed RSS ingeriti e affinati da 3 agenti AI specializzati per selezione notizie, verifica dei fatti e tono editoriale, poi trasformati in uno script in 8 sezioni, sintesi TTS, mixing audio e pubblicazione su Spotify ogni mattina alle 07:00.">
+            AI-generated financial podcast in Italian. A fully autonomous Python pipeline in the cloud: 17 RSS feeds ingested, refined by 3 specialized AI agents for news curation, fact-checking, and editorial tone, then turned into an 8-section script, synthesized via TTS, mixed, and published to Spotify every morning at 07:00.
+          </p>
+          <div class="timeline-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Claude API</span>
+            <span class="tag">Multi-Agent AI</span>
+            <span class="tag">TTS</span>
+            <span class="tag">Spotify</span>
+          </div>
         </div>
       </div>
     </div>
@@ -854,9 +937,28 @@
           <!-- </div> -->
         <!-- </div> -->
 
+        <div class="timeline-item reveal" style="transition-delay:0.05s">
+          <div class="timeline-left">
+            <div class="timeline-date">2026 &mdash; Present</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role" data-en="CTO" data-it="CTO">CTO</div>
+            <div class="timeline-company">TIG Factory</div>
+            <div class="timeline-desc" data-en="Leading technology strategy and delivery for TIG Factory, a business unit of TIG (The Innovation Group) focused on custom digital solutions and enterprise software, across a stack spanning .NET Framework, .NET Core, and Azure." data-it="Guido la strategia tecnologica e la delivery di TIG Factory, business unit di TIG (The Innovation Group) dedicata a soluzioni digitali custom e software enterprise, su uno stack che spazia da .NET Framework a .NET Core e Azure.">
+              Leading technology strategy and delivery for TIG Factory, a business unit of TIG (The Innovation Group) focused on custom digital solutions and enterprise software, across a stack spanning .NET Framework, .NET Core, and Azure.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Technology Strategy</span>
+              <span class="tag">.NET</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Enterprise Delivery</span>
+            </div>
+          </div>
+        </div>
+
         <div class="timeline-item reveal" style="transition-delay:0.1s">
           <div class="timeline-left">
-            <div class="timeline-date">2021 &mdash; Present</div>
+            <div class="timeline-date">2021 &mdash; 2026</div>
           </div>
           <div class="timeline-right">
             <div class="timeline-role" data-en="Innovation Director · Technical Manager" data-it="Innovation Director · Technical Manager">Innovation Director &middot; Technical Manager</div>
@@ -939,7 +1041,7 @@
   <section id="projects">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-en="Projects" data-it="Progetti">Projects</span>
+        <span class="section-label" data-en="Other Projects" data-it="Altri Progetti">Other Projects</span>
         <h2 class="section-title" data-en="Building what<br>doesn't exist yet." data-it="Costruire ciò che<br>non esiste ancora.">Building what<br>doesn't exist yet.</h2>
       </div>
 
@@ -967,23 +1069,6 @@
             <span class="tag">Azure</span>
             <span class="tag">Power Automate</span>
             <span class="tag">AI Orchestration</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.3s">
-          <div class="project-type" data-en="Side Project · Personal" data-it="Progetto Personale">Side Project · Personal</div>
-          <h3 class="project-title">CC AI FinCast</h3>
-          <p class="project-desc" data-en="AI-generated financial podcast in Italian. A fully autonomous Python pipeline on VPS Hetzner: 17 RSS feeds ingested, 8-section script generated, TTS synthesized, audio mixed and published to Spotify every morning at 07:00." data-it="Podcast finanziario AI-generated in italiano. Pipeline Python completamente autonoma su VPS Hetzner: 17 feed RSS, script in 8 sezioni, sintesi TTS, mixing audio e pubblicazione su Spotify ogni mattina alle 07:00.">
-            AI-generated financial podcast in Italian. A fully autonomous Python pipeline on VPS Hetzner: 17 RSS feeds ingested, 8-section script generated, TTS synthesized, audio mixed and published to Spotify every morning at 07:00.
-          </p>
-          <div class="project-stack">
-            <span class="tag">Python</span>
-            <span class="tag">Claude API</span>
-            <span class="tag">TTS</span>
-            <span class="tag">Spotify</span>
-          </div>
-          <div style="margin-top: 1.25rem;">
-            <a href="https://open.spotify.com/show/033j5ueQUdbVL57XTdu9TF" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); text-decoration: none; letter-spacing: 0.05em;" data-en="Listen on Spotify &rarr;" data-it="Ascolta su Spotify &rarr;">Listen on Spotify &rarr;</a>
           </div>
         </div>
 
@@ -1016,7 +1101,88 @@
       </div>
 
       <div class="writing-grid reveal" id="posts-grid">
-        </div>
+        <a href="https://www.linkedin.com/pulse/ho-costruito-una-llm-wiki-o-second-brain-con-obsidian-holti-bitri-74the/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">01</div>
+          <h3 class="writing-title">I built an LLM Wiki (or Second Brain) with Obsidian. Here's how it really works.</h3>
+          <p class="writing-excerpt">Five episodes, one full story: a vault where every piece of information has one home, an AI librarian that follows a written contract instead of a prompt, and why context engineering beats prompt engineering. Includes the full technical breakdown.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>Jun 24, 2026</span><span style="opacity:0.5">&bull;</span><span>6 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">02</div>
+          <h3 class="writing-title">Microsoft 'lost' the OpenAI exclusivity. Why the market rewarded them anyway.</h3>
+          <p class="writing-excerpt">Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story — Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>May 14, 2026</span><span style="opacity:0.5">&bull;</span><span>4 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">03</div>
+          <h3 class="writing-title">I built a local AI Meeting Assistant. Here's how it really went.</h3>
+          <p class="writing-excerpt">Copilot didn't work for my meetings — not because it's bad, but because my meetings don't follow its rules. So I built something that works regardless of who you invite, what platform, what license.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>May 12, 2026</span><span style="opacity:0.5">&bull;</span><span>8 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">04</div>
+          <h3 class="writing-title">Oracle closed a $16B data center deal. Now Wall Street is asking what my clients ask me.</h3>
+          <p class="writing-excerpt">AI data centers could reach 12% of US electricity by 2028. When institutional investors step back, it doesn't mean AI doesn't work — it means the real bill is arriving. Energy, water, grid — not just GPUs.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>May 7, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">05</div>
+          <h3 class="writing-title">I got a Claude Code certification. But I had already accumulated 4.6 million tokens before starting.</h3>
+          <p class="writing-excerpt">That's 7× The Lord of the Rings. In 30 days. Not experiments — real projects, real architectures. A powerful tool used without context produces fast code and slow problems.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>May 5, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7455515036086841344/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">06</div>
+          <h3 class="writing-title">Markets are betting hundreds of billions on AI. Last week a client needed an if statement.</h3>
+          <p class="writing-excerpt">Both things are true. Markets are pricing AI as infrastructure. But there's a massive gap between those who build the infrastructure and those who use it to solve real business problems. That gap is my job.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>Apr 30, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7453430093902782464/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">07</div>
+          <h3 class="writing-title">Today at Microsoft Reactor in Rome. Building a Copilot Studio agent at a hackathon.</h3>
+          <p class="writing-excerpt">Hands on keyboard, real problem, limited time. We built an AI agent for tracking professional certifications — the kind of problem that runs on Excel and email today, and on an agent tomorrow.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>Apr 24, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">08</div>
+          <h3 class="writing-title">A client asked for AI. After thirty minutes, I understood he needed an if statement.</h3>
+          <p class="writing-excerpt">The problem was fully defined. Fully predictable. Fully deterministic. No ambiguity. The right answer wasn't an LLM — it was a switch. Knowing when not to use AI is part of the job.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>Apr 23, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7452265169868603392/" target="_blank" rel="noopener noreferrer" class="writing-item">
+          <div class="writing-number">09</div>
+          <h3 class="writing-title">In a pre-sales call, you can nod along. Or you can say: there are three ways to do this.</h3>
+          <p class="writing-excerpt">The second person always wins. Not because they're right — but because the client perceives one thing clearly: this person actually understood what I want. At that point, you're no longer the vendor being evaluated. You're the reference.</p>
+          <div class="writing-footer">
+            <div class="writing-meta"><span>Apr 23, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
+            <span class="writing-cta">Read &rarr;</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1056,8 +1222,8 @@
   </section>
 
   <footer>
-    <span data-en="Milan, Italy · Open to senior opportunities" data-it="Milano, Italia · Disponibile per opportunità senior">
-      Milan, Italy &middot; Open to senior opportunities
+    <span data-en="Milan, Italy · CTO & AI Innovator" data-it="Milano, Italia · CTO & AI Innovator">
+      Milan, Italy &middot; CTO & AI Innovator
     </span>
   </footer>
 
@@ -1065,22 +1231,17 @@
     /* ---- LOAD POSTS ---- */
     async function loadPosts(lang) {
       const grid = document.getElementById('posts-grid');
-      // In locale su file:// il fetch non funziona — mostra messaggio neutro
-      if (window.location.protocol === 'file:') {
-        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Apri il sito online per vedere gli articoli.' : 'Open the live site to see posts.'}</p>`;
-        return;
-      }
+      // #posts-grid ha già un fallback statico EN nel markup (per SEO e no-JS):
+      // qui lo sovrascriviamo solo se il fetch va a buon fine, altrimenti lo lasciamo intatto.
+      if (window.location.protocol === 'file:') return;
       try {
         const res = await fetch('posts.json');
         if (!res.ok) throw new Error('Network response was not ok');
         const data = await res.json();
-        
+
         const posts = data[lang] || data['en'] || [];
-        
-        if (posts.length === 0) {
-          grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Nessun articolo trovato.' : 'No posts found.'}</p>`;
-          return;
-        }
+
+        if (posts.length === 0) return;
 
         const readLabel = lang === 'it' ? 'Leggi' : 'Read';
         grid.innerHTML = posts.map((post, i) => `
@@ -1101,7 +1262,7 @@
 
       } catch (error) {
         console.error('Error loading posts:', error);
-        grid.innerHTML = `<p class="writing-empty">${lang === 'it' ? 'Errore nel caricamento degli articoli.' : 'Error loading posts.'}</p>`;
+        // fallback statico già presente in #posts-grid, nessuna sovrascrittura
       }
     }
 
