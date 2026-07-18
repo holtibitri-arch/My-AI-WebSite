@@ -1269,14 +1269,15 @@
       }
     }
 
-    /* ---- LANGUAGE AUTO-DETECT ---- */
-    // Questa pagina e' il canonical EN (holtibitri.com/). Lo swap in-place resta
-    // solo di visualizzazione: l'URL non cambia, coerente con hreflang.
+    /* ---- LINGUA DI PAGINA ---- */
+    // Questa pagina e' il canonical EN (holtibitri.com/): mostra sempre inglese
+    // di default, nessun auto-detect da navigator.language. Auto-swap in base
+    // al browser creava un disallineamento tra bottone attivo, contenuto e URL
+    // quando si navigava da /it/ verso qui (o viceversa): ogni pagina ora resta
+    // deterministica sulla propria lingua canonica finche' non tocchi i bottoni.
     const PAGE_LANG = 'en';
-    const browserLang = navigator.language || navigator.userLanguage;
-    const defaultLang = browserLang.toLowerCase().startsWith('it') ? 'it' : 'en';
-    setLanguage(defaultLang);
-    loadPosts(defaultLang);
+    setLanguage(PAGE_LANG);
+    loadPosts(PAGE_LANG);
 
     /* ---- LANGUAGE TOGGLE ---- */
     function setLanguage(lang) {
