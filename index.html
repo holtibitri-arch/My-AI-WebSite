@@ -1270,6 +1270,9 @@
     }
 
     /* ---- LANGUAGE AUTO-DETECT ---- */
+    // Questa pagina e' il canonical EN (holtibitri.com/). Lo swap in-place resta
+    // solo di visualizzazione: l'URL non cambia, coerente con hreflang.
+    const PAGE_LANG = 'en';
     const browserLang = navigator.language || navigator.userLanguage;
     const defaultLang = browserLang.toLowerCase().startsWith('it') ? 'it' : 'en';
     setLanguage(defaultLang);
@@ -1290,8 +1293,15 @@
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        setLanguage(btn.dataset.lang);
-        loadPosts(btn.dataset.lang);
+        const lang = btn.dataset.lang;
+        // La lingua "altra" ha una pagina propria (SEO): naviga li' invece di
+        // fare solo lo swap in-place, cosi' URL e contenuto restano coerenti.
+        if (lang !== PAGE_LANG) {
+          window.location.href = lang === 'it' ? 'https://holtibitri.com/it/' : 'https://holtibitri.com/';
+          return;
+        }
+        setLanguage(lang);
+        loadPosts(lang);
       });
     });
 
