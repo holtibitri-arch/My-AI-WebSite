@@ -55,108 +55,9 @@
   }
   </script>
 
+  <link rel="stylesheet" href="/css/site.css">
   <style>
-    /* ============================================
-       RESET & VARIABLES
-    ============================================ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:      #F9F7F3;
-      --bg-card: #FFFFFF;
-      --text:    #111110;
-      --accent:  #0038FF;
-      --muted:   #7A7A73;
-      --border:  #E5E3DE;
-      --font-display: 'Fraunces', Georgia, serif;
-      --font-body:    'DM Sans', sans-serif;
-      --font-mono:    'JetBrains Mono', monospace;
-      --max-w: 1100px;
-      --pad: clamp(1.5rem, 5vw, 4rem);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    h1, h2, h3 {
-      font-family: var(--font-display);
-      font-weight: 300;
-      line-height: 1.1;
-    }
-
-    .container {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--pad);
-    }
-
     section { padding: clamp(4rem, 10vw, 8rem) 0; }
-
-    /* ============================================
-       NAV
-    ============================================ */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.25rem var(--pad);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(249, 247, 243, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s;
-    }
-    nav.scrolled { border-color: var(--border); }
-
-    .nav-logo {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      color: var(--text);
-    }
-
-    .nav-right { display: flex; align-items: center; gap: 2rem; }
-
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.85rem;
-      text-decoration: none;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--text); }
-
-    .lang-toggle {
-      display: flex;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-    .lang-btn {
-      padding: 0.3rem 0.65rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--muted);
-      transition: all 0.15s;
-      letter-spacing: 0.05em;
-    }
-    .lang-btn.active { background: var(--text); color: var(--bg); }
 
     /* ============================================
        HERO
@@ -704,22 +605,10 @@
     }
 
     /* ============================================
-       FOOTER
-    ============================================ */
-    footer {
-      text-align: center;
-      font-family: var(--font-mono);
-      font-size: 0.875rem;
-      color: var(--muted);
-      padding: 2rem 0;
-    }
-
-    /* ============================================
        RESPONSIVE
     ============================================ */
     @media (max-width: 768px) {
       .about-grid, .contact-inner, .featured-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .nav-links { display: none; }
       .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
       .timeline-item::after { display: none; }
       .timeline-right { padding-left: 1.25rem; }
