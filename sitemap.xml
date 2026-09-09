@@ -35,4 +35,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://holtibitri.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://holtibitri.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://holtibitri.com/it/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://holtibitri.com/privacy/" />
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://holtibitri.com/it/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://holtibitri.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://holtibitri.com/it/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://holtibitri.com/privacy/" />
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
