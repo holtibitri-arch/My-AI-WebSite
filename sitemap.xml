@@ -71,4 +71,22 @@
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/" />
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://holtibitri.com/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/" />
+    <xhtml:link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/" />
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

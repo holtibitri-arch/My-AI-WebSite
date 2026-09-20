@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An LLM wiki with Obsidian: building a second brain the AI reads before it answers | Holti Bitri</title>
+  <meta name="description" content="How to build an LLM wiki with Obsidian: one rule about structure, a written contract for the AI agent instead of a prompt, frontmatter conventions, canonical external sources and an automated lint. The technical backstage, plus what it actually changed and what it did not.">
+  <meta name="keywords" content="LLM wiki, Obsidian second brain, second brain AI, Obsidian Claude Code, context engineering, prompt engineering, PKM with AI, AI agent over a vault, YAML frontmatter, personal knowledge management">
+  <meta name="author" content="Holti Bitri">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/">
+  <link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/">
+  <link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/">
+  <link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/">
+  <meta property="og:title" content="An LLM wiki with Obsidian: building a second brain the AI reads before it answers">
+  <meta property="og:description" content="How to build an LLM wiki with Obsidian: one rule about structure, a written contract for the AI agent instead of a prompt, frontmatter conventions, canonical external sources and a">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:site_name" content="Holti Bitri">
+  <meta property="article:published_time" content="2026-06-24T10:00:00+02:00">
+  <meta property="article:modified_time" content="2026-09-20T22:30:00+02:00">
+  <meta property="article:author" content="https://linkedin.com/in/holtibitri">
+  <meta property="article:section" content="Tech">
+  <meta property="article:tag" content="Obsidian">
+  <meta property="article:tag" content="PKM">
+  <meta property="article:tag" content="Context engineering">
+  <meta property="article:tag" content="Claude Code">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="An LLM wiki with Obsidian: building a second brain the AI reads before it answers">
+  <meta name="twitter:description" content="How to build an LLM wiki with Obsidian: one rule about structure, a written contract for the AI agent instead of a prompt, frontmatter conventions, canonical external sources and a">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/#article",
+        "headline": "An LLM wiki with Obsidian: building a second brain the AI reads before it answers",
+        "description": "How to build an LLM wiki with Obsidian: one rule about structure, a written contract for the AI agent instead of a prompt, frontmatter conventions, canonical external sources and an automated lint. The technical backstage, plus what it actually changed and what it did not.",
+        "inLanguage": "en",
+        "datePublished": "2026-06-24T10:00:00+02:00",
+        "dateModified": "2026-09-20T22:30:00+02:00",
+        "wordCount": 2000,
+        "keywords": ["LLM wiki", "Obsidian", "second brain", "context engineering", "Claude Code", "PKM", "frontmatter", "knowledge management"],
+        "proficiencyLevel": "Beginner",
+        "author": { "@id": "https://holtibitri.com/#person" },
+        "publisher": { "@id": "https://holtibitri.com/#person" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/" },
+        "isBasedOn": "https://www.linkedin.com/pulse/ho-costruito-una-llm-wiki-o-second-brain-con-obsidian-holti-bitri-74the/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://holtibitri.com/#person",
+        "name": "Holti Bitri",
+        "url": "https://holtibitri.com/",
+        "jobTitle": "CTO & AI Innovator",
+        "sameAs": ["https://linkedin.com/in/holtibitri", "https://github.com/holtibitri-arch"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://holtibitri.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://holtibitri.com/#writing" },
+          { "@type": "ListItem", "position": 3, "name": "LLM wiki with Obsidian" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is the difference between a second brain and a folder of notes?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A folder of notes is there to be re-read. An LLM wiki is there to be queried, including by a model. In practice the difference is three things: every piece of information has exactly one home, every page carries structured metadata, and the maintenance rules are written in a file rather than remembered." } },
+          { "@type": "Question", "name": "Do you have to use Obsidian?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. What matters is that the pages are plain text files on disk, with readable metadata and links between them. Obsidian is convenient because it is only a reader on top of a folder of Markdown: change tool tomorrow and the files are still yours, and the agent still reads them." } },
+          { "@type": "Question", "name": "How does the AI actually read the vault?",
+            "acceptedAnswer": { "@type": "Answer", "text": "You point a file-aware agent, such as Claude Code, at the vault folder. In the root there is a rules file that gets loaded at the start of every session and tells the agent how the structure works, where each kind of thing belongs, and what it must not touch without asking." } },
+          { "@type": "Question", "name": "How long does it take to build?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Little to start and a lot to finish, which is precisely why you should not try to finish it. The single-home rule and two or three real areas are enough; the rest gets added when it is needed, because a structure designed up front describes the work you imagine, not the work you do." } },
+          { "@type": "Question", "name": "What is the difference between prompt engineering and context engineering?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A better prompt helps once. A better context helps every time after that. The prompt solves the question you are asking now, the context solves the next year of questions, because the model starts out already knowing who you are, what you are building and what you have already tried." } },
+          { "@type": "Question", "name": "What happens when the vault grows and gets messy?",
+            "acceptedAnswer": { "@type": "Answer", "text": "You need an automated check, otherwise it rots. A script that looks for missing frontmatter, broken links, pages nobody links to and pages that have grown too long, run before long sessions, keeps the system readable without you having to think about it." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <style>
+    /* override della base per la colonna di lettura */
+    :root { --max-w: 720px; }
+    body { line-height: 1.75; }
+    h1, h2, h3 { line-height: 1.15; }
+    a { color: var(--accent); }
+
+    .article-header { padding: 9rem 0 2.5rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
+    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
+    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .meta strong { color: var(--text); font-weight: 500; }
+
+    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
+    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
+    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
+
+    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
+    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
+    article li { margin-bottom: 0.5rem; }
+    article li strong { font-weight: 500; }
+    article hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    article pre { background: #111110; color: #E8E6E1; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; padding: 1.1rem 1.25rem; border-radius: 6px; overflow-x: auto; margin: 0 0 1.5rem; }
+    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
+    article pre code { background: none; padding: 0; font-size: inherit; }
+    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
+    .callout p { margin: 0; font-size: 1rem; }
+
+    .linkedin-box { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 1px solid var(--border); background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: 6px; margin: 3rem 0; }
+    .linkedin-box span { font-size: 0.95rem; color: var(--muted); }
+    .btn { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.05em; padding: 0.7rem 1.25rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+    .faq { margin: 3rem 0; }
+    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--border); }
+    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
+
+    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
+    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+    .author a { text-decoration: none; }
+
+    footer { padding: 3rem 0 2rem; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="/" class="nav-logo">HB_</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#writing">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <a class="lang-btn active" href="https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/" hreflang="en" aria-current="page">EN</a>
+        <a class="lang-btn" href="https://holtibitri.com/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/" hreflang="it">IT</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="/#writing">Writing</a> &nbsp;/&nbsp; LLM wiki with Obsidian</p>
+      <p class="eyebrow">Practical guide &middot; Second brain &middot; Obsidian, Claude Code</p>
+      <h1>An LLM wiki with Obsidian: building a second brain the AI reads before it answers</h1>
+      <p class="lead">Every time you open a chat with a model you start from nothing: who you are, what you are building, how you think, what you have already tried. An LLM wiki is the system that answers those questions for you, once. This is the structure I use, the contract I wrote for the agent, and the honest part about what actually changed.</p>
+      <div class="meta">
+        <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
+        <span><strong>Holti Bitri</strong></span>
+        <span>&bull;</span>
+        <time datetime="2026-06-24">24 June 2026</time>
+        <span>&bull;</span>
+        <span>8 min read</span>
+      </div>
+    </div>
+  </header>
+
+
+  <article class="container">
+
+    <h2>The problem was never note taking</h2>
+
+    <p>I was not looking for yet another notes app. The problem was a different one, and I felt it every day: <strong>every time I open a chat with a model I have to start from nothing.</strong> Who I am. What I am building. How I think. What I have already tried and why it did not work.</p>
+
+    <p>Andrej Karpathy gave the way out a name: an <strong>LLM wiki</strong>. A persistent body of knowledge about you that the AI can consult as context, instead of asking you for it every single time.</p>
+
+    <p>The difference from a folder of notes is not cosmetic. A folder of notes exists to be re-read. An LLM wiki exists to <em>be queried</em>, including by a machine. That changes how you build it.</p>
+
+    <h2>The rule that holds it together: every piece of information has one home</h2>
+
+    <p>It is the only genuinely rigid principle in the whole system, and the only one you cannot negotiate once the vault grows.</p>
+
+    <p>Mine is split into areas, each answering a different question: work and clients, active projects, professional identity, external context about companies and people, ideas, content, personal life. Everything that comes in has exactly one destination, and if it seems to have two then one of them is wrong.</p>
+
+    <p>This sounds like pedantry. It is not, and here is why: that rigidity removes a micro-decision you otherwise pay twenty times a day. <strong>"Where do I put this?" repeated twenty times a day is the real friction cost</strong>, far more than the writing itself. When the answer is automatic you stop thinking about it and start writing.</p>
+
+    <div class="callout"><p><strong>The uncomfortable corollary:</strong> if the same fact appears on two pages, one of them is already out of date and you do not know it yet. From that point on the system starts lying to you, and memory is not what failed.</p></div>
+
+    <h2>The librarian is not a prompt, it is a contract</h2>
+
+    <p>I do not maintain the vault by hand. An agent works inside it, and what made the difference was not writing a better prompt: it was writing <strong>a document</strong>.</p>
+
+    <p>In the root of the vault there is a rules file the agent loads automatically at the start of every session. It does not say "help me with my notes". It says, in writing and once:</p>
+
+    <ul>
+      <li>how a page is created and how it links to the others</li>
+      <li>the file naming conventions</li>
+      <li>where each kind of information belongs, area by area</li>
+      <li>what the agent must not touch without explicit permission</li>
+      <li>the checkpoints where it has to stop and ask</li>
+    </ul>
+
+    <p>The whole difference from a prompt is right there: <strong>you are not asking for an opinion, you are applying rules written once.</strong> A prompt gets rewritten every time and comes out slightly different every time. A contract gets corrected when it is wrong, and the correction holds forever.</p>
+
+    <h3>What it does on its own</h3>
+
+    <p>With that contract in place, three things happen without me steering them:</p>
+
+    <ul>
+      <li><strong>Notes from a call:</strong> it creates the page, links the people and companies mentioned, updates the overview of the area involved</li>
+      <li><strong>End of session:</strong> it writes a journal entry in a fixed structure, what was done, what is still open, which decisions were taken and why</li>
+      <li><strong>A new document:</strong> it works out where it belongs, links it to what already exists, updates the indexes</li>
+    </ul>
+
+    <h2>The honest result: what changed and what did not</h2>
+
+    <p>Let me start with what did <em>not</em> change, because that is the part nobody usually tells you. I did not get faster at email. I do not clear the task list before the evening. I did not gain a single minute.</p>
+
+    <p>What changed is something else. I walk into a meeting knowing exactly where we stand on a project: not because my memory is remarkable, but because three days ago I wrote down <em>why</em> we made that call. And when I reopen a session with the agent, the AI picks up where it left off, because the context is already written. No explain-it-all-again.</p>
+
+    <p><strong>I did not become more productive. I became clearer.</strong> Those are two different things: productivity is a quantity, clarity is a quality, and months later I know which one I was actually short of.</p>
+
+    <h2>Why it works: context engineering, not prompt engineering</h2>
+
+    <p>This is the shift, and it fits in one line: <strong>a better prompt helps once, a better context helps every time after that.</strong></p>
+
+    <p>The vault is not a passive archive I occasionally dig through. It is the memory I hand the model <em>before</em> it answers me. Prompt engineering solves the question I am asking right now. Context engineering solves the next year of questions, because every session starts from a system that already knows who I am, what I am building and what I have already ruled out.</p>
+
+    <h2>The technical backstage</h2>
+
+    <p>The part that never fit in a post, and the part people actually ask about.</p>
+
+    <h3>Runtime and rules</h3>
+
+    <p>The agent runs on <strong>Claude Code</strong>, which works on files rather than in a chat window. The rules file sits in the root of the vault and is loaded at every start: it is the contract above, and it is the only place the rules live.</p>
+
+    <h3>The two skills I use every day</h3>
+
+    <ul>
+      <li><code>/avvia-sessione</code>, start session: it reads the project context, looks for previous sessions and presents an up to date briefing before I have typed a line</li>
+      <li><code>/chiudi-sessione</code>, close session: it writes the day's journal entry in a fixed structure and updates the session index</li>
+    </ul>
+
+    <p>They are trivial commands. The value is not in the command, it is in the journal always having the same shape, so that in six months it can still be read.</p>
+
+    <h3>Obsidian to think, Notion to track</h3>
+
+    <p>Not everything lives in the vault, and it should not. Structured data that changes state, content KPIs, job applications, open tasks, lives in Notion, and the agent keeps the two sides aligned. <strong>Obsidian is where you think, Notion is where you track</strong>, and blurring those two roles is the fastest way to end up with two systems that contradict each other.</p>
+
+    <h3>Metadata, or the graph is just decoration</h3>
+
+    <p>Every page carries mandatory YAML frontmatter: page type, area, tags, last updated date, the sources the knowledge came from. It serves one purpose, and it is an important one: <strong>making the system queryable and not merely readable.</strong> With metadata the link graph becomes useful. Without it, it is a poster.</p>
+
+    <h3>Canonical sources outside the vault</h3>
+
+    <p>Meeting dates are never written into pages. You create the calendar event and the page carries the link. It sounds like a detail and it is the rule that avoids the worst job of all, which is updating the same date by hand in four places and finding out later that one of them stayed wrong.</p>
+
+    <h3>A lint, because otherwise it rots</h3>
+
+    <p>A Python script walks the vault looking for missing or incomplete frontmatter, broken internal links, pages nobody links to, pages that have grown too long, parts of the graph disconnected from the rest. I run it before long sessions. <strong>It is free and it is objective</strong>, and it reliably finds things I no longer see because I work inside them every day.</p>
+
+    <h2>You do not need all of this to start</h2>
+
+    <p>You need very little, and starting small is the point: <strong>the one home rule</strong> and two or three real areas, not seven perfect ones. The rest gets added when it is genuinely needed.</p>
+
+    <p>A structure designed up front describes the work you imagine doing, not the work you do. Mine has changed several times, and every change came from real friction, never from planning.</p>
+
+    <h2>Where it leads</h2>
+
+    <p>The next step was to stop reading the vault and start letting it act: a personal agent that uses that knowledge not to answer in general, but to act in contexts it knows, under rules I wrote, on data that is mine. That, though, is another story, and a longer one.</p>
+
+    <div class="linkedin-box">
+      <span>This article first appeared on LinkedIn, in Italian, where the discussion thread is: if you would rather comment there, that is the place.</span>
+      <a class="btn btn-primary" href="https://www.linkedin.com/pulse/ho-costruito-una-llm-wiki-o-second-brain-con-obsidian-holti-bitri-74the/" target="_blank" rel="noopener noreferrer nofollow" hreflang="it">Read and comment on LinkedIn (IT) &rarr;</a>
+    </div>
+
+    <section class="faq" id="faq">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>What is the difference between a second brain and a folder of notes?</summary>
+        <p>A folder of notes is there to be re-read. An LLM wiki is there to be queried, including by a model. In practice the difference is three things: every piece of information has exactly one home, every page carries structured metadata, and the maintenance rules are written in a file rather than remembered.</p>
+      </details>
+      <details>
+        <summary>Do you have to use Obsidian?</summary>
+        <p>No. What matters is that the pages are plain text files on disk, with readable metadata and links between them. Obsidian is convenient because it is only a reader on top of a folder of Markdown: change tool tomorrow and the files are still yours, and the agent still reads them.</p>
+      </details>
+      <details>
+        <summary>How does the AI actually read the vault?</summary>
+        <p>You point a file-aware agent, such as Claude Code, at the vault folder. In the root there is a rules file that gets loaded at the start of every session and tells the agent how the structure works, where each kind of thing belongs, and what it must not touch without asking.</p>
+      </details>
+      <details>
+        <summary>How long does it take to build?</summary>
+        <p>Little to start and a lot to finish, which is precisely why you should not try to finish it. The single-home rule and two or three real areas are enough; the rest gets added when it is needed, because a structure designed up front describes the work you imagine, not the work you do.</p>
+      </details>
+      <details>
+        <summary>What is the difference between prompt engineering and context engineering?</summary>
+        <p>A better prompt helps once. A better context helps every time after that. The prompt solves the question you are asking now, the context solves the next year of questions, because the model starts out already knowing who you are, what you are building and what you have already tried.</p>
+      </details>
+      <details>
+        <summary>What happens when the vault grows and gets messy?</summary>
+        <p>You need an automated check, otherwise it rots. A script that looks for missing frontmatter, broken links, pages nobody links to and pages that have grown too long, run before long sessions, keeps the system readable without you having to think about it.</p>
+      </details>
+    </section>
+
+    <div class="author">
+      <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
+      <div>
+        <h3>Holti Bitri</h3>
+        <p>CTO &amp; AI Innovator, TIG Factory. Nearly 20 years in the Microsoft ecosystem, today between cloud architectures, AI pipelines in production, and the craft of knowing when a model is wrong without telling you. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/">holtibitri.com</a></p>
+      </div>
+    </div>
+  </article>
+
+  <footer>Milan, Italy &middot; CTO &amp; AI Innovator</footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>

@@ -15,11 +15,11 @@
       "excerpt": "The LinkedIn edition of the Peugeot firmware guide, in Italian, with the comment thread. Building AI pipelines by day, reverse engineering an infotainment system by night."
     },
     {
-      "url": "https://www.linkedin.com/pulse/ho-costruito-una-llm-wiki-o-second-brain-con-obsidian-holti-bitri-74the/",
+      "url": "/articles/llm-wiki-obsidian-second-brain-ai/",
       "date": "Jun 24, 2026",
-      "readTime": "6 min",
-      "title": "I built an LLM Wiki (or Second Brain) with Obsidian. Here's how it really works.",
-      "excerpt": "Five episodes, one full story: a vault where every piece of information has one home, an AI librarian that follows a written contract instead of a prompt, and why context engineering beats prompt engineering. Includes the full technical breakdown."
+      "readTime": "8 min",
+      "title": "An LLM wiki with Obsidian: building a second brain the AI reads before it answers",
+      "excerpt": "Every chat with a model starts from nothing: who you are, what you are building, what you already tried. One rule about structure, a written contract instead of a prompt, and a lint that stops the vault from rotting. With the technical backstage, hosted here."
     },
     {
       "url": "https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/",
@@ -94,11 +94,11 @@
       "excerpt": "L'edizione LinkedIn della guida al firmware Peugeot, con il thread dei commenti. Costruire pipeline AI di giorno, fare reverse engineering di un infotainment di sera."
     },
     {
-      "url": "https://www.linkedin.com/pulse/ho-costruito-una-llm-wiki-o-second-brain-con-obsidian-holti-bitri-74the/",
+      "url": "/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/",
       "date": "24 giu 2026",
-      "readTime": "6 min",
-      "title": "Ho costruito una LLM Wiki (o Second Brain) con Obsidian. Ecco come funziona davvero.",
-      "excerpt": "Cinque episodi, un'unica sintesi: una vault dove ogni informazione ha una sola casa, un bibliotecario AI che segue un contratto scritto invece di un prompt, e perché il context engineering batte il prompt engineering. Incluso il dietro le quinte tecnico completo."
+      "readTime": "8 min",
+      "title": "LLM wiki con Obsidian: costruire un secondo cervello che l'AI legge prima di rispondere",
+      "excerpt": "Ogni chat con un modello riparte da zero: chi sei, cosa stai costruendo, cosa hai gia' provato. Una regola sola sulla struttura, un contratto scritto al posto di un prompt, e un lint che impedisce alla vault di marcire. Col dietro le quinte tecnico, ospitato qui."
     },
     {
       "url": "https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/",
