@@ -29,11 +29,11 @@
       "excerpt": "Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story — Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO."
     },
     {
-      "url": "https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/",
+      "url": "/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/",
       "date": "May 12, 2026",
-      "readTime": "8 min",
-      "title": "I built a local AI Meeting Assistant. Here's how it really went.",
-      "excerpt": "Copilot didn't work for my meetings — not because it's bad, but because my meetings don't follow its rules. So I built something that works regardless of who you invite, what platform, what license."
+      "readTime": "9 min",
+      "title": "Transcribing meetings locally, without sending the data to the cloud (in Italian)",
+      "excerpt": "Copilot needs three conditions at once, and real meetings rarely meet them. The fourth condition nobody mentions is whether that data may leave the company at all. Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here."
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",
@@ -108,11 +108,11 @@
       "excerpt": "I titoli dicono che Microsoft ha perso l'esclusiva su OpenAI. La realtà finanziaria racconta una storia diversa. Azure rimane cloud primario fino al 2032, $250B di compute, e una quota da $228B in vista dell'IPO."
     },
     {
-      "url": "https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/",
+      "url": "/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/",
       "date": "12 mag 2026",
-      "readTime": "8 min",
-      "title": "Ho costruito un AI Meeting Assistant locale. Ecco com'è andata davvero.",
-      "excerpt": "Copilot non funzionava per le mie riunioni. Non perché il tool sia cattivo, ma perché le mie riunioni non rispettano le sue regole. Così ho costruito qualcosa che funziona indipendentemente da chi inviti, su quale piattaforma, con quale licenza."
+      "readTime": "9 min",
+      "title": "Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud",
+      "excerpt": "Copilot chiede tre condizioni insieme e le riunioni vere non le rispettano quasi mai. Ma la condizione che conta davvero e' la quarta: quei dati possono uscire dall'azienda? Due container, Whisper e Pyannote su CPU, un LLM locale. Architettura completa, ospitata qui."
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",

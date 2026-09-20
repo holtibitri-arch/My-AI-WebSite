@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud | Holti Bitri</title>
+  <meta name="description" content="Come trascrivere e analizzare le riunioni senza che l'audio esca dall'azienda: due container Docker, Faster-Whisper e Pyannote su CPU, un LLM locale via Ollama. Architettura completa, endpoint e codice pubblico.">
+  <meta name="keywords" content="trascrizione riunioni in locale, trascrivere riunioni senza cloud, alternativa a Copilot per le riunioni, Whisper CPU, Pyannote speaker diarization, Ollama Qwen 2.5, meeting assistant on premise, dati sensibili riunioni, AI locale privacy, FastAPI lifespan, Docker Compose, Map-Reduce LLM">
+  <meta name="author" content="Holti Bitri">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/">
+  <link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/">
+  <link rel="alternate" hreflang="x-default" href="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/">
+  <meta property="og:title" content="Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud">
+  <meta property="og:description" content="Copilot chiede tre condizioni che le riunioni vere non rispettano quasi mai. Questa e' l'architettura che fa la stessa cosa in locale, su CPU, senza che una parola esca dalla macchina.">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:site_name" content="Holti Bitri">
+  <meta property="article:published_time" content="2026-05-12T10:00:00+02:00">
+  <meta property="article:modified_time" content="2026-09-20T18:00:00+02:00">
+  <meta property="article:author" content="https://linkedin.com/in/holtibitri">
+  <meta property="article:section" content="Tech">
+  <meta property="article:tag" content="AI locale">
+  <meta property="article:tag" content="Whisper">
+  <meta property="article:tag" content="Pyannote">
+  <meta property="article:tag" content="Ollama">
+  <meta property="article:tag" content="Docker">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud">
+  <meta name="twitter:description" content="Due container, CPU, nessun dato fuori dalla macchina. Architettura, endpoint e codice pubblico.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/#article",
+        "headline": "Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud",
+        "alternativeHeadline": "AI Meeting Assistant locale: Whisper e Pyannote su CPU, LLM via Ollama, due container Docker",
+        "description": "Come trascrivere e analizzare le riunioni senza che l'audio esca dall'azienda: due container Docker, Faster-Whisper e Pyannote su CPU, un LLM locale via Ollama. Architettura completa, endpoint e codice pubblico.",
+        "inLanguage": "it",
+        "datePublished": "2026-05-12T10:00:00+02:00",
+        "dateModified": "2026-09-20T18:00:00+02:00",
+        "wordCount": 2100,
+        "keywords": ["trascrizione riunioni in locale", "AI locale", "Faster-Whisper", "Pyannote", "Ollama", "Qwen 2.5", "Docker Compose", "FastAPI", "Map-Reduce", "privacy", "on premise"],
+        "proficiencyLevel": "Intermediate",
+        "author": { "@id": "https://holtibitri.com/#person" },
+        "publisher": { "@id": "https://holtibitri.com/#person" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/" },
+        "isBasedOn": "https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/",
+        "about": [
+          { "@type": "SoftwareApplication", "name": "AI Meeting Assistant", "applicationCategory": "BusinessApplication", "operatingSystem": "Docker" },
+          { "@type": "Thing", "name": "Speech to text locale" },
+          { "@type": "Thing", "name": "Speaker diarization" }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://holtibitri.com/#person",
+        "name": "Holti Bitri",
+        "url": "https://holtibitri.com/",
+        "jobTitle": "CTO & AI Innovator",
+        "sameAs": ["https://linkedin.com/in/holtibitri", "https://github.com/holtibitri-arch"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://holtibitri.com/it/" },
+          { "@type": "ListItem", "position": 2, "name": "Articoli", "item": "https://holtibitri.com/it/#writing" },
+          { "@type": "ListItem", "position": 3, "name": "Trascrivere le riunioni in locale" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Si puo' trascrivere una riunione senza mandare l'audio nel cloud?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Si'. Trascrizione, riconoscimento di chi parla e analisi girano tutti su container locali: Faster-Whisper per il testo, Pyannote per gli speaker, un LLM servito da Ollama per il riassunto. I due container si parlano su rete interna Docker Compose e non espongono porte verso l'esterno, quindi l'audio e la trascrizione non lasciano mai la macchina." } },
+          { "@type": "Question", "name": "Serve una GPU per far girare Whisper e Pyannote?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Faster-Whisper large-v3 e Pyannote speaker-diarization-3.1 girano su CPU. E' piu' lento sui file lunghi ma e' stabile e non dipende da CUDA, che su un server senza scheda video e' il primo motivo per cui una pipeline del genere non parte." } },
+          { "@type": "Question", "name": "Che differenza c'e' rispetto a Microsoft Copilot per le riunioni?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Copilot richiede tre condizioni insieme: che tu sia l'organizzatore, che tutti i partecipanti abbiano la licenza e che la riunione giri su Teams. Se una manca sei fuori. Una pipeline locale non dipende da chi organizza, da quale piattaforma si usa o da quali licenze hanno gli altri, perche' lavora sulla registrazione." } },
+          { "@type": "Question", "name": "Come si analizza una riunione di un'ora se il modello ha una context window piccola?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Con una Map-Reduce: la trascrizione viene divisa in blocchi da diecimila caratteri, ogni blocco viene analizzato in parallelo con un semaforo di concorrenza a tre per non saturare Ollama, e i risultati parziali vengono poi aggregati in un report unico." } },
+          { "@type": "Question", "name": "Perche' un modello da 3 miliardi di parametri e non uno piu' grande?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Perche' il compito e' strutturato e non creativo: data una trascrizione, produrre riassunto, action item e partecipanti in JSON. Per un compito cosi' un 3B con un prompt costruito bene basta, e gira su CPU in tempi accettabili su un server che non ha GPU." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* override della base per la colonna di lettura */
+    :root { --max-w: 720px; }
+    body { line-height: 1.75; }
+    h1, h2, h3 { line-height: 1.15; }
+    a { color: var(--accent); }
+
+    .article-header { padding: 9rem 0 2.5rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
+    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
+    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .meta strong { color: var(--text); font-weight: 500; }
+
+    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
+    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
+    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
+
+    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
+    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
+    article li { margin-bottom: 0.5rem; }
+    article li strong { font-weight: 500; }
+    article hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    article pre { background: #111110; color: #E8E6E1; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; padding: 1.1rem 1.25rem; border-radius: 6px; overflow-x: auto; margin: 0 0 1.5rem; }
+    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
+    article pre code { background: none; padding: 0; font-size: inherit; }
+    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
+    .callout p { margin: 0; font-size: 1rem; }
+
+    .linkedin-box { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 1px solid var(--border); background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: 6px; margin: 3rem 0; }
+    .linkedin-box span { font-size: 0.95rem; color: var(--muted); }
+    .btn { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.05em; padding: 0.7rem 1.25rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+    .faq { margin: 3rem 0; }
+    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--border); }
+    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
+
+    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
+    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+    .author a { text-decoration: none; }
+
+    footer { padding: 3rem 0 2rem; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="/it/" class="nav-logo">HB_</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/it/#about">Chi sono</a></li>
+        <li><a href="/it/#writing">Articoli</a></li>
+        <li><a href="/it/#contact">Contatti</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <a class="lang-btn" href="/" hreflang="en">EN</a>
+        <a class="lang-btn active" href="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/" hreflang="it" aria-current="page">IT</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="/it/">Home</a> &nbsp;/&nbsp; <a href="/it/#writing">Articoli</a> &nbsp;/&nbsp; Riunioni in locale</p>
+      <p class="eyebrow">Guida pratica &middot; AI locale &middot; Whisper, Pyannote, Ollama</p>
+      <h1>Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud</h1>
+      <p class="lead">Microsoft Copilot chiede tre condizioni insieme: che tu sia l'organizzatore, che tutti abbiano la licenza, che la riunione giri su Teams. Le riunioni vere non le rispettano quasi mai, e quando dentro ci sono clienti, numeri e strategie c'e' una quarta condizione che nessun tool dichiara: quei dati possono uscire dall'azienda? Questa e' l'architettura che ho costruito per non doverlo chiedere a nessuno.</p>
+      <div class="meta">
+        <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
+        <span><strong>Holti Bitri</strong></span>
+        <span>&bull;</span>
+        <time datetime="2026-05-12">12 maggio 2026</time>
+        <span>&bull;</span>
+        <span>9 min di lettura</span>
+      </div>
+    </div>
+  </header>
+
+  <article class="container">
+
+    <h2>Il problema non e' Copilot, sono le sue tre condizioni</h2>
+
+    <p>Copilot non funzionava per le mie riunioni. Non perche' il tool sia fatto male, ma perche' le mie riunioni non rispettano le sue regole.</p>
+
+    <p>Ospiti esterni senza licenza Microsoft. Webex invece di Teams. Webinar in cui sei spettatore e non organizzatore. Bastava che mancasse una delle tre condizioni ed ero fuori, e nella mia settimana tipo non ne reggeva praticamente mai nessuna.</p>
+
+    <p>C'e' poi una quarta condizione di cui non parla nessuno, ed e' quella che in azienda conta di piu': <strong>dove finiscono i dati della riunione.</strong> Una riunione contiene nomi di clienti, numeri, fornitori, strategie. Mandare quel testo a un servizio esterno e' una scelta che qualcuno deve giustificare, e in un settore regolamentato quella scelta spesso non si puo' proprio fare.</p>
+
+    <p>Quindi ho smesso di aspettare un aggiornamento e ho costruito qualcosa che funziona a prescindere da chi inviti, da quale piattaforma usi e da quali licenze hanno gli altri, e che non manda fuori una sola parola. Questo e' il racconto, dai primi errori all'architettura finale. Il codice e' pubblico, il link e' in fondo.</p>
+
+    <h2>Il primo tentativo: uno script che funzionava solo sulla mia macchina</h2>
+
+    <p>Il punto di partenza era semplice: prendere il video della riunione, estrarre l'audio, trascriverlo, darlo in pasto a un modello.</p>
+
+    <p>Ho scritto uno script Python. Funzionava sul mio ambiente di sviluppo. Non funzionava sul server. Non funzionava su Windows. Smetteva di funzionare appena cambiavo versione di Python.</p>
+
+    <p>Il problema classico: dipendenze implicite, librerie native che si comportano in modo diverso a seconda del sistema operativo, CUDA richiesta dove non c'era nessuna GPU. Faster-Whisper, Pyannote, ffmpeg, ognuna con le sue aspettative sull'ambiente.</p>
+
+    <p>La soluzione non era sistemare le dipendenze una per una. Era isolare l'ambiente una volta sola e non toccarlo piu'.</p>
+
+    <h2>Docker, e la scelta di restare su CPU</h2>
+
+    <p>Ho messo tutto dentro un container Linux. Le dipendenze diventano un problema del Dockerfile, non della macchina che lo ospita.</p>
+
+    <p>La scelta importante di questa fase e' stata un'altra: <strong>CPU-only</strong>.</p>
+
+    <p>Faster-Whisper gira bene su CPU con il modello <code>large-v3</code>. E' lento sui file molto lunghi, ma e' stabile. Zero dipendenza da CUDA, zero problemi sulle macchine senza scheda video. Quando stai costruendo qualcosa che deve girare in produzione senza che nessuno lo guardi, la stabilita' vale molto piu' della velocita'.</p>
+
+    <p>Stesso ragionamento per Pyannote (<code>speaker-diarization-3.1</code>), che riconosce chi parla: anche lui su CPU, nessuna GPU richiesta.</p>
+
+    <p>Il container riceveva il video via API, estraeva l'audio con ffmpeg, trascriveva e identificava gli speaker. In uscita, una trascrizione con l'indicazione di chi ha detto cosa. Funzionava. Era lento sui file lunghi. Ma funzionava.</p>
+
+    <h2>Il difetto del batch: tre giga di modelli ricaricati a ogni richiesta</h2>
+
+    <p>La versione batch aveva un problema strutturale: a ogni richiesta i modelli venivano caricati in memoria da zero.</p>
+
+    <p>Faster-Whisper <code>large-v3</code> pesa circa 3 GB, e Pyannote aggiunge il suo. Ogni chiamata pagava il costo del caricamento prima ancora di cominciare a trascrivere.</p>
+
+    <p>La soluzione era tenere i modelli in RAM fra una chiamata e l'altra. Ho riscritto tutto come microservizio <strong>FastAPI</strong> usando il pattern <code>lifespan</code>:</p>
+
+<pre><code>@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # avvio: i modelli si caricano una volta sola
+    app.state.whisper_model = WhisperModel("large-v3", device="cpu")
+    app.state.diarization_pipeline = Pipeline.from_pretrained(...)
+    yield
+    # spegnimento: cleanup
+
+app = FastAPI(lifespan=lifespan)</code></pre>
+
+    <p>I modelli si caricano all'avvio del container e restano in memoria. Le chiamate successive partono subito.</p>
+
+    <div class="callout"><p><strong>Banale in teoria, non ovvio quando ci arrivi:</strong> questo pattern sta nella documentazione di FastAPI, ma lo capisci davvero solo dopo un'ora passata a guardare ogni singola richiesta pagare il cold start.</p></div>
+
+    <h2>L'analisi: perche' un LLM locale e non una API</h2>
+
+    <p>Avevo la trascrizione. Mi serviva l'analisi: riassunto, action item, partecipanti. La scelta era fra una API esterna e un modello locale.</p>
+
+    <p>Ho scelto locale per un motivo preciso, ed e' lo stesso per cui probabilmente sei arrivato fin qui: <strong>le riunioni contengono dati sensibili.</strong> Clienti, fornitori, strategie, numeri. Con un modello locale quei dati non escono mai dalla macchina, e non c'e' nessuna conversazione da avere con il cliente, con il legale o con chi si occupa di protezione dei dati.</p>
+
+    <p>Ho separato il pezzo di analisi in un secondo container, <strong>LLM Engine</strong>, che parla con l'Audio API via HTTP sulla rete interna di Docker Compose. Nessuna porta esposta verso l'esterno per la comunicazione fra i due.</p>
+
+    <h3>Perche' Qwen 2.5 3B via Ollama</h3>
+
+    <p>I modelli piccoli, da uno a tre miliardi di parametri, hanno limiti veri sull'analisi complessa. Ma qui il compito e' strutturato: data questa trascrizione, produci riassunto, action item e partecipanti in JSON. Per un compito cosi' un 3B con un prompt costruito bene basta.</p>
+
+    <p>Qwen 2.5 3B su Ollama gira su CPU di consumo in tempi accettabili, e sul server di produzione non ho una GPU. Configurazione per spremere il throughput:</p>
+
+<pre><code>OLLAMA_NUM_PARALLEL=4
+OLLAMA_MAX_LOADED_MODELS=1</code></pre>
+
+    <h2>Riunioni lunghe: Map-Reduce</h2>
+
+    <p>Un'ora di riunione produce una trascrizione che supera senza sforzo la finestra di contesto di un modello da 3B.</p>
+
+    <p>La trascrizione viene spezzata in blocchi da diecimila caratteri. Ogni blocco viene analizzato in parallelo, con un semaforo di concorrenza a tre per non saturare Ollama. I risultati parziali vengono poi aggregati in un report finale.</p>
+
+<pre><code>Trascrizione (50k caratteri)
+   |-- Blocco 1 (10k) --&gt; analisi parziale
+   |-- Blocco 2 (10k) --&gt; analisi parziale  --&gt; Reduce --&gt; Report finale
+   |-- Blocco 3 (10k) --&gt; analisi parziale
+   |-- ...</code></pre>
+
+    <p>Non e' la soluzione piu' elegante. E' quella che funziona con un modello locale da 3B su CPU.</p>
+
+    <h2>L'architettura finale</h2>
+
+<pre><code>Video in ingresso
+   |
+   +--&gt; Audio API (container 1)
+   |      |- ffmpeg: estrazione audio
+   |      |- Faster-Whisper large-v3: trascrizione (CPU)
+   |      +- Pyannote 3.1: riconoscimento speaker (CPU)
+   |
+   +--&gt; LLM Engine (container 2)
+          |- Qwen 2.5 3B via Ollama
+          |- Map-Reduce: blocchi da 10k, concorrenza 3
+          +- JSON in uscita: riassunto, action item, partecipanti
+                 |
+                 +--&gt; webhook Make --&gt; notifica Telegram</code></pre>
+
+    <p>Endpoint principali dell'Audio API:</p>
+
+    <table>
+      <thead><tr><th>Endpoint</th><th>Cosa fa</th></tr></thead>
+      <tbody>
+        <tr><td><code>POST /api/v1/process</code></td><td>Pipeline completa, dal video al report</td></tr>
+        <tr><td><code>POST /api/v1/transcribe-only</code></td><td>Solo trascrizione, senza analisi</td></tr>
+        <tr><td><code>POST /api/v1/summarize-only</code></td><td>Analisi su una trascrizione che hai gia'</td></tr>
+        <tr><td><code>GET /api/v1/recover-final-report</code></td><td>Recupero del report dai log parziali</td></tr>
+      </tbody>
+    </table>
+
+    <p>L'output e' JSON, quindi si attacca a Power Platform, a un CRM o a qualunque flusso aziendale senza lavoro aggiuntivo.</p>
+
+    <h2>Cosa rifarei uguale, e cosa no</h2>
+
+    <p><strong>Uguale:</strong></p>
+    <ul>
+      <li>Docker dall'inizio, non come ripiego quando le dipendenze esplodono</li>
+      <li>CPU-only come scelta di stabilita', non di risparmio</li>
+      <li>Due container separati: dividere Audio API e LLM Engine ha reso semplice sia il debug sia gli aggiornamenti</li>
+      <li>Il pattern <code>lifespan</code> di FastAPI, banale da scrivere ed essenziale per le prestazioni</li>
+    </ul>
+
+    <p><strong>Diversamente:</strong></p>
+    <ul>
+      <li>La Map-Reduce funziona, ma produce analisi parziali che ogni tanto si contraddicono nella fase di aggregazione. Con piu' tempo proverei un modello piu' grande, oppure una divisione in blocchi per argomento invece che per dimensione</li>
+      <li>I path scritti a mano nel codice originale erano un problema. Li ho sistemati prima di pubblicare, ma andavano evitati dall'inizio</li>
+    </ul>
+
+    <h2>Il risultato</h2>
+
+    <p>Uno strumento che funziona su qualsiasi riunione e qualsiasi piattaforma, senza dipendere dalle licenze di altri e senza che i contenuti escano dalla macchina.</p>
+
+    <p>L'ho usato internamente per mesi prima di pubblicare il codice, e i casi d'uso che non avevo previsto sono arrivati da soli: riunioni in cui ero solo spettatore e non avevo accesso agli strumenti dell'organizzatore, webinar tecnici da cui volevo tirare fuori gli action item, incontri con ospiti che un account Microsoft non ce l'hanno proprio. Tutti fuori dai confini di Copilot, tutti dentro i confini di questo.</p>
+
+    <h2>Il codice</h2>
+
+    <p>Il progetto e' pubblico su GitHub: <a href="https://github.com/holtibitri-arch/AI-Meeting-Assistant" target="_blank" rel="noopener noreferrer">holtibitri-arch/AI-Meeting-Assistant</a>. Dentro trovi README, istruzioni di setup e la configurazione Docker Compose. Se lo provi e ti si rompe qualcosa, scrivimi.</p>
+
+    <div class="linkedin-box">
+      <span>Questo articolo e' uscito prima su LinkedIn, dove c'e' anche la discussione: se preferisci commentare la', il thread e' li'.</span>
+      <a class="btn btn-primary" href="https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/" target="_blank" rel="noopener noreferrer nofollow" hreflang="it">Leggi e commenta su LinkedIn &rarr;</a>
+    </div>
+
+    <section class="faq" id="faq">
+      <h2>Domande frequenti</h2>
+      <details>
+        <summary>Si puo' trascrivere una riunione senza mandare l'audio nel cloud?</summary>
+        <p>Si'. Trascrizione, riconoscimento di chi parla e analisi girano tutti su container locali: Faster-Whisper per il testo, Pyannote per gli speaker, un LLM servito da Ollama per il riassunto. I due container si parlano su rete interna Docker Compose e non espongono porte verso l'esterno, quindi l'audio e la trascrizione non lasciano mai la macchina.</p>
+      </details>
+      <details>
+        <summary>Serve una GPU per far girare Whisper e Pyannote?</summary>
+        <p>No. Faster-Whisper <code>large-v3</code> e Pyannote <code>speaker-diarization-3.1</code> girano su CPU. E' piu' lento sui file lunghi, ma e' stabile e non dipende da CUDA, che su un server senza scheda video e' il primo motivo per cui una pipeline del genere non parte nemmeno.</p>
+      </details>
+      <details>
+        <summary>Che differenza c'e' rispetto a Microsoft Copilot per le riunioni?</summary>
+        <p>Copilot richiede tre condizioni insieme: che tu sia l'organizzatore, che tutti i partecipanti abbiano la licenza e che la riunione giri su Teams. Se ne manca una sei fuori. Una pipeline locale lavora sulla registrazione, quindi non dipende da chi organizza, da quale piattaforma si usa o da quali licenze hanno gli altri.</p>
+      </details>
+      <details>
+        <summary>Come si analizza una riunione di un'ora se il modello ha una finestra di contesto piccola?</summary>
+        <p>Con una Map-Reduce: la trascrizione viene divisa in blocchi da diecimila caratteri, ogni blocco viene analizzato in parallelo con un semaforo di concorrenza a tre per non saturare Ollama, e i risultati parziali vengono aggregati in un report unico.</p>
+      </details>
+      <details>
+        <summary>Perche' un modello da 3 miliardi di parametri e non uno piu' grande?</summary>
+        <p>Perche' il compito e' strutturato e non creativo: data una trascrizione, produrre riassunto, action item e partecipanti in JSON. Per un compito cosi' un 3B con un prompt costruito bene basta, e gira su CPU in tempi accettabili su un server che non ha GPU.</p>
+      </details>
+      <details>
+        <summary>Funziona con Teams, Zoom e Webex?</summary>
+        <p>Si', perche' non si aggancia alla piattaforma: parte dalla registrazione. Qualunque sistema produca un file audio o video utilizzabile va bene, e questo e' esattamente il motivo per cui e' nato.</p>
+      </details>
+    </section>
+
+    <div class="author">
+      <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
+      <div>
+        <h3>Holti Bitri</h3>
+        <p>CTO &amp; AI Innovator, TIG Factory. Quasi vent'anni nell'ecosistema Microsoft, oggi fra architetture cloud, pipeline AI in produzione e il mestiere di capire quando un modello sta sbagliando senza dirtelo. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/it/">holtibitri.com</a></p>
+      </div>
+    </div>
+  </article>
+
+  <footer>Milano, Italia &middot; CTO &amp; AI Innovator</footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>
