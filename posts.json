@@ -29,11 +29,11 @@
       "excerpt": "Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story — Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO."
     },
     {
-      "url": "/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/",
+      "url": "/articles/transcribe-meetings-locally-without-cloud/",
       "date": "May 12, 2026",
       "readTime": "9 min",
-      "title": "Transcribing meetings locally, without sending the data to the cloud (in Italian)",
-      "excerpt": "Copilot needs three conditions at once, and real meetings rarely meet them. The fourth condition nobody mentions is whether that data may leave the company at all. Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here."
+      "title": "Transcribe and analyse meetings locally, without sending the data to the cloud",
+      "excerpt": "Copilot needs three conditions at once, and real meetings rarely meet them. The condition that actually matters is the fourth one: may that data leave the company at all? Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here."
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",

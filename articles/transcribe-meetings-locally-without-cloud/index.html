@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transcribe and analyse meetings locally, without sending the data to the cloud | Holti Bitri</title>
+  <meta name="description" content="How to transcribe and analyse meetings without the audio ever leaving your machine: two Docker containers, Faster-Whisper and Pyannote on CPU, a local LLM served by Ollama. Full architecture, endpoints and public code.">
+  <meta name="keywords" content="transcribe meetings locally, self-hosted meeting transcription, meeting transcription without cloud, Copilot alternative meetings, Faster-Whisper CPU, Pyannote speaker diarization, Ollama Qwen 2.5, on premise meeting assistant, GDPR meeting recordings, FastAPI lifespan, Docker Compose, Map-Reduce LLM">
+  <meta name="author" content="Holti Bitri">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/">
+  <link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/">
+  <link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/">
+  <link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/">
+  <meta property="og:title" content="Transcribe and analyse meetings locally, without sending the data to the cloud">
+  <meta property="og:description" content="Copilot needs three conditions at once, and real meetings rarely meet them. This is the architecture that does the same job locally, on CPU, without a single word leaving the machine.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:site_name" content="Holti Bitri">
+  <meta property="article:published_time" content="2026-05-12T10:00:00+02:00">
+  <meta property="article:modified_time" content="2026-09-20T19:00:00+02:00">
+  <meta property="article:author" content="https://linkedin.com/in/holtibitri">
+  <meta property="article:section" content="Tech">
+  <meta property="article:tag" content="Local AI">
+  <meta property="article:tag" content="Whisper">
+  <meta property="article:tag" content="Pyannote">
+  <meta property="article:tag" content="Ollama">
+  <meta property="article:tag" content="Docker">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Transcribe and analyse meetings locally, without sending the data to the cloud">
+  <meta name="twitter:description" content="Two containers, CPU only, nothing leaves the machine. Architecture, endpoints and public code.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/#article",
+        "headline": "Transcribe and analyse meetings locally, without sending the data to the cloud",
+        "alternativeHeadline": "Self-hosted AI meeting assistant: Whisper and Pyannote on CPU, local LLM via Ollama, two Docker containers",
+        "description": "How to transcribe and analyse meetings without the audio ever leaving your machine: two Docker containers, Faster-Whisper and Pyannote on CPU, a local LLM served by Ollama. Full architecture, endpoints and public code.",
+        "inLanguage": "en",
+        "datePublished": "2026-05-12T10:00:00+02:00",
+        "dateModified": "2026-09-20T19:00:00+02:00",
+        "wordCount": 2100,
+        "keywords": ["transcribe meetings locally", "local AI", "Faster-Whisper", "Pyannote", "Ollama", "Qwen 2.5", "Docker Compose", "FastAPI", "Map-Reduce", "privacy", "on premise"],
+        "proficiencyLevel": "Intermediate",
+        "author": { "@id": "https://holtibitri.com/#person" },
+        "publisher": { "@id": "https://holtibitri.com/#person" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/" },
+        "about": [
+          { "@type": "SoftwareApplication", "name": "AI Meeting Assistant", "applicationCategory": "BusinessApplication", "operatingSystem": "Docker" },
+          { "@type": "Thing", "name": "Local speech to text" },
+          { "@type": "Thing", "name": "Speaker diarization" }
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://holtibitri.com/#person",
+        "name": "Holti Bitri",
+        "url": "https://holtibitri.com/",
+        "jobTitle": "CTO & AI Innovator",
+        "sameAs": ["https://linkedin.com/in/holtibitri", "https://github.com/holtibitri-arch"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://holtibitri.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://holtibitri.com/#writing" },
+          { "@type": "ListItem", "position": 3, "name": "Transcribing meetings locally" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Can you transcribe a meeting without sending the audio to the cloud?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Transcription, speaker recognition and analysis all run in local containers: Faster-Whisper for the text, Pyannote for the speakers, an LLM served by Ollama for the summary. The two containers talk over an internal Docker Compose network and expose no ports to the outside, so the audio and the transcript never leave the machine." } },
+          { "@type": "Question", "name": "Do you need a GPU to run Whisper and Pyannote?",
+            "acceptedAnswer": { "@type": "Answer", "text": "No. Faster-Whisper large-v3 and Pyannote speaker-diarization-3.1 both run on CPU. It is slower on long files but it is stable and it does not depend on CUDA, which on a server with no graphics card is the first reason a pipeline like this fails to start at all." } },
+          { "@type": "Question", "name": "How is this different from Microsoft Copilot for meetings?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Copilot needs three conditions at once: that you are the organiser, that every participant holds a licence, and that the meeting runs on Teams. Miss one and you are out. A local pipeline works from the recording, so it does not care who organised the call, which platform was used or what licences the others hold." } },
+          { "@type": "Question", "name": "How do you analyse an hour-long meeting when the model has a small context window?",
+            "acceptedAnswer": { "@type": "Answer", "text": "With a Map-Reduce: the transcript is split into ten thousand character chunks, each chunk is analysed in parallel behind a concurrency semaphore of three so Ollama is not saturated, and the partial results are then aggregated into a single report." } },
+          { "@type": "Question", "name": "Why a three billion parameter model rather than something larger?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Because the task is structured, not creative: given this transcript, produce a summary, action items and participants as JSON. For a task like that a 3B model with a well built prompt is enough, and it runs on CPU in acceptable time on a server with no GPU." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <style>
+    /* override della base per la colonna di lettura */
+    :root { --max-w: 720px; }
+    body { line-height: 1.75; }
+    h1, h2, h3 { line-height: 1.15; }
+    a { color: var(--accent); }
+
+    .article-header { padding: 9rem 0 2.5rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
+    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
+    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .meta strong { color: var(--text); font-weight: 500; }
+
+    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
+    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
+    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
+
+    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
+    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
+    article li { margin-bottom: 0.5rem; }
+    article li strong { font-weight: 500; }
+    article hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    article pre { background: #111110; color: #E8E6E1; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; padding: 1.1rem 1.25rem; border-radius: 6px; overflow-x: auto; margin: 0 0 1.5rem; }
+    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
+    article pre code { background: none; padding: 0; font-size: inherit; }
+    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
+    .callout p { margin: 0; font-size: 1rem; }
+
+    .linkedin-box { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 1px solid var(--border); background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: 6px; margin: 3rem 0; }
+    .linkedin-box span { font-size: 0.95rem; color: var(--muted); }
+    .btn { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.05em; padding: 0.7rem 1.25rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+    .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+    .faq { margin: 3rem 0; }
+    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--border); }
+    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
+
+    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
+    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+    .author a { text-decoration: none; }
+
+    footer { padding: 3rem 0 2rem; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="/" class="nav-logo">HB_</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#writing">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <a class="lang-btn active" href="https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/" hreflang="en" aria-current="page">EN</a>
+        <a class="lang-btn" href="https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/" hreflang="it">IT</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="/#writing">Writing</a> &nbsp;/&nbsp; Meetings, locally</p>
+      <p class="eyebrow">Practical guide &middot; Local AI &middot; Whisper, Pyannote, Ollama</p>
+      <h1>Transcribe and analyse meetings locally, without sending the data to the cloud</h1>
+      <p class="lead">Microsoft Copilot needs three conditions at once: that you are the organiser, that everyone holds a licence, that the meeting runs on Teams. Real meetings almost never meet all three, and when the call is full of client names, numbers and strategy there is a fourth condition no tool ever states: may that data leave the company at all? This is the architecture I built so I would not have to ask anyone.</p>
+      <div class="meta">
+        <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
+        <span><strong>Holti Bitri</strong></span>
+        <span>&bull;</span>
+        <time datetime="2026-05-12">12 May 2026</time>
+        <span>&bull;</span>
+        <span>9 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <article class="container">
+
+    <h2>The problem is not Copilot, it is its three conditions</h2>
+
+    <p>Copilot did not work for my meetings. Not because the tool is bad, but because my meetings do not follow its rules.</p>
+
+    <p>External guests with no Microsoft licence. Webex instead of Teams. Webinars where you are an attendee, not the organiser. One missing condition was enough to lock me out, and in a normal week of mine practically none of the three ever held.</p>
+
+    <p>There is also a fourth condition nobody talks about, and in a company it is the one that matters most: <strong>where does the meeting data end up.</strong> A meeting contains client names, numbers, suppliers, strategy. Sending that text to an outside service is a decision somebody has to justify, and in a regulated industry it is often a decision you simply cannot make.</p>
+
+    <p>So I stopped waiting for an update and built something that works regardless of who you invite, what platform they use and what licences they hold, and that sends nothing out. This is the story, from the first mistakes to the final architecture. The code is public, the link is at the bottom.</p>
+
+    <h2>First attempt: a script that only worked on my machine</h2>
+
+    <p>The starting point was simple: take the meeting recording, extract the audio, transcribe it, hand it to a model.</p>
+
+    <p>I wrote a Python script. It worked on my development environment. It did not work on the server. It did not work on Windows. It stopped working the moment I changed Python version.</p>
+
+    <p>The classic problem: implicit dependencies, native libraries behaving differently per operating system, CUDA required where there was no GPU at all. Faster-Whisper, Pyannote, ffmpeg, each with its own expectations about the environment.</p>
+
+    <p>The fix was not to chase the dependencies one by one. It was to isolate the environment once and never touch it again.</p>
+
+    <h2>Docker, and the decision to stay on CPU</h2>
+
+    <p>I put everything inside a Linux container. Dependencies become a problem for the Dockerfile, not for the host.</p>
+
+    <p>The important call at this stage was a different one: <strong>CPU only</strong>.</p>
+
+    <p>Faster-Whisper runs well on CPU with the <code>large-v3</code> model. It is slow on very long files, but it is stable. No CUDA dependency, no trouble on machines without a graphics card. When you are building something that has to run in production with nobody watching, stability is worth far more than speed.</p>
+
+    <p>Same reasoning for Pyannote (<code>speaker-diarization-3.1</code>), which works out who is speaking: also on CPU, no GPU required.</p>
+
+    <p>The container took the video over an API, pulled the audio with ffmpeg, transcribed it and identified the speakers. Out came a transcript with who said what. It worked. It was slow on long files. But it worked.</p>
+
+    <h2>The flaw in the batch version: three gigabytes reloaded on every request</h2>
+
+    <p>The batch version had a structural flaw: on every request the models were loaded into memory from scratch.</p>
+
+    <p>Faster-Whisper <code>large-v3</code> is around 3 GB, and Pyannote adds its own. Every call paid the loading cost before it even started transcribing.</p>
+
+    <p>The answer was to keep the models in RAM between calls. I rewrote the whole thing as a <strong>FastAPI</strong> microservice using the <code>lifespan</code> pattern:</p>
+
+<pre><code>@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # startup: models load exactly once
+    app.state.whisper_model = WhisperModel("large-v3", device="cpu")
+    app.state.diarization_pipeline = Pipeline.from_pretrained(...)
+    yield
+    # shutdown: cleanup
+
+app = FastAPI(lifespan=lifespan)</code></pre>
+
+    <p>The models load when the container starts and stay in memory. Every call after that begins immediately.</p>
+
+    <div class="callout"><p><strong>Trivial in theory, not obvious when you get there:</strong> this pattern is in the FastAPI documentation, but you only really understand it after an hour of watching every single request pay the cold start.</p></div>
+
+    <h2>The analysis: why a local LLM and not an API</h2>
+
+    <p>I had the transcript. What I needed was the analysis: summary, action items, participants. The choice was between an external API and a local model.</p>
+
+    <p>I went local for one specific reason, and it is probably the same one that brought you here: <strong>meetings contain sensitive data.</strong> Clients, suppliers, strategy, numbers. With a local model that data never leaves the machine, and there is no conversation to have with the client, with legal or with whoever owns data protection.</p>
+
+    <p>I split the analysis into a second container, <strong>LLM Engine</strong>, which talks to the Audio API over HTTP on the internal Docker Compose network. No ports exposed to the outside for the traffic between the two.</p>
+
+    <h3>Why Qwen 2.5 3B via Ollama</h3>
+
+    <p>Small models, one to three billion parameters, have real limits on complex analysis. But here the task is structured: given this transcript, produce a summary, action items and participants as JSON. For a task like that a 3B model with a well built prompt is enough.</p>
+
+    <p>Qwen 2.5 3B on Ollama runs on consumer CPU in acceptable time, and the production server has no GPU. Configuration to squeeze the throughput:</p>
+
+<pre><code>OLLAMA_NUM_PARALLEL=4
+OLLAMA_MAX_LOADED_MODELS=1</code></pre>
+
+    <h2>Long meetings: Map-Reduce</h2>
+
+    <p>An hour of meeting produces a transcript that comfortably exceeds the context window of a 3B model.</p>
+
+    <p>The transcript is split into ten thousand character chunks. Each chunk is analysed in parallel, behind a concurrency semaphore of three so Ollama is not saturated. The partial results are then aggregated into a final report.</p>
+
+<pre><code>Transcript (50k characters)
+   |-- Chunk 1 (10k) --&gt; partial analysis
+   |-- Chunk 2 (10k) --&gt; partial analysis  --&gt; Reduce --&gt; Final report
+   |-- Chunk 3 (10k) --&gt; partial analysis
+   |-- ...</code></pre>
+
+    <p>It is not the most elegant solution. It is the one that works with a local 3B model on CPU.</p>
+
+    <h2>The final architecture</h2>
+
+<pre><code>Video input
+   |
+   +--&gt; Audio API (container 1)
+   |      |- ffmpeg: audio extraction
+   |      |- Faster-Whisper large-v3: transcription (CPU)
+   |      +- Pyannote 3.1: speaker diarization (CPU)
+   |
+   +--&gt; LLM Engine (container 2)
+          |- Qwen 2.5 3B via Ollama
+          |- Map-Reduce: 10k chunks, concurrency 3
+          +- JSON output: summary, action items, participants
+                 |
+                 +--&gt; Make webhook --&gt; Telegram notification</code></pre>
+
+    <p>Main Audio API endpoints:</p>
+
+    <table>
+      <thead><tr><th>Endpoint</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td><code>POST /api/v1/process</code></td><td>Full pipeline, from video to report</td></tr>
+        <tr><td><code>POST /api/v1/transcribe-only</code></td><td>Transcription only, no analysis</td></tr>
+        <tr><td><code>POST /api/v1/summarize-only</code></td><td>Analysis on a transcript you already have</td></tr>
+        <tr><td><code>GET /api/v1/recover-final-report</code></td><td>Report recovery from partial logs</td></tr>
+      </tbody>
+    </table>
+
+    <p>The output is JSON, so it plugs into Power Platform, a CRM or any internal workflow with no extra work.</p>
+
+    <h2>What I would do the same, and what I would not</h2>
+
+    <p><strong>The same:</strong></p>
+    <ul>
+      <li>Docker from the start, not as a fallback once the dependencies blow up</li>
+      <li>CPU only as a stability decision, not a cost one</li>
+      <li>Two separate containers: splitting Audio API and LLM Engine made both debugging and upgrades simple</li>
+      <li>The FastAPI <code>lifespan</code> pattern, trivial to write and essential for performance</li>
+    </ul>
+
+    <p><strong>Differently:</strong></p>
+    <ul>
+      <li>Map-Reduce works, but it produces partial analyses that occasionally contradict each other during the aggregation step. With more time I would try a larger model, or chunking by topic rather than by size</li>
+      <li>The hardcoded paths in the original code were a problem. I fixed them before publishing, but they should never have been there</li>
+    </ul>
+
+    <h2>The result</h2>
+
+    <p>A tool that works on any meeting and any platform, without depending on anyone else's licence and without the content leaving the machine.</p>
+
+    <p>I used it internally for months before publishing the code, and the use cases I had not anticipated turned up on their own: meetings where I was only an attendee with no access to the organiser's tools, technical webinars I wanted action items out of, calls with guests who simply do not have a Microsoft account. All outside Copilot's boundaries, all inside this one's.</p>
+
+    <h2>The code</h2>
+
+    <p>The project is public on GitHub: <a href="https://github.com/holtibitri-arch/AI-Meeting-Assistant" target="_blank" rel="noopener noreferrer">holtibitri-arch/AI-Meeting-Assistant</a>. It ships with a README, setup instructions and the Docker Compose configuration. If you try it and something breaks, write to me.</p>
+
+    <div class="linkedin-box">
+      <span>This article first appeared on LinkedIn, in Italian, where the discussion thread is: if you would rather comment there, that is the place.</span>
+      <a class="btn btn-primary" href="https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/" target="_blank" rel="noopener noreferrer nofollow" hreflang="it">Read and comment on LinkedIn (IT) &rarr;</a>
+    </div>
+
+    <section class="faq" id="faq">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>Can you transcribe a meeting without sending the audio to the cloud?</summary>
+        <p>Yes. Transcription, speaker recognition and analysis all run in local containers: Faster-Whisper for the text, Pyannote for the speakers, an LLM served by Ollama for the summary. The two containers talk over an internal Docker Compose network and expose no ports to the outside, so the audio and the transcript never leave the machine.</p>
+      </details>
+      <details>
+        <summary>Do you need a GPU to run Whisper and Pyannote?</summary>
+        <p>No. Faster-Whisper <code>large-v3</code> and Pyannote <code>speaker-diarization-3.1</code> both run on CPU. It is slower on long files, but it is stable and it does not depend on CUDA, which on a server with no graphics card is the first reason a pipeline like this fails to start at all.</p>
+      </details>
+      <details>
+        <summary>How is this different from Microsoft Copilot for meetings?</summary>
+        <p>Copilot needs three conditions at once: that you are the organiser, that every participant holds a licence, and that the meeting runs on Teams. Miss one and you are out. A local pipeline works from the recording, so it does not care who organised the call, which platform was used or what licences the others hold.</p>
+      </details>
+      <details>
+        <summary>How do you analyse an hour-long meeting when the model has a small context window?</summary>
+        <p>With a Map-Reduce: the transcript is split into ten thousand character chunks, each chunk is analysed in parallel behind a concurrency semaphore of three so Ollama is not saturated, and the partial results are then aggregated into a single report.</p>
+      </details>
+      <details>
+        <summary>Why a three billion parameter model rather than something larger?</summary>
+        <p>Because the task is structured, not creative: given this transcript, produce a summary, action items and participants as JSON. For a task like that a 3B model with a well built prompt is enough, and it runs on CPU in acceptable time on a server with no GPU.</p>
+      </details>
+      <details>
+        <summary>Does it work with Teams, Zoom and Webex?</summary>
+        <p>Yes, because it does not hook into the platform: it starts from the recording. Any system that produces a usable audio or video file will do, and that is exactly why it exists.</p>
+      </details>
+    </section>
+
+    <div class="author">
+      <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
+      <div>
+        <h3>Holti Bitri</h3>
+        <p>CTO &amp; AI Innovator, TIG Factory. Nearly 20 years in the Microsoft ecosystem, today between cloud architectures, AI pipelines in production, and the craft of knowing when a model is wrong without telling you. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/">holtibitri.com</a></p>
+      </div>
+    </div>
+  </article>
+
+  <footer>Milan, Italy &middot; CTO &amp; AI Innovator</footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>
