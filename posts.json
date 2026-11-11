@@ -5,70 +5,52 @@
       "date": "Aug 25, 2026",
       "readTime": "8 min",
       "title": "One error, four causes: updating the Peugeot 3008 (2nd gen) firmware without losing your mind",
-      "excerpt": "The official tool shows one message for four different problems. The full USB procedure for the NAC Wave 4 firmware (Peugeot, Citroën, DS, Opel): UIN, UpdateID, license, CRL, folder structure. Hosted here, in full."
+      "excerpt": "The official tool shows one message for four different problems. The full USB procedure for the NAC Wave 4 firmware (Peugeot, Citroën, DS, Opel): UIN, UpdateID, license, CRL, folder structure. Hosted here, in full.",
+      "image": "/img/peugeot-3008-nac-firmware-before-after.jpg"
     },
     {
       "url": "/articles/llm-wiki-obsidian-second-brain-ai/",
       "date": "Jun 24, 2026",
       "readTime": "8 min",
       "title": "An LLM wiki with Obsidian: building a second brain the AI reads before it answers",
-      "excerpt": "Every chat with a model starts from nothing: who you are, what you are building, what you already tried. One rule about structure, a written contract instead of a prompt, and a lint that stops the vault from rotting. With the technical backstage, hosted here."
+      "excerpt": "Every chat with a model starts from nothing: who you are, what you are building, what you already tried. One rule about structure, a written contract instead of a prompt, and a lint that stops the vault from rotting. With the technical backstage, hosted here.",
+      "image": "/img/llm-wiki-obsidian-secondo-cervello.jpg"
     },
     {
       "url": "https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/",
       "date": "May 14, 2026",
       "readTime": "4 min",
       "title": "Microsoft 'lost' the OpenAI exclusivity. Why the market rewarded them anyway.",
-      "excerpt": "Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story — Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO."
+      "excerpt": "Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story: Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO."
     },
     {
       "url": "/articles/transcribe-meetings-locally-without-cloud/",
       "date": "May 12, 2026",
       "readTime": "9 min",
       "title": "Transcribe and analyse meetings locally, without sending the data to the cloud",
-      "excerpt": "Copilot needs three conditions at once, and real meetings rarely meet them. The condition that actually matters is the fourth one: may that data leave the company at all? Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here."
+      "excerpt": "Copilot needs three conditions at once, and real meetings rarely meet them. The condition that actually matters is the fourth one: may that data leave the company at all? Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here.",
+      "image": "/img/ai-meeting-assistant-locale.jpg"
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",
       "date": "May 7, 2026",
       "readTime": "2 min",
       "title": "Oracle closed a $16B data center deal. Now Wall Street is asking what my clients ask me.",
-      "excerpt": "AI data centers could reach 12% of US electricity by 2028. When institutional investors step back, it doesn't mean AI doesn't work — it means the real bill is arriving. Energy, water, grid — not just GPUs."
+      "excerpt": "AI data centers could reach 12% of US electricity by 2028. When institutional investors step back, it doesn't mean AI doesn't work, it means the real bill is arriving. Energy, water, grid, not just GPUs."
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/",
       "date": "May 5, 2026",
       "readTime": "2 min",
       "title": "I got a Claude Code certification. But I had already accumulated 4.6 million tokens before starting.",
-      "excerpt": "That's 7× The Lord of the Rings. In 30 days. Not experiments — real projects, real architectures. A powerful tool used without context produces fast code and slow problems."
-    },
-    {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7455515036086841344/",
-      "date": "Apr 30, 2026",
-      "readTime": "2 min",
-      "title": "Markets are betting hundreds of billions on AI. Last week a client needed an if statement.",
-      "excerpt": "Both things are true. Markets are pricing AI as infrastructure. But there's a massive gap between those who build the infrastructure and those who use it to solve real business problems. That gap is my job."
-    },
-    {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7453430093902782464/",
-      "date": "Apr 24, 2026",
-      "readTime": "2 min",
-      "title": "Today at Microsoft Reactor in Rome. Building a Copilot Studio agent at a hackathon.",
-      "excerpt": "Hands on keyboard, real problem, limited time. We built an AI agent for tracking professional certifications — the kind of problem that runs on Excel and email today, and on an agent tomorrow."
+      "excerpt": "That's 7× The Lord of the Rings. In 30 days. Not experiments: real projects, real architectures. A powerful tool used without context produces fast code and slow problems."
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/",
       "date": "Apr 23, 2026",
       "readTime": "2 min",
       "title": "A client asked for AI. After thirty minutes, I understood he needed an if statement.",
-      "excerpt": "The problem was fully defined. Fully predictable. Fully deterministic. No ambiguity. The right answer wasn't an LLM — it was a switch. Knowing when not to use AI is part of the job."
-    },
-    {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452265169868603392/",
-      "date": "Apr 23, 2026",
-      "readTime": "2 min",
-      "title": "In a pre-sales call, you can nod along. Or you can say: there are three ways to do this.",
-      "excerpt": "The second person always wins. Not because they're right — but because the client perceives one thing clearly: this person actually understood what I want. At that point, you're no longer the vendor being evaluated. You're the reference."
+      "excerpt": "The problem was fully defined. Fully predictable. Fully deterministic. No ambiguity. The right answer wasn't an LLM, it was a switch. Knowing when not to use AI is part of the job."
     }
   ],
   "it": [
@@ -77,14 +59,16 @@
       "date": "25 ago 2026",
       "readTime": "8 min",
       "title": "Un errore, quattro cause: aggiornare il firmware della Peugeot 3008 (seconda serie) senza impazzire",
-      "excerpt": "Il tool ufficiale mostra un solo messaggio per quattro problemi diversi. La procedura completa via USB per il firmware NAC Wave 4 (Peugeot, Citroën, DS, Opel): UIN, UpdateID, licenza, CRL, struttura della chiavetta. Qui sul sito, integrale."
+      "excerpt": "Il tool ufficiale mostra un solo messaggio per quattro problemi diversi. La procedura completa via USB per il firmware NAC Wave 4 (Peugeot, Citroën, DS, Opel): UIN, UpdateID, licenza, CRL, struttura della chiavetta. Qui sul sito, integrale.",
+      "image": "/img/peugeot-3008-nac-firmware-before-after.jpg"
     },
     {
       "url": "/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/",
       "date": "24 giu 2026",
       "readTime": "8 min",
       "title": "LLM wiki con Obsidian: costruire un secondo cervello che l'AI legge prima di rispondere",
-      "excerpt": "Ogni chat con un modello riparte da zero: chi sei, cosa stai costruendo, cosa hai gia' provato. Una regola sola sulla struttura, un contratto scritto al posto di un prompt, e un lint che impedisce alla vault di marcire. Col dietro le quinte tecnico, ospitato qui."
+      "excerpt": "Ogni chat con un modello riparte da zero: chi sei, cosa stai costruendo, cosa hai già provato. Una regola sola sulla struttura, un contratto scritto al posto di un prompt, e un lint che impedisce alla vault di marcire. Col dietro le quinte tecnico, ospitato qui.",
+      "image": "/img/llm-wiki-obsidian-secondo-cervello.jpg"
     },
     {
       "url": "https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/",
@@ -98,7 +82,8 @@
       "date": "12 mag 2026",
       "readTime": "9 min",
       "title": "Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud",
-      "excerpt": "Copilot chiede tre condizioni insieme e le riunioni vere non le rispettano quasi mai. Ma la condizione che conta davvero e' la quarta: quei dati possono uscire dall'azienda? Due container, Whisper e Pyannote su CPU, un LLM locale. Architettura completa, ospitata qui."
+      "excerpt": "Copilot chiede tre condizioni insieme e le riunioni vere non le rispettano quasi mai. Ma la condizione che conta davvero è la quarta: quei dati possono uscire dall'azienda? Due container, Whisper e Pyannote su CPU, un LLM locale. Architettura completa, ospitata qui.",
+      "image": "/img/ai-meeting-assistant-locale.jpg"
     },
     {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/",
@@ -115,32 +100,11 @@
       "excerpt": "Sette volte il Signore degli Anelli. In 30 giorni. Non esperimenti: progetti concreti, su architetture reali. Uno strumento così potente usato senza contesto produce codice veloce e problemi lenti."
     },
     {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7455515036086841344/",
-      "date": "30 apr 2026",
-      "readTime": "2 min",
-      "title": "I mercati scommettono centinaia di miliardi sull'AI. La settimana scorsa un mio cliente aveva bisogno di un if.",
-      "excerpt": "Entrambe le cose sono vere. I mercati prezzano l'AI come infrastruttura. Ma c'è un gap enorme tra chi costruisce l'infrastruttura e chi deve risolvere problemi reali. Quel gap è il mio lavoro."
-    },
-    {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7453430093902782464/",
-      "date": "24 apr 2026",
-      "readTime": "2 min",
-      "title": "Oggi a Roma, al Microsoft Reactor. Costruiamo un agente Copilot Studio all'hackathon.",
-      "excerpt": "Mani sulla tastiera, problema reale, tempo limitato. Stiamo costruendo un agente AI per la gestione dei certificati professionali. Il tipo di problema che oggi si risolve con Excel e email — domani con un agente."
-    },
-    {
       "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/",
       "date": "23 apr 2026",
       "readTime": "2 min",
       "title": "Un cliente mi ha chiesto l'AI. Dopo trenta minuti, ho capito che voleva un if.",
       "excerpt": "Il problema era tutto definito. Tutto prevedibile. Tutto deterministico. Nessuna ambiguità. La risposta giusta non era un LLM: era uno switch. Capire quando NON usare l'AI fa parte del lavoro."
-    },
-    {
-      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7452265169868603392/",
-      "date": "23 apr 2026",
-      "readTime": "2 min",
-      "title": "In una call di pre-sales puoi essere il venditore che annuisce. Oppure puoi dire: ci sono tre modi per farlo.",
-      "excerpt": "La seconda persona vince sempre. Non perché abbia ragione, ma perché il cliente percepisce una cosa precisa: questa persona ha capito davvero cosa voglio. A quel punto non sei più il fornitore da valutare. Sei il riferimento."
     }
   ]
 }

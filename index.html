@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Holti Bitri — CTO & AI Innovator | Fintech SaaS Architect</title>
-  <meta name="description" content="CTO & AI Innovator with nearly 20 years in the Microsoft ecosystem. Building ToroPulse, a fintech SaaS for retail eToro traders, and AI FinCast, an AI-generated financial podcast. Expertise in Azure, .NET, and agentic AI.">
+  <!-- Pagina generata da tools/build_home.py. I testi stanno in tools/home_content.py,
+       gli articoli in posts.json. Non modificare questo file a mano. -->
+  <title>Holti Bitri | CTO: AI agents and people, one team</title>
+  <meta name="description" content="CTO at TIG Factory. I design workflows where AI agents and people build software together. The proof: ToroPulse, a fintech SaaS for eToro traders, and AI FinCast, an AI-generated financial podcast.">
   <link rel="canonical" href="https://holtibitri.com/">
   <link rel="alternate" hreflang="en" href="https://holtibitri.com/">
   <link rel="alternate" hreflang="it" href="https://holtibitri.com/it/">
@@ -12,23 +14,23 @@
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://holtibitri.com/">
-  <meta property="og:title" content="Holti Bitri — CTO & AI Innovator">
-  <meta property="og:description" content="CTO & AI Innovator with nearly 20 years in the Microsoft ecosystem. Building ToroPulse (fintech SaaS for eToro traders) and AI FinCast, an AI-generated financial podcast.">
-  <meta property="og:image" content="https://holtibitri.com/avatar.jpg">
+  <meta property="og:title" content="AI agents and people, one team. I design it.">
+  <meta property="og:description" content="Holti Bitri, CTO. I design and lead workflows where AI agents and people build software together: written rules, a check at every step, human decisions.">
+  <meta property="og:image" content="https://holtibitri.com/img/og-en.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="it_IT">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Holti Bitri — CTO & AI Innovator">
-  <meta name="twitter:description" content="CTO & AI Innovator with nearly 20 years in the Microsoft ecosystem. Building ToroPulse (fintech SaaS for eToro traders) and AI FinCast, an AI-generated financial podcast.">
-  <meta name="twitter:image" content="https://holtibitri.com/avatar.jpg">
+  <meta name="twitter:title" content="AI agents and people, one team. I design it.">
+  <meta name="twitter:description" content="Holti Bitri, CTO. I design and lead workflows where AI agents and people build software together: written rules, a check at every step, human decisions.">
+  <meta name="twitter:image" content="https://holtibitri.com/img/og-en.png">
 
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="256x256" href="/favicon.ico">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&amp;family=DM+Sans:wght@300;400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
   <script type="application/ld+json">
   {
@@ -36,6 +38,7 @@
     "@type": "Person",
     "name": "Holti Bitri",
     "jobTitle": "CTO & AI Innovator",
+    "description": "Holti Bitri, CTO. I design and lead workflows where AI agents and people build software together: written rules, a check at every step, human decisions.",
     "url": "https://holtibitri.com/",
     "image": "https://holtibitri.com/avatar.jpg",
     "email": "mailto:info@holtibitri.com",
@@ -56,756 +59,212 @@
   </script>
 
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-    section { padding: clamp(4rem, 10vw, 8rem) 0; }
-
-    /* ============================================
-       HERO
-    ============================================ */
-    .hero {
-      min-height: auto;
-      display: flex;
-      align-items: flex-start;
-      padding-top: clamp(6rem, 12vh, 9rem);
-      padding-bottom: clamp(4rem, 8vh, 6rem);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -20%; right: -10%;
-      width: 55%; height: 90%;
-      background: radial-gradient(ellipse at 70% 30%, rgba(0, 56, 255, 0.055) 0%, transparent 68%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: 'HB';
-      position: absolute;
-      right: -0.02em;
-      bottom: -0.15em;
-      font-family: var(--font-display);
-      font-size: clamp(14rem, 30vw, 28rem);
-      font-weight: 300;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(0,0,0,0.05);
-      pointer-events: none;
-      line-height: 1;
-      user-select: none;
-    }
-
-    .hero-inner { width: 100%; position: relative; z-index: 1; }
-
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.7s 0.2s forwards;
-    }
-
-    .hero-name {
-      font-size: clamp(3.5rem, 9vw, 8.5rem);
-      font-weight: 300;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.2em;
-      opacity: 0;
-      transform: translateY(16px);
-      animation: fadeUp 0.8s 0.35s forwards;
-    }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent);
-    }
-
-    .hero-title {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--muted);
-      font-weight: 300;
-      max-width: 500px;
-      margin-bottom: 2.75rem;
-      line-height: 1.65;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.7s 0.5s forwards;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeUp 0.7s 0.65s forwards;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 400;
-      border-radius: 4px;
-      transition: all 0.2s;
-      letter-spacing: 0.025em;
-    }
-    .btn-primary { background: var(--text); color: var(--bg); }
-    .btn-primary:hover { background: var(--accent); }
-    .btn-secondary { border: 1px solid var(--border); color: var(--text); }
-    .btn-secondary:hover { border-color: var(--text); }
-
-    .hero-scroll { display: none; }
-
-    /* ============================================
-       SECTION HEADER
-    ============================================ */
-    .section-header { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-
-    .section-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.73rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 300;
-      letter-spacing: -0.02em;
-    }
-
-    /* ============================================
-       ABOUT
-    ============================================ */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem);
-      align-items: start;
-    }
-
-    .about-avatar-wrap {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-
-    .about-avatar {
-      width: auto;
-      max-width: 260px;
-      height: auto;
-      border-radius: 12px;
-      display: block;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .about-avatar:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.15);
-    }
-
-    .about-text { font-size: 1.02rem; line-height: 1.82; color: #35352F; }
-    .about-text p + p { margin-top: 1.25em; }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-
-    .stat-card {
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      background: var(--bg-card);
-      transition: border-color 0.2s;
-    }
-    .stat-card:hover { border-color: var(--accent); }
-
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    /* ============================================
-       EXPERTISE (dark section)
-    ============================================ */
-    #expertise {
-      background: var(--text);
-      color: var(--bg);
-    }
-    #expertise .section-label { color: rgba(100, 140, 255, 0.8); }
-    #expertise .section-title { color: var(--bg); }
-
-    .expertise-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.08);
-      border-radius: 6px;
-      overflow: hidden;
-      margin-top: 3rem;
-    }
-
-    .expertise-item {
-      background: var(--text);
-      padding: 1.75rem 1.5rem;
-      transition: background 0.22s;
-    }
-    .expertise-item:hover { background: #1c1c1b; }
-
-    .expertise-icon {
-      font-size: 1.35rem;
-      margin-bottom: 0.8rem;
-      display: block;
-      filter: grayscale(0.2);
-    }
-
-    .expertise-name {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #F9F7F3;
-      margin-bottom: 0.4rem;
-    }
-
-    .expertise-desc {
-      font-size: 0.78rem;
-      color: rgba(249, 247, 243, 0.4);
-      line-height: 1.55;
-    }
-
-    /* ============================================
-       EXPERIENCE
-    ============================================ */
-    .timeline {
-      position: relative;
-      padding-left: 0;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 2rem;
-      padding-bottom: 3rem;
-      position: relative;
-    }
-    .timeline-item:last-child { padding-bottom: 0; }
-
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      left: 180px;
-      top: 0.55rem;
-      bottom: 0;
-      width: 1px;
-      background: var(--border);
-    }
-    .timeline-item:last-child::after { display: none; }
-
-    .timeline-left { padding-top: 0.1rem; }
-
-    .timeline-date {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.07em;
-      white-space: nowrap;
-    }
-
-    .timeline-right {
-      padding-left: 2.5rem;
-      position: relative;
-    }
-    .timeline-right::before {
-      content: '';
-      position: absolute;
-      left: -0.4rem;
-      top: 0.5rem;
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 1.5px solid #ccc;
-      z-index: 1;
-      transition: border-color 0.2s, background 0.2s;
-    }
-    .timeline-item:hover .timeline-right::before {
-      border-color: var(--accent);
-      background: var(--accent);
-    }
-
-    .timeline-role { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.2rem; }
-    .timeline-company { font-size: 0.875rem; color: var(--accent); margin-bottom: 0.7rem; }
-
-    .timeline-desc {
-      font-size: 0.875rem;
-      color: #505050;
-      line-height: 1.72;
-      max-width: 580px;
-    }
-
-    .timeline-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.9rem;
-    }
-
-    .tag {
-      font-family: var(--font-mono);
-      font-size: 0.67rem;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-    }
-
-    /* ============================================
-       PROJECTS
-    ============================================ */
-    #projects { background: #F3F1EC; }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem;
-      transition: transform 0.22s, box-shadow 0.22s;
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
-    }
-
-    .project-type {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-
-    .project-title {
-      font-family: var(--font-display);
-      font-size: 1.45rem;
-      font-weight: 300;
-      margin-bottom: 0.75rem;
-      line-height: 1.2;
-    }
-
-    .project-desc {
-      font-size: 0.875rem;
-      color: #505050;
-      line-height: 1.72;
-      margin-bottom: 1.25rem;
-    }
-
-    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-    /* ============================================
-       FEATURED PROJECTS
-    ============================================ */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .featured-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2.5rem;
-      background-color: var(--bg-card);
-      transition: box-shadow 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-    }
-    .featured-card:hover { box-shadow: 0 16px 48px rgba(0,0,0,0.07); }
-    .featured-card .timeline-tags { margin-top: auto; padding-top: 1.5rem; }
-
-    /* ============================================
-       CONTACT
-    ============================================ */
-    .contact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 5vw, 5rem);
-      align-items: start;
-    }
-
-    .contact-text { font-size: 1.02rem; color: #444441; line-height: 1.82; }
-
-    .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      text-decoration: none;
-      color: var(--text);
-      background: var(--bg-card);
-      transition: all 0.2s;
-    }
-    .contact-link:hover { border-color: var(--accent); }
-    .contact-link:hover .contact-link-value { color: var(--accent); }
-
-    .contact-link-icon {
-      font-family: var(--font-mono);
-      font-size: 1rem;
-      width: 2rem;
-      text-align: center;
-      flex-shrink: 0;
-      color: var(--muted);
-    }
-
-    .contact-link-info { flex: 1; }
-    .contact-link-label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      text-transform: uppercase;
-      margin-bottom: 0.2rem;
-    }
-    .contact-link-value {
-      display: block;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    /* ============================================
-       ANIMATIONS
-    ============================================ */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    /* ============================================
-       WRITING
-    ============================================ */
-    .writing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .writing-item {
-      display: flex;
-      flex-direction: column;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem;
-      text-decoration: none;
-      color: var(--text);
-      transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
-    }
-    .writing-item:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.07);
-      border-color: var(--accent);
-    }
-
-    .writing-number {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
-    }
-
-    .writing-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      font-weight: 300;
-      line-height: 1.2;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-
-    .writing-excerpt {
-      font-size: 0.875rem;
-      color: #505050;
-      line-height: 1.72;
-      flex: 1;
-      margin-bottom: 1.75rem;
-    }
-
-    .writing-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: auto;
-    }
-
-    .writing-meta {
-      display: flex;
-      gap: 0.4rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    .writing-cta {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      transition: letter-spacing 0.2s;
-    }
-    .writing-item:hover .writing-cta { letter-spacing: 0.1em; }
-
-    .writing-empty {
-      color: var(--muted);
-      font-size: 0.875rem;
-      font-style: italic;
-      grid-column: 1 / -1;
-    }
-
-    /* ============================================
-       RESPONSIVE
-    ============================================ */
-    @media (max-width: 768px) {
-      .about-grid, .contact-inner, .featured-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .timeline-item { grid-template-columns: 1fr; gap: 0.25rem; }
-      .timeline-item::after { display: none; }
-      .timeline-right { padding-left: 1.25rem; }
-    }
-    @media (max-width: 480px) {
-      .about-stats { grid-template-columns: 1fr 1fr; }
-      .hero::after { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="/css/home.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="4d89a1e3-8961-4b64-9579-4c118118822f"></script>
 </head>
 <body>
 
   <nav id="navbar">
-    <a href="#" class="nav-logo">HB_</a>
+    <a href="#home" class="nav-logo">HB_</a>
     <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="#about" data-en="About" data-it="Chi sono">About</a></li>
-        <li><a href="#featured-project" data-en="Featured" data-it="In Evidenza">Featured</a></li>
-        <li><a href="#expertise" data-en="Expertise" data-it="Competenze">Expertise</a></li>
-        <li><a href="#experience" data-en="Experience" data-it="Esperienza">Experience</a></li>
-        <li><a href="#projects" data-en="Other Projects" data-it="Altri Progetti">Other Projects</a></li>
-        <li><a href="#writing" data-en="Writing" data-it="Articoli">Writing</a></li>
-        <li><a href="#contact" data-en="Contact" data-it="Contatti">Contact</a></li>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#method">How I work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="it">IT</button>
+        <a class="lang-btn active" aria-current="page" href="/" hreflang="en">EN</a>
+        <a class="lang-btn" href="/it/" hreflang="it">IT</a>
       </div>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
   <header id="home" class="hero">
     <div class="container hero-inner">
-      <p class="hero-eyebrow" data-en="CTO &middot; AI Innovator &middot; Fintech SaaS Architect" data-it="CTO &middot; AI Innovator &middot; Architetto SaaS Fintech">
-        CTO &middot; AI Innovator &middot; Fintech SaaS Architect
-      </p>
-      <h1 class="hero-name">
-        Holti Bitri<br><em>CTO, Architect &amp; Innovator</em>
+      <h1 class="hero-h1">
+        <span class="hero-eyebrow">Holti Bitri · CTO · Milan</span>
+        <span class="hero-claim"><span class="line">AI agents and people,</span> <span class="line">one team.</span> <em>I design it.</em></span>
       </h1>
-      <p class="hero-title" data-en="Building bridges between technology vision and business impact. Nearly 20 years at the intersection of architecture, innovation, and delivery." data-it="Connettere visione tecnologica e impatto sul business. Quasi vent'anni all'intersezione tra architettura, innovazione e delivery.">
-        Building bridges between technology vision and business impact. Nearly 20 years at the intersection of architecture, innovation, and delivery.
-      </p>
+      <p class="hero-sub">I design and lead workflows where AI agents and people build software together. Agents get written rules and a check at every step. People keep the architecture and the decisions.</p>
       <div class="hero-cta">
-        <a href="#contact" class="btn btn-primary" data-en="Get in touch" data-it="Contattami">Get in touch</a>
-        <a href="#featured-project" class="btn btn-secondary" data-en="View projects" data-it="Vedi progetti">View projects</a>
+        <a href="#method" class="btn btn-primary">How I work</a>
+        <a href="#contact" class="btn btn-secondary">Get in touch</a>
       </div>
     </div>
   </header>
 
-  <section id="about" style="padding-top: 2rem;">
+  <section id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-text reveal">
-          <p data-en="I design resilient architectures and lead high-performing teams to turn complex challenges into scalable, future-proof solutions." data-it="Progetto architetture resilienti e guido team ad alte prestazioni per trasformare sfide complesse in soluzioni scalabili e a prova di futuro.">
-            I design resilient architectures and lead high-performing teams to turn complex challenges into scalable, future-proof solutions.
-          </p>
-          <p data-en="With nearly 20 years in the Microsoft ecosystem, my journey evolved from deep-dive technical development to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development." data-it="Con quasi vent'anni nell'ecosistema Microsoft, il mio percorso si è evoluto dallo sviluppo tecnico profondo alla guida di aree di innovazione cross-funzionali su Power Platform, Azure e sviluppo custom.">
-            With nearly 20 years in the Microsoft ecosystem, my journey evolved from deep-dive technical development to leading cross-functional innovation areas spanning Power Platform, Azure, and custom development.
-          </p>
-          <p data-en="Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery." data-it="Oggi coordino iniziative di trasformazione digitale per clienti enterprise, supervisionando prodotti AI come AI4Teams, AI4Align e AI4Orchestration. Il mio lavoro connette architettura, strategia e delivery.">
-            Today I drive digital transformation initiatives for enterprise clients, overseeing AI-powered products including AI4Teams, AI4Align, and AI4Orchestration. My work connects architecture, strategy, and delivery.
-          </p>
-          <p data-en="Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive &mdash; across banking, healthcare, logistics, and consulting." data-it="Tra i clienti enterprise con cui ho lavorato: PwC, Medtronic, MPS e Nexive &mdash; nei settori banking, healthcare, logistica e consulenza.">
-            Enterprise clients I've worked with include PwC, Medtronic, MPS, and Nexive &mdash; across banking, healthcare, logistics, and consulting.
-          </p>
-          <p data-en="Microsoft-certified since 2011 (MCSD, MCTS) and Anthropic-certified in 2026 (Claude Code, Claude Cowork): two decades of credentials, from the Microsoft ecosystem to today's AI stack." data-it="Certificato Microsoft dal 2011 (MCSD, MCTS) e Anthropic nel 2026 (Claude Code, Claude Cowork): vent'anni di credenziali, dall'ecosistema Microsoft allo stack AI di oggi.">
-            Microsoft-certified since 2011 (MCSD, MCTS) and Anthropic-certified in 2026 (Claude Code, Claude Cowork): two decades of credentials, from the Microsoft ecosystem to today's AI stack.
-          </p>
-          <p data-en="Currently building <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — smart alerts, deep copier analytics, and social automation for eToro traders." data-it="Attualmente sviluppo <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — alert intelligenti, analytics avanzate e automazione social per i trader su eToro.">
-            Currently building <a href='https://toropulse.app' target='_blank' style='color: var(--accent); text-decoration: none; font-weight: 500;'>ToroPulse</a> — smart alerts, deep copier analytics, and social automation for eToro traders.
-          </p>
+          <span class="section-label">About</span>
+          <p>I have been writing software since 2008: .NET and Oracle developer at Monte dei Paschi di Siena, then systems integration, architecture, and leading an innovation unit. Today I am CTO at TIG Factory.</p>
+          <p>My job has changed shape. Most of the code is now written by AI agents. I decide the architecture, write the rules they work by, set the checks, and answer for what goes to production.</p>
+          <p>This is not an experiment. It is how I build a trading platform, a podcast that ships every morning without me, and the tools my colleagues at TIG use every day.</p>
+          <p>Before that I worked inside PwC, Medtronic Italia, Reply (for Eurizon) and Magneti Marelli, spent four years at Nexive and eight at Cloudia Research, from architect to Innovation Director. That is where I learned what software needs to hold up in a company, and it is what I now ask of the agents.</p>
+          <p>Microsoft certified since 2011 (MCSD, MCTS), Anthropic certified since 2026 (Claude Code, Claude Cowork).</p>
         </div>
-        
-        <div class="about-stats reveal" style="transition-delay:0.15s">
-          <div class="about-avatar-wrap" style="grid-column: 1 / -1;">
-            <img src="/avatar.jpg" alt="Holti Bitri — CTO, Architect & Innovator" class="about-avatar">
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">~20</div>
-            <div class="stat-label" data-en="Years in the Microsoft ecosystem" data-it="Anni nell'ecosistema Microsoft">Years in the Microsoft ecosystem</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-number">3</div>
-            <div class="stat-label" data-en="Innovation domains led (Power Platform, Azure, Dev)" data-it="Domini Innovation guidati (Power Platform, Azure, Dev)">Innovation domains led (Power Platform, Azure, Dev)</div>
+        <div class="about-side reveal">
+          <img src="/avatar.jpg" alt="Holti Bitri, CTO at TIG Factory" class="about-avatar" width="900" height="1433" loading="lazy">
+          <div class="about-stats">
+            <div class="stat-card">
+              <div class="stat-number">18</div>
+              <div class="stat-label">Years of software in production</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">AI FinCast episodes shipped with no human intervention</div>
+            </div>
           </div>
         </div>
+      </div>
+      <div class="clients reveal">
+        <span class="clients-label">Worked with</span>
+        <ul class="clients-list"><li>PwC</li><li>Medtronic Italia</li><li>Reply / Eurizon</li><li>Magneti Marelli</li><li>Monte dei Paschi di Siena</li><li>Nexive</li></ul>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <section id="featured-project" class="reveal" style="padding: 4rem 10%; background-color: var(--bg);">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label" data-en="Featured" data-it="In Evidenza">Featured</span>
-        <h2 class="section-title" data-en="What I'm building<br>right now." data-it="Cosa sto costruendo<br>ora.">What I'm building<br>right now.</h2>
-      </div>
-      <div class="featured-grid">
-        <div class="featured-card">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 0.5rem;">ToroPulse</h3>
-              <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;" data-en="Lead Architect • 2026 - Present" data-it="Lead Architect • 2026 - Present">Lead Architect • 2026 - Present</p>
-            </div>
-            <a href="https://toropulse.app" target="_blank" class="btn btn-secondary" style="font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase;">Visit Waitlist &rarr;</a>
-          </div>
-          <p style="color: #505050; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;" data-en="Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors." data-it="Il tuo account eToro, potenziato. ToroPulse è un progetto di ricerca indipendente che porta alert tecnici composti (RSI, EMA, Volume), analytics avanzate sul copier e automazione social ai trader retail e Popular Investors.">
-            Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors.
-          </p>
-          <div class="timeline-tags">
-            <span class="tag">Agentic Workflows</span>
-            <span class="tag">Fintech SaaS</span>
-            <span class="tag">Trading APIs</span>
-            <span class="tag">Growth Hacking</span>
-          </div>
-        </div>
-
-        <div class="featured-card">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
-            <div>
-              <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text); margin-bottom: 0.5rem;">AI FinCast</h3>
-              <p style="color: var(--accent); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 1.5rem; letter-spacing: 0.05em;" data-en="Creator • 2026 - Present" data-it="Creator • 2026 - Present">Creator • 2026 - Present</p>
-            </div>
-            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-              <a href="https://open.spotify.com/show/033j5ueQUdbVL57XTdu9TF" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 0.65rem;" aria-label="FinCast AI - Spotify" title="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
-              <a href="https://podcasts.apple.com/us/podcast/fincast-ai/id6807076540" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 0.65rem;" aria-label="FinCast AI - Apple Podcasts" title="Apple Podcasts"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"/></svg></a>
-              <a href="https://youtube.com/playlist?list=PL62zLK--DCehR0PF5Pl2Ok9Ay8Voc3Zw4" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 0.65rem;" aria-label="FinCast AI - YouTube" title="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-              <a href="https://fincast.holtibitri.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 0.65rem 0.9rem; font-family: var(--font-mono); font-size: 0.8rem;" data-en="Website &rarr;" data-it="Sito &rarr;">Website &rarr;</a>
-            </div>
-          </div>
-          <p style="color: #505050; line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;" data-en="AI-generated daily financial podcast in Italian. An autonomous Python pipeline reads the financial sources overnight, selects the news that matters, writes an adaptive 5-7 section script, edits it, synthesizes the voice and publishes before European markets open on Spotify, Apple Podcasts and YouTube. 50+ episodes, Monday to Friday, plus the Saturday weekly recap." data-it="Podcast finanziario quotidiano in italiano, interamente generato dall'AI. Una pipeline Python autonoma legge le fonti finanziarie durante la notte, sceglie le notizie che contano, scrive uno script adattivo in 5-7 sezioni, lo revisiona, sintetizza la voce e pubblica prima dell'apertura dei mercati europei su Spotify, Apple Podcasts e YouTube. Oltre 50 episodi, dal lunedì al venerdì, più il riepilogo settimanale del sabato.">
-            AI-generated daily financial podcast in Italian. An autonomous Python pipeline reads the financial sources overnight, selects the news that matters, writes an adaptive 5-7 section script, edits it, synthesizes the voice and publishes before European markets open on Spotify, Apple Podcasts and YouTube. 50+ episodes, Monday to Friday, plus the Saturday weekly recap.
-          </p>
-          <div class="timeline-tags">
-            <span class="tag">Python</span>
-            <span class="tag">Claude API</span>
-            <span class="tag">Multi-Agent AI</span>
-            <span class="tag">TTS</span>
-            <span class="tag">RSS</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="expertise">
+  <section id="method">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-en="Expertise" data-it="Competenze">Expertise</span>
-        <h2 class="section-title" data-en="Connecting code,<br>cloud, and business." data-it="Connettere codice,<br>cloud e business.">Connecting code,<br>cloud, and business.</h2>
+        <span class="section-label">How I work</span>
+        <h2 class="section-title">Five rules,<br>learned from things that run.</h2>
       </div>
-      <div class="expertise-grid reveal">
-        
-        <div class="expertise-item">
-          <span class="expertise-icon">🚀</span>
-          <div class="expertise-name" data-en="AI &amp; Startup Stack" data-it="AI &amp; Startup Stack">AI &amp; Startup Stack</div>
-          <div class="expertise-desc" data-en="Agentic Workflows, LLM Orchestration, SaaS Architecture, Growth Hacking" data-it="Agentic Workflows, LLM Orchestration, Architettura SaaS, Growth Hacking">Agentic Workflows, LLM Orchestration, SaaS Architecture, Growth Hacking</div>
-        </div>
+      <ol class="rules">
+        <li class="rule reveal">
+          <span class="rule-num">01</span>
+          <h3 class="rule-title">First, decide whether AI is needed</h3>
+          <div class="rule-body">
+            <p>A client asked me for AI. Thirty minutes in, it was clear he needed an if statement. Being able to say so is part of the job.</p>
+            <a class="rule-link" href="https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/" target="_blank" rel="noopener noreferrer">Read the post &rarr;</a>
+          </div>
+        </li>
+        <li class="rule reveal">
+          <span class="rule-num">02</span>
+          <h3 class="rule-title">Agents get a contract, not a prompt</h3>
+          <div class="rule-body">
+            <p>Role, rules, sources, what it must never do. Written down, versioned, corrected after every mistake. At TIG Factory the company knowledge base is kept by an agent with one rule at the top: never make anything up.</p>
+            <a class="rule-link" href="/articles/llm-wiki-obsidian-second-brain-ai/">Read the guide &rarr;</a>
+          </div>
+        </li>
+        <li class="rule reveal">
+          <span class="rule-num">03</span>
+          <h3 class="rule-title">Sensitive data never reaches the model</h3>
+          <div class="rule-body">
+            <p>At TIG, a check on the production database used to take half an hour by hand. Now it takes seconds: personal data is masked on the PC and the model only gets the summary.</p>
+            <a class="rule-link" href="/articles/transcribe-meetings-locally-without-cloud/">Another case: meetings transcribed locally &rarr;</a>
+          </div>
+        </li>
+        <li class="rule reveal">
+          <span class="rule-num">04</span>
+          <h3 class="rule-title">Every step has a check</h3>
+          <div class="rule-body">
+            <p>An agent that writes without verification produces fast code and slow problems. Tests, review and acceptance live inside the workflow, not after it.</p>
+          </div>
+        </li>
+        <li class="rule reveal">
+          <span class="rule-num">05</span>
+          <h3 class="rule-title">Decisions stay with people</h3>
+          <div class="rule-body">
+            <p>Agents propose, write and verify. What to build, on which architecture and when it ships is decided by whoever answers for it.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
 
-        <div class="expertise-item">
-          <span class="expertise-icon">☁</span>
-          <div class="expertise-name" data-en="Microsoft Cloud" data-it="Microsoft Cloud">Microsoft Cloud</div>
-          <div class="expertise-desc" data-en="Azure PaaS, Microsoft 365 ecosystem, Power Apps, Power Automate, Microsoft Fabric" data-it="Azure PaaS, ecosistema Microsoft 365, Power Apps, Power Automate, Microsoft Fabric">Azure PaaS, Microsoft 365 ecosystem, Power Apps, Power Automate, Microsoft Fabric</div>
-        </div>
-        <div class="expertise-item">
-          <span class="expertise-icon">🏗</span>
-          <div class="expertise-name" data-en="Solution Architecture" data-it="Solution Architecture">Solution Architecture</div>
-          <div class="expertise-desc" data-en="Cloud-first design, system integration, API layers, app modernization" data-it="Design cloud-first, integrazione sistemi, layer API, modernizzazione app">Cloud-first design, system integration, API layers, app modernization</div>
-        </div>
-        <div class="expertise-item">
-          <span class="expertise-icon">🤖</span>
-          <div class="expertise-name" data-en="AI &amp; Innovation" data-it="AI &amp; Innovazione">AI &amp; Innovation</div>
-          <div class="expertise-desc" data-en="AI-enabled transformation, LLM integration, intelligent automation" data-it="Trasformazione AI-enabled, integrazione LLM, automazione intelligente">AI-enabled transformation, LLM integration, intelligent automation</div>
-        </div>
-        <div class="expertise-item">
-          <span class="expertise-icon">⚙</span>
-          <div class="expertise-name" data-en=".NET / Custom Dev" data-it=".NET / Sviluppo Custom">.NET / Custom Dev</div>
-          <div class="expertise-desc" data-en="C#, .NET Core, ASP.NET MVC, WCF, REST APIs, SQL Server" data-it="C#, .NET Core, ASP.NET MVC, WCF, REST API, SQL Server">C#, .NET Core, ASP.NET MVC, WCF, REST APIs, SQL Server</div>
-        </div>
-        <div class="expertise-item">
-          <span class="expertise-icon">👥</span>
-          <div class="expertise-name" data-en="Leadership &amp; Strategy" data-it="Leadership &amp; Strategia">Leadership &amp; Strategy</div>
-          <div class="expertise-desc" data-en="Team management, pre-sales, stakeholder engagement, innovation roadmaps" data-it="Team management, pre-sales, stakeholder engagement, roadmap d'innovazione">Team management, pre-sales, stakeholder engagement, innovation roadmaps</div>
-        </div>
-        <div class="expertise-item">
-          <span class="expertise-icon">⚡</span>
-          <div class="expertise-name" data-en="Claude Code &amp; Agentic AI" data-it="Claude Code &amp; Agentic AI">Claude Code &amp; Agentic AI</div>
-          <div class="expertise-desc" data-en="Certified in Claude Code in Action (Anthropic). Using agentic AI as a daily coworker for architecture review, code generation, and automation pipelines." data-it="Certificato Claude Code in Action (Anthropic). AI agentica come collaboratore quotidiano per architetture, generazione di codice e pipeline di automazione.">Certified in Claude Code in Action (Anthropic). Using agentic AI as a daily coworker for architecture review, code generation, and automation pipelines.</div>
-        </div>
-
-        <div class="expertise-item">
-          <span class="expertise-icon">🎙</span>
-          <div class="expertise-name" data-en="AI Content Pipeline" data-it="AI Content Pipeline">AI Content Pipeline</div>
-          <div class="expertise-desc" data-en="End-to-end autonomous pipelines: LLM scriptwriting, TTS synthesis, audio mixing, multi-platform distribution (Spotify, Telegram, RSS)." data-it="Pipeline autonome end-to-end: scriptwriting LLM, sintesi TTS, mixing audio, distribuzione multi-piattaforma (Spotify, Telegram, RSS).">End-to-end autonomous pipelines: LLM scriptwriting, TTS synthesis, audio mixing, multi-platform distribution (Spotify, Telegram, RSS).</div>
-        </div>
+  <section id="projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Projects</span>
+        <h2 class="section-title">The method,<br>put to the test.</h2>
+      </div>
+      <div class="featured-grid" id="featured-project">
+        <article class="featured-card reveal">
+          <div class="featured-head">
+            <div>
+              <h3 class="featured-title">ToroPulse</h3>
+              <p class="featured-role">Lead Architect · since 2026</p>
+            </div>
+            <div class="featured-actions">
+              <a href="https://toropulse.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small">Join the waitlist &rarr;</a>
+            </div>
+          </div>
+          <p class="featured-text">Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors.</p>
+          <p class="featured-proof">Built largely with AI agents: I act as architect and orchestrator.</p>
+          <div class="tags"><span class="tag">Agentic Workflows</span><span class="tag">Fintech SaaS</span><span class="tag">Trading APIs</span></div>
+        </article>
+        <article class="featured-card reveal">
+          <div class="featured-head">
+            <div>
+              <h3 class="featured-title">AI FinCast</h3>
+              <p class="featured-role">Creator · since 2026</p>
+            </div>
+            <div class="featured-actions">
+              <a href="https://open.spotify.com/show/033j5ueQUdbVL57XTdu9TF" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-icon" aria-label="AI FinCast, Spotify" title="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg></a>
+              <a href="https://podcasts.apple.com/us/podcast/fincast-ai/id6807076540" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-icon" aria-label="AI FinCast, Apple Podcasts" title="Apple Podcasts"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"/></svg></a>
+              <a href="https://youtube.com/playlist?list=PL62zLK--DCehR0PF5Pl2Ok9Ay8Voc3Zw4" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-icon" aria-label="AI FinCast, YouTube" title="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+              <a href="https://fincast.holtibitri.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-small">Website &rarr;</a>
+            </div>
+          </div>
+          <p class="featured-text">AI-generated daily financial podcast in Italian. An autonomous Python pipeline reads the financial sources overnight, selects the news that matters, writes an adaptive 5-7 section script, edits it, synthesizes the voice and publishes before European markets open on Spotify, Apple Podcasts and YouTube.</p>
+          <p class="featured-proof">100+ episodes, Monday to Friday, plus the Saturday weekly recap.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Claude API</span><span class="tag">Multi-Agent AI</span><span class="tag">TTS</span><span class="tag">RSS</span></div>
+        </article>
+        <article class="featured-card featured-wide reveal">
+          <div class="featured-head">
+            <div>
+              <h3 class="featured-title">AI tooling at TIG Factory</h3>
+              <p class="featured-role">CTO · since 2026</p>
+            </div>
+          </div>
+          <p class="featured-text">The same principles inside a real company, with colleagues and sensitive data.</p>
+          <div class="tool-grid">
+            <div class="tool">
+              <h4 class="tool-title">Company second brain</h4>
+              <p>Company knowledge kept by an agent. Every fact has a source, and an automatic check blocks notes that break the standard.</p>
+            </div>
+            <div class="tool">
+              <h4 class="tool-title">Project knowledge for every colleague</h4>
+              <p>Everyone queries it from their own Claude: read-only, personal access, nothing exposed to the Internet.</p>
+            </div>
+            <div class="tool">
+              <h4 class="tool-title">Database checks in seconds</h4>
+              <p>From half an hour by hand to a few seconds, with personal data masked before it reaches the model.</p>
+            </div>
+          </div>
+          <div class="tags"><span class="tag">Claude Code</span><span class="tag">MCP</span><span class="tag">Agent Skills</span><span class="tag">Quality Gate</span></div>
+        </article>
+      </div>
+      <span class="section-label sub-label">Other projects</span>
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <div class="project-type">Open Source · Personal</div>
+          <h3 class="project-title">AI Meeting Assistant</h3>
+          <p class="project-desc">Fully local AI pipeline for transcribing meetings, identifying speakers, and generating executive summaries. Works with any platform: Teams, Zoom, Webex. No cloud, no subscriptions, no data leaving your machine.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Docker</span><span class="tag">Whisper</span><span class="tag">Ollama</span></div>
+          <a class="project-link" href="https://github.com/holtibitri-arch/AI-Meeting-Assistant" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-type">Product · Cloudia Research</div>
+          <h3 class="project-title">AI4Teams</h3>
+          <p class="project-desc">An AI-powered hub designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem.</p>
+          <div class="tags"><span class="tag">Microsoft 365</span><span class="tag">Azure AI</span><span class="tag">Power Platform</span></div>
+        </article>
+        <article class="project-card reveal">
+          <div class="project-type">Product · Cloudia Research</div>
+          <h3 class="project-title">AI4Orchestration</h3>
+          <p class="project-desc">Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale.</p>
+          <div class="tags"><span class="tag">Azure</span><span class="tag">Power Automate</span><span class="tag">AI Orchestration</span></div>
+        </article>
       </div>
     </div>
   </section>
@@ -813,180 +272,74 @@
   <section id="experience">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-en="Experience" data-it="Esperienza">Experience</span>
-        <h2 class="section-title" data-en="Over a decade of<br>technical leadership." data-it="Oltre un decennio di<br>leadership tecnica.">Over a decade of<br>technical leadership.</h2>
+        <span class="section-label">Experience</span>
+        <h2 class="section-title">Eighteen years of real software,<br>before the agents.</h2>
       </div>
-
       <div class="timeline">
-        <!-- <div class="timeline-item reveal"> -->
-          <!-- <div class="timeline-left"> -->
-            <!-- <div class="timeline-date">2026 &mdash; Present</div> -->
-          <!-- </div> -->
-          <!-- <div class="timeline-right"> -->
-            <!-- <div class="timeline-role" data-en="Builder &amp; Architect" data-it="Builder &amp; Architect">Builder &amp; Architect</div> -->
-            <!-- <div class="timeline-company">ToroPulse.app</div> -->
-            <!-- <div class="timeline-desc" data-en="Architecting and bootstrapping a SaaS platform for retail traders. Implementing AI-driven agentic workflows, API integrations with financial markets, and automated lead generation funnels." data-it="Sviluppo e lancio di una piattaforma SaaS per trader retail. Implementazione di flussi di lavoro guidati dall'AI (Agentic Workflows), integrazioni API con i mercati finanziari e funnel automatizzati di lead generation."> -->
-              <!-- Architecting and bootstrapping a SaaS platform for retail traders. Implementing AI-driven agentic workflows, API integrations with financial markets, and automated lead generation funnels. -->
-            <!-- </div> -->
-            <!-- <div class="timeline-tags"> -->
-              <!-- <span class="tag">AI Agents</span> -->
-              <!-- <span class="tag">SaaS Architecture</span> -->
-              <!-- <span class="tag">Trading APIs</span> -->
-              <!-- <span class="tag">Growth Hacking</span> -->
-            <!-- </div> -->
-          <!-- </div> -->
-        <!-- </div> -->
-
-        <div class="timeline-item reveal" style="transition-delay:0.05s">
+        <div class="timeline-item reveal">
           <div class="timeline-left">
-            <div class="timeline-date">2026 &mdash; Present</div>
+            <div class="timeline-date">2026 &rarr; today</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="CTO" data-it="CTO">CTO</div>
+            <div class="timeline-role">CTO</div>
             <div class="timeline-company">TIG Factory</div>
-            <div class="timeline-desc" data-en="Leading technology strategy and delivery for TIG Factory, a business unit of TIG (The Innovation Group) focused on custom digital solutions and enterprise software, across a stack spanning .NET Framework, .NET Core, and Azure." data-it="Guido la strategia tecnologica e la delivery di TIG Factory, business unit di TIG (The Innovation Group) dedicata a soluzioni digitali custom e software enterprise, su uno stack che spazia da .NET Framework a .NET Core e Azure.">
-              Leading technology strategy and delivery for TIG Factory, a business unit of TIG (The Innovation Group) focused on custom digital solutions and enterprise software, across a stack spanning .NET Framework, .NET Core, and Azure.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">Technology Strategy</span>
-              <span class="tag">.NET</span>
-              <span class="tag">Azure</span>
-              <span class="tag">Enterprise Delivery</span>
-            </div>
+            <div class="timeline-desc">I lead technology strategy and delivery at TIG Factory, the business unit of TIG (The Innovation Group) focused on custom digital solutions and enterprise software. I bring AI agents into how the team designs, writes and verifies software.</div>
+            <div class="tags"><span class="tag">Technology Strategy</span><span class="tag">AI in Engineering</span><span class="tag">.NET</span><span class="tag">Azure</span></div>
           </div>
         </div>
-
-        <div class="timeline-item reveal" style="transition-delay:0.1s">
+        <div class="timeline-item reveal">
           <div class="timeline-left">
-            <div class="timeline-date">2021 &mdash; 2026</div>
+            <div class="timeline-date">2024 &rarr; 2026</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="Innovation Director · Technical Manager" data-it="Innovation Director · Technical Manager">Innovation Director &middot; Technical Manager</div>
+            <div class="timeline-role">Innovation Director</div>
             <div class="timeline-company">Cloudia Research</div>
-            <div class="timeline-desc" data-en="Direct the Microsoft Hub (18+ consultants), overseeing project execution across Azure, Custom Dev, and Power Platform. Spearhead product R&amp;D for internal SaaS solutions and act as Solution Architect for enterprise clients." data-it="Direzione del Microsoft Hub (18+ consulenti) e supervisione dell'esecuzione progetti su Azure, Custom Dev e Power Platform. Guida dell'R&amp;D per prodotti SaaS interni e ruolo di Solution Architect per clienti enterprise.">
-              Direct the Microsoft Hub (18+ consultants), overseeing project execution across Azure, Custom Dev, and Power Platform. Spearhead product R&amp;D for internal SaaS solutions and act as Solution Architect for enterprise clients.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">Team Leadership</span>
-              <span class="tag">Solution Architecture</span>
-              <span class="tag">Product R&amp;D</span>
-              <span class="tag">Pre-sales</span>
-            </div>
+            <div class="timeline-desc">Directed the Microsoft Hub (18+ consultants), overseeing project execution across Azure, Custom Dev, and Power Platform. Led product R&amp;D for internal SaaS solutions and acted as Solution Architect for enterprise clients.</div>
+            <div class="tags"><span class="tag">Team Leadership</span><span class="tag">Solution Architecture</span><span class="tag">Product R&amp;D</span><span class="tag">Pre-sales</span></div>
           </div>
         </div>
-
-        <div class="timeline-item reveal" style="transition-delay:0.2s">
+        <div class="timeline-item reveal">
           <div class="timeline-left">
-            <div class="timeline-date">2017 &mdash; 2021</div>
+            <div class="timeline-date">2018 &rarr; 2024</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="Senior .NET / Cloud Developer · Software Architect" data-it="Senior .NET / Cloud Developer · Software Architect">Senior .NET / Cloud Developer &middot; Software Architect</div>
+            <div class="timeline-role">Solution Architect · Team Leader</div>
             <div class="timeline-company">Cloudia Research</div>
-            <div class="timeline-desc" data-en="Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership." data-it="Progettazione e implementazione di architetture cloud-first su .NET Core e Azure. Modernizzazione applicativa, automazione workflow e reportistica data-driven per clienti enterprise. Espansione progressiva verso solution architecture e leadership nella trasformazione digitale.">
-              Designed and implemented cloud-first architectures on .NET Core and Azure. Led application modernization, workflow automation, and data-driven reporting for enterprise clients. Progressively expanded scope into solution architecture and digital transformation leadership.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">.NET Core</span>
-              <span class="tag">Azure</span>
-              <span class="tag">Cloud Architecture</span>
-              <span class="tag">DevOps</span>
-            </div>
+            <div class="timeline-desc">Designed and implemented cloud-first architectures on .NET Core and Azure. Application modernization, workflow automation, and data-driven reporting for enterprise clients. From 2023, coordinated .NET development and the integrations between CRM, ERP and PLM systems.</div>
+            <div class="tags"><span class="tag">.NET Core</span><span class="tag">Azure</span><span class="tag">Cloud Architecture</span><span class="tag">DevOps</span></div>
           </div>
         </div>
-
-        <div class="timeline-item reveal" style="transition-delay:0.3s">
+        <div class="timeline-item reveal">
           <div class="timeline-left">
-            <div class="timeline-date">2013 &mdash; 2017</div>
+            <div class="timeline-date">2013 &rarr; 2017</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="Integration Specialist" data-it="Integration Specialist">Integration Specialist</div>
+            <div class="timeline-role">Integration Specialist</div>
             <div class="timeline-company">Nexive</div>
-            <div class="timeline-desc" data-en="Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO." data-it="Progettato QArc, middleware SOA custom per l'integrazione di Oracle, DB2 e Salesforce ERP. Partecipazione al progetto Nexibus — Enterprise Service Bus su TIBCO.">
-              Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to the Nexibus Enterprise Service Bus initiative built on TIBCO.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">SOA Middleware</span>
-              <span class="tag">TIBCO</span>
-              <span class="tag">System Integration</span>
-              <span class="tag">C#</span>
-            </div>
+            <div class="timeline-desc">Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to Nexibus, an Enterprise Service Bus built on TIBCO.</div>
+            <div class="tags"><span class="tag">SOA Middleware</span><span class="tag">TIBCO</span><span class="tag">System Integration</span><span class="tag">C#</span></div>
           </div>
         </div>
-
-        <div class="timeline-item reveal" style="transition-delay:0.4s">
+        <div class="timeline-item reveal">
           <div class="timeline-left">
-            <div class="timeline-date">2008 &mdash; 2011</div>
+            <div class="timeline-date">2011 &rarr; 2013</div>
           </div>
           <div class="timeline-right">
-            <div class="timeline-role" data-en="Senior .NET Developer · Oracle DWH Developer" data-it="Senior .NET Developer · Oracle DWH Developer">Senior .NET Developer &middot; Oracle DWH Developer</div>
+            <div class="timeline-role">.NET Consultant · Senior Developer</div>
+            <div class="timeline-company">WICE Group</div>
+            <div class="timeline-desc">Consulting at PwC (data access layer over SAP, Active Directory and FIM, onboarding portal on SharePoint), Medtronic Italia (internal applications, multilayer architecture, training the IT team), Reply for Eurizon (services for real-time operations on insurance policies) and Magneti Marelli (power-of-attorney portal on SharePoint).</div>
+            <div class="tags"><span class="tag">PwC</span><span class="tag">Medtronic Italia</span><span class="tag">Reply · Eurizon</span><span class="tag">Magneti Marelli</span></div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-left">
+            <div class="timeline-date">2008 &rarr; 2011</div>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-role">Senior .NET Developer · Oracle DWH Developer</div>
             <div class="timeline-company">Monte dei Paschi di Siena</div>
-            <div class="timeline-desc" data-en="Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions." data-it="Responsabile di pipeline ETL e gestione metadati per il data warehouse finanziario su Oracle Warehouse Builder. Reportistica web e servizi bancari nelle divisioni Anagrafe e Finanza.">
-              Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions.
-            </div>
-            <div class="timeline-tags">
-              <span class="tag">Oracle OWB</span>
-              <span class="tag">ETL / PL-SQL</span>
-              <span class="tag">Reporting Services</span>
-              <span class="tag">C# / ASP.NET</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label" data-en="Other Projects" data-it="Altri Progetti">Other Projects</span>
-        <h2 class="section-title" data-en="Building what<br>doesn't exist yet." data-it="Costruire ciò che<br>non esiste ancora.">Building what<br>doesn't exist yet.</h2>
-      </div>
-
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="project-type" data-en="Product · Cloudia Research" data-it="Prodotto · Cloudia Research">Product · Cloudia Research</div>
-          <h3 class="project-title">AI4Teams</h3>
-          <p class="project-desc" data-en="An AI-powered hub designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem." data-it="Un hub basato su AI progettato per migliorare la collaborazione, l'allineamento e la produttività dei team nell'ecosistema Microsoft 365.">
-            An AI-powered hub designed to enhance team collaboration, alignment, and productivity within the Microsoft 365 ecosystem.
-          </p>
-          <div class="project-stack">
-            <span class="tag">Microsoft 365</span>
-            <span class="tag">Azure AI</span>
-            <span class="tag">Power Platform</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.2s">
-          <div class="project-type" data-en="Product · Cloudia Research" data-it="Prodotto · Cloudia Research">Product · Cloudia Research</div>
-          <h3 class="project-title">AI4Orchestration</h3>
-          <p class="project-desc" data-en="Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale." data-it="Piattaforma di orchestrazione intelligente su stack Microsoft per automazione workflow enterprise e gestione AI-driven dei processi su larga scala.">
-            Intelligent orchestration platform on the Microsoft stack, enabling enterprise-grade workflow automation and AI-driven process management at scale.
-          </p>
-          <div class="project-stack">
-            <span class="tag">Azure</span>
-            <span class="tag">Power Automate</span>
-            <span class="tag">AI Orchestration</span>
-          </div>
-        </div>
-
-        <div class="project-card reveal" style="transition-delay:0.4s">
-          <div class="project-type" data-en="Open Source · Personal" data-it="Open Source · Personale">Open Source · Personal</div>
-          <h3 class="project-title">AI Meeting Assistant</h3>
-          <p class="project-desc" data-en="Fully local AI pipeline for transcribing meetings, identifying speakers, and generating executive summaries. Works with any platform — Teams, Zoom, Webex. No cloud, no subscriptions, no data leaving your machine." data-it="Pipeline AI completamente locale per trascrivere riunioni, identificare gli speaker e generare report esecutivi. Funziona su qualsiasi piattaforma: Teams, Zoom, Webex. Nessun cloud, nessun abbonamento, i dati non escono dalla macchina.">
-            Fully local AI pipeline for transcribing meetings, identifying speakers, and generating executive summaries. Works with any platform — Teams, Zoom, Webex. No cloud, no subscriptions, no data leaving your machine.
-          </p>
-          <div class="project-stack">
-            <span class="tag">Python</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Docker</span>
-            <span class="tag">Whisper</span>
-            <span class="tag">Ollama</span>
-          </div>
-          <div style="margin-top: 1.25rem;">
-            <a href="https://github.com/holtibitri-arch/AI-Meeting-Assistant" target="_blank" rel="noopener noreferrer" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); text-decoration: none; letter-spacing: 0.05em;" data-en="View on GitHub &rarr;" data-it="Vedi su GitHub &rarr;">View on GitHub &rarr;</a>
+            <div class="timeline-desc">Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions.</div>
+            <div class="tags"><span class="tag">Oracle OWB</span><span class="tag">ETL / PL-SQL</span><span class="tag">Reporting Services</span><span class="tag">C# / ASP.NET</span></div>
           </div>
         </div>
       </div>
@@ -996,142 +349,99 @@
   <section id="writing">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-en="Writing" data-it="Articoli">Writing</span>
-        <h2 class="section-title" data-en="Thoughts on<br>tech & architecture." data-it="Riflessioni su<br>tech & architettura.">Thoughts on<br>tech & architecture.</h2>
+        <span class="section-label">Writing</span>
+        <h2 class="section-title">Guides and notes<br>from the work.</h2>
       </div>
-
-      <div class="writing-grid reveal" id="posts-grid">
-        <a href="/articles/peugeot-3008-firmware-update-error/" class="writing-item">
-          <div class="writing-number">01</div>
-          <h3 class="writing-title">One error, four causes: updating the Peugeot 3008 (2nd gen) firmware without losing your mind</h3>
-          <p class="writing-excerpt">The official tool shows one message for four different problems. The full USB procedure for the NAC Wave 4 firmware (Peugeot, Citroën, DS, Opel): UIN, UpdateID, license, CRL, folder structure. Hosted here, in full.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Aug 25, 2026</span><span style="opacity:0.5">&bull;</span><span>8 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
+      <span class="section-label sub-label">Guides, hosted here</span>
+      <div class="guides-grid">
+        <a href="/articles/peugeot-3008-firmware-update-error/" class="guide-card reveal">
+          <img src="/img/peugeot-3008-nac-firmware-before-after.jpg" alt="" class="guide-cover" loading="lazy">
+          <div class="guide-body">
+            <h3 class="guide-title">One error, four causes: updating the Peugeot 3008 (2nd gen) firmware without losing your mind</h3>
+            <p class="guide-excerpt">The official tool shows one message for four different problems. The full USB procedure for the NAC Wave 4 firmware (Peugeot, Citroën, DS, Opel): UIN, UpdateID, license, CRL, folder structure. Hosted here, in full.</p>
+            <div class="guide-footer">
+              <span class="guide-meta">Aug 25, 2026 &bull; 8 min</span>
+              <span class="guide-cta">Read &rarr;</span>
+            </div>
           </div>
         </a>
-        <a href="https://www.linkedin.com/pulse/un-errore-quattro-cause-aggiornare-il-firmware-della-peugeot-bitri-yzhue" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">02</div>
-          <h3 class="writing-title">Same article on LinkedIn (Italian): un errore, quattro cause, il firmware della Peugeot 3008</h3>
-          <p class="writing-excerpt">The LinkedIn edition of the Peugeot firmware guide, in Italian, with the comment thread. Building AI pipelines by day, reverse engineering an infotainment system by night.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Aug 25, 2026</span><span style="opacity:0.5">&bull;</span><span>8 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
+        <a href="/articles/llm-wiki-obsidian-second-brain-ai/" class="guide-card reveal">
+          <img src="/img/llm-wiki-obsidian-secondo-cervello.jpg" alt="" class="guide-cover" loading="lazy">
+          <div class="guide-body">
+            <h3 class="guide-title">An LLM wiki with Obsidian: building a second brain the AI reads before it answers</h3>
+            <p class="guide-excerpt">Every chat with a model starts from nothing: who you are, what you are building, what you already tried. One rule about structure, a written contract instead of a prompt, and a lint that stops the vault from rotting. With the technical backstage, hosted here.</p>
+            <div class="guide-footer">
+              <span class="guide-meta">Jun 24, 2026 &bull; 8 min</span>
+              <span class="guide-cta">Read &rarr;</span>
+            </div>
           </div>
         </a>
-        <a href="https://www.linkedin.com/pulse/ho-costruito-una-llm-wiki-o-second-brain-con-obsidian-holti-bitri-74the/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">03</div>
-          <h3 class="writing-title">I built an LLM Wiki (or Second Brain) with Obsidian. Here's how it really works.</h3>
-          <p class="writing-excerpt">Five episodes, one full story: a vault where every piece of information has one home, an AI librarian that follows a written contract instead of a prompt, and why context engineering beats prompt engineering. Includes the full technical breakdown.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Jun 24, 2026</span><span style="opacity:0.5">&bull;</span><span>6 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
+        <a href="/articles/transcribe-meetings-locally-without-cloud/" class="guide-card reveal">
+          <img src="/img/ai-meeting-assistant-locale.jpg" alt="" class="guide-cover" loading="lazy">
+          <div class="guide-body">
+            <h3 class="guide-title">Transcribe and analyse meetings locally, without sending the data to the cloud</h3>
+            <p class="guide-excerpt">Copilot needs three conditions at once, and real meetings rarely meet them. The condition that actually matters is the fourth one: may that data leave the company at all? Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here.</p>
+            <div class="guide-footer">
+              <span class="guide-meta">May 12, 2026 &bull; 9 min</span>
+              <span class="guide-cta">Read &rarr;</span>
+            </div>
           </div>
         </a>
-        <a href="https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">04</div>
-          <h3 class="writing-title">Microsoft 'lost' the OpenAI exclusivity. Why the market rewarded them anyway.</h3>
-          <p class="writing-excerpt">Headlines say Microsoft lost the exclusive deal with OpenAI. The financial reality tells a different story — Azure stays primary cloud through 2032, $250B in compute, and a stake worth $228B heading into the IPO.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>May 14, 2026</span><span style="opacity:0.5">&bull;</span><span>4 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
+      </div>
+      <span class="section-label sub-label">From LinkedIn</span>
+      <div class="posts-list reveal">
+        <a href="https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/" target="_blank" rel="noopener noreferrer" class="post-row">
+          <span class="post-date">May 14, 2026</span>
+          <span class="post-title">Microsoft 'lost' the OpenAI exclusivity. Why the market rewarded them anyway.</span>
+          <span class="post-arrow" aria-hidden="true">&rarr;</span>
         </a>
-        <a href="https://www.linkedin.com/pulse/ho-costruito-un-ai-meeting-assistant-locale-ecco-com%C3%A8-holti-bitri-btwge/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">05</div>
-          <h3 class="writing-title">I built a local AI Meeting Assistant. Here's how it really went.</h3>
-          <p class="writing-excerpt">Copilot didn't work for my meetings — not because it's bad, but because my meetings don't follow its rules. So I built something that works regardless of who you invite, what platform, what license.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>May 12, 2026</span><span style="opacity:0.5">&bull;</span><span>8 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/" target="_blank" rel="noopener noreferrer" class="post-row">
+          <span class="post-date">May 7, 2026</span>
+          <span class="post-title">Oracle closed a $16B data center deal. Now Wall Street is asking what my clients ask me.</span>
+          <span class="post-arrow" aria-hidden="true">&rarr;</span>
         </a>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">06</div>
-          <h3 class="writing-title">Oracle closed a $16B data center deal. Now Wall Street is asking what my clients ask me.</h3>
-          <p class="writing-excerpt">AI data centers could reach 12% of US electricity by 2028. When institutional investors step back, it doesn't mean AI doesn't work — it means the real bill is arriving. Energy, water, grid — not just GPUs.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>May 7, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/" target="_blank" rel="noopener noreferrer" class="post-row">
+          <span class="post-date">May 5, 2026</span>
+          <span class="post-title">I got a Claude Code certification. But I had already accumulated 4.6 million tokens before starting.</span>
+          <span class="post-arrow" aria-hidden="true">&rarr;</span>
         </a>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">07</div>
-          <h3 class="writing-title">I got a Claude Code certification. But I had already accumulated 4.6 million tokens before starting.</h3>
-          <p class="writing-excerpt">That's 7× The Lord of the Rings. In 30 days. Not experiments — real projects, real architectures. A powerful tool used without context produces fast code and slow problems.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>May 5, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7455515036086841344/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">08</div>
-          <h3 class="writing-title">Markets are betting hundreds of billions on AI. Last week a client needed an if statement.</h3>
-          <p class="writing-excerpt">Both things are true. Markets are pricing AI as infrastructure. But there's a massive gap between those who build the infrastructure and those who use it to solve real business problems. That gap is my job.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Apr 30, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7453430093902782464/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">09</div>
-          <h3 class="writing-title">Today at Microsoft Reactor in Rome. Building a Copilot Studio agent at a hackathon.</h3>
-          <p class="writing-excerpt">Hands on keyboard, real problem, limited time. We built an AI agent for tracking professional certifications — the kind of problem that runs on Excel and email today, and on an agent tomorrow.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Apr 24, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">10</div>
-          <h3 class="writing-title">A client asked for AI. After thirty minutes, I understood he needed an if statement.</h3>
-          <p class="writing-excerpt">The problem was fully defined. Fully predictable. Fully deterministic. No ambiguity. The right answer wasn't an LLM — it was a switch. Knowing when not to use AI is part of the job.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Apr 23, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
-        </a>
-        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7452265169868603392/" target="_blank" rel="noopener noreferrer" class="writing-item">
-          <div class="writing-number">11</div>
-          <h3 class="writing-title">In a pre-sales call, you can nod along. Or you can say: there are three ways to do this.</h3>
-          <p class="writing-excerpt">The second person always wins. Not because they're right — but because the client perceives one thing clearly: this person actually understood what I want. At that point, you're no longer the vendor being evaluated. You're the reference.</p>
-          <div class="writing-footer">
-            <div class="writing-meta"><span>Apr 23, 2026</span><span style="opacity:0.5">&bull;</span><span>2 min</span></div>
-            <span class="writing-cta">Read &rarr;</span>
-          </div>
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/" target="_blank" rel="noopener noreferrer" class="post-row">
+          <span class="post-date">Apr 23, 2026</span>
+          <span class="post-title">A client asked for AI. After thirty minutes, I understood he needed an if statement.</span>
+          <span class="post-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <section id="contact" style="background: #FFFFFF;">
+  <section id="contact">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label" data-en="Contact" data-it="Contatti">Contact</span>
-        <h2 class="section-title" data-en="Let's build<br>something together." data-it="Costruiamo<br>qualcosa insieme.">Let's build<br>something together.</h2>
+        <span class="section-label">Contact</span>
+        <h2 class="section-title">Let's build<br>something together.</h2>
       </div>
-
       <div class="contact-inner reveal">
-        <div class="contact-text">
-          <p data-en="Whether you're looking for architectural guidance, exploring AI implementation, or just want to discuss the future of the cloud ecosystem &mdash; my inbox is always open." data-it="Sia che tu stia cercando una guida architetturale, esplorando l'implementazione AI, o semplicemente voglia discutere del futuro dell'ecosistema cloud &mdash; la mia posta è sempre aperta.">
-            Whether you're looking for architectural guidance, exploring AI implementation, or just want to discuss the future of the cloud ecosystem &mdash; my inbox is always open.
-          </p>
-        </div>
+        <div class="contact-text"><p>If you want to bring AI agents into how your team builds software, or you have a project that needs to reach production, write to me. I answer personally.</p></div>
         <div class="contact-links">
           <a href="mailto:info@holtibitri.com" class="contact-link">
-            <div class="contact-link-icon">@</div>
+            <div class="contact-link-icon" aria-hidden="true">@</div>
             <div class="contact-link-info">
               <span class="contact-link-label">Email</span>
               <span class="contact-link-value">info@holtibitri.com</span>
             </div>
           </a>
           <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer" class="contact-link">
-            <div class="contact-link-icon">in</div>
+            <div class="contact-link-icon" aria-hidden="true">in</div>
             <div class="contact-link-info">
               <span class="contact-link-label">LinkedIn</span>
               <span class="contact-link-value">linkedin.com/in/holtibitri</span>
+            </div>
+          </a>
+          <a href="https://github.com/holtibitri-arch" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <div class="contact-link-icon" aria-hidden="true">&lt;/&gt;</div>
+            <div class="contact-link-info">
+              <span class="contact-link-label">GitHub</span>
+              <span class="contact-link-value">github.com/holtibitri-arch</span>
             </div>
           </a>
         </div>
@@ -1140,104 +450,48 @@
   </section>
 
   <footer>
-    <span data-en="Milan, Italy · CTO & AI Innovator" data-it="Milano, Italia · CTO & AI Innovator">
-      Milan, Italy &middot; CTO & AI Innovator
-    </span>
+    Milan, Italy · CTO &amp; AI Innovator &middot; <a href="/privacy/">Privacy</a>
   </footer>
 
   <script>
-    /* ---- LOAD POSTS ---- */
-    async function loadPosts(lang) {
-      const grid = document.getElementById('posts-grid');
-      // #posts-grid ha già un fallback statico EN nel markup (per SEO e no-JS):
-      // qui lo sovrascriviamo solo se il fetch va a buon fine, altrimenti lo lasciamo intatto.
-      if (window.location.protocol === 'file:') return;
-      try {
-        const res = await fetch('/posts.json');
-        if (!res.ok) throw new Error('Network response was not ok');
-        const data = await res.json();
+    (function () {
+      var navbar = document.getElementById('navbar');
+      var toggle = navbar.querySelector('.nav-toggle');
 
-        const posts = data[lang] || data['en'] || [];
+      window.addEventListener('scroll', function () {
+        navbar.classList.toggle('scrolled', window.scrollY > 20);
+      }, { passive: true });
 
-        if (posts.length === 0) return;
-
-        const readLabel = lang === 'it' ? 'Leggi' : 'Read';
-        grid.innerHTML = posts.map((post, i) => `
-          <a href="${post.url}"${post.url.startsWith('/') ? '' : ' target="_blank" rel="noopener noreferrer"'} class="writing-item">
-            <div class="writing-number">${String(i + 1).padStart(2, '0')}</div>
-            <h3 class="writing-title">${post.title}</h3>
-            <p class="writing-excerpt">${post.excerpt}</p>
-            <div class="writing-footer">
-              <div class="writing-meta">
-                <span>${post.date}</span>
-                <span style="opacity:0.5">&bull;</span>
-                <span>${post.readTime}</span>
-              </div>
-              <span class="writing-cta">${readLabel} &rarr;</span>
-            </div>
-          </a>
-        `).join('');
-
-      } catch (error) {
-        console.error('Error loading posts:', error);
-        // fallback statico già presente in #posts-grid, nessuna sovrascrittura
+      function closeMenu() {
+        navbar.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
       }
-    }
-
-    /* ---- LINGUA DI PAGINA ---- */
-    // Questa pagina e' il canonical EN (holtibitri.com/): mostra sempre inglese
-    // di default, nessun auto-detect da navigator.language. Auto-swap in base
-    // al browser creava un disallineamento tra bottone attivo, contenuto e URL
-    // quando si navigava da /it/ verso qui (o viceversa): ogni pagina ora resta
-    // deterministica sulla propria lingua canonica finche' non tocchi i bottoni.
-    const PAGE_LANG = 'en';
-    setLanguage(PAGE_LANG);
-    loadPosts(PAGE_LANG);
-
-    /* ---- LANGUAGE TOGGLE ---- */
-    function setLanguage(lang) {
-      document.querySelectorAll('[data-en]').forEach(el => {
-        const val = el.getAttribute('data-' + lang);
-        if (!val) return;
-        el.innerHTML = val;
+      toggle.addEventListener('click', function () {
+        var open = navbar.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      document.querySelectorAll('.lang-btn').forEach(b => {
-        b.classList.toggle('active', b.dataset.lang === lang);
+      navbar.querySelectorAll('.nav-links a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
       });
-      document.documentElement.lang = lang;
-    }
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        // La lingua "altra" ha una pagina propria (SEO): naviga li' invece di
-        // fare solo lo swap in-place, cosi' URL e contenuto restano coerenti.
-        if (lang !== PAGE_LANG) {
-          window.location.href = lang === 'it' ? 'https://holtibitri.com/it/' : 'https://holtibitri.com/';
-          return;
-        }
-        setLanguage(lang);
-        loadPosts(lang);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
       });
-    });
 
-    /* ---- SCROLL REVEAL ---- */
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-    /* ---- NAVBAR SCROLL ---- */
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 20);
-    });
+      var items = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        items.forEach(function (el) { el.classList.add('visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05 });
+      items.forEach(function (el) { io.observe(el); });
+    })();
   </script>
 
 </body>

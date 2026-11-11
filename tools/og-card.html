@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+  Sorgente delle immagini di anteprima (Open Graph), 1200x630: img/og-it.png e img/og-en.png.
+  Non e' una pagina del sito. Si rigenera con Chrome senza interfaccia, dalla radice del repo:
+
+    chrome --headless=new --hide-scrollbars --window-size=1200,630 --virtual-time-budget=6000 \
+      --screenshot=img/og-it.png "file:///<percorso>/tools/og-card.html?lang=it"
+
+  e lo stesso con lang=en. Il testo deve restare uguale al titolo della home
+  (tools/home_content.py, hero).
+-->
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>og card</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body {
+      background: #F9F7F3;
+      color: #111110;
+      padding: 72px 84px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 60%; height: 110%;
+      background: radial-gradient(ellipse at 70% 30%, rgba(0, 56, 255, 0.09) 0%, transparent 68%);
+    }
+    body::after {
+      content: 'HB';
+      position: absolute;
+      right: -14px; bottom: -92px;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 460px;
+      font-weight: 300;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.06);
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 21px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow { color: #0038FF; }
+    .site { color: #7A7A73; }
+    h1 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 300;
+      font-size: 92px;
+      line-height: 1.05;
+      letter-spacing: -0.028em;
+      position: relative;
+      z-index: 1;
+    }
+    h1 em { font-style: italic; color: #0038FF; }
+  </style>
+</head>
+<body>
+  <div class="mono eyebrow" id="eyebrow"></div>
+  <h1 id="claim"></h1>
+  <div class="mono site">holtibitri.com</div>
+  <script>
+    var TEXT = {
+      it: { eyebrow: 'Holti Bitri · CTO · Milano', lines: ['Agenti AI e persone,', 'una squadra sola.'], accent: 'La progetto io.' },
+      en: { eyebrow: 'Holti Bitri · CTO · Milan', lines: ['AI agents and people,', 'one team.'], accent: 'I design it.' }
+    };
+    var lang = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'it';
+    var t = TEXT[lang];
+    document.documentElement.lang = lang;
+    document.getElementById('eyebrow').textContent = t.eyebrow;
+    document.getElementById('claim').innerHTML = t.lines.join('<br>') + '<br><em>' + t.accent + '</em>';
+  </script>
+</body>
+</html>

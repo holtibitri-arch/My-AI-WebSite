@@ -113,9 +113,56 @@ footer {
   padding: 2rem 0;
 }
 
+/* Bottone del menu: compare solo su schermi stretti, e solo nelle pagine
+   che lo hanno nel markup (oggi la home). Le altre restano come prima. */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 2.4rem;
+  height: 2rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text);
+  transition: transform 0.2s, opacity 0.2s;
+}
+nav.open .nav-toggle span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+nav.open .nav-toggle span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
 /* ============================================
    RESPONSIVE (nav)
 ============================================ */
 @media (max-width: 768px) {
   .nav-links { display: none; }
+  .nav-right { gap: 0.75rem; }
+  .nav-toggle { display: inline-flex; }
+
+  nav.open .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    padding: 0.25rem var(--pad) 1rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+  }
+  nav.open .nav-links li + li { border-top: 1px solid var(--border); }
+  nav.open .nav-links a {
+    display: block;
+    padding: 0.9rem 0;
+    font-size: 1rem;
+    color: var(--text);
+  }
 }
