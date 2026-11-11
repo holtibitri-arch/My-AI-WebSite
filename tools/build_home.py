@@ -605,7 +605,9 @@ def main():
         new = render(lang, posts)
         old = ""
         if os.path.exists(target):
-            with open(target, encoding="utf-8", newline="") as fh:
+            # lettura con a-capo universali: se git consegna il file in CRLF
+            # (core.autocrlf) il confronto non lo scambia per una modifica
+            with open(target, encoding="utf-8") as fh:
                 old = fh.read()
         if new == old:
             print(f"{PAGES[lang]['file']}: invariata")
