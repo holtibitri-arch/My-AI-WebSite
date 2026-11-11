@@ -631,6 +631,16 @@ def render(lang, posts):
         + SCRIPT
     )
     no_em_dash(page, f"pagina {lang}")
+    # Misure che i motori controllano: fuori da questi limiti Bing segnala un errore
+    # e il testo viene tagliato nei risultati.
+    title, description = c["meta"]["title"], c["meta"]["description"]
+    if len(title) > 60:
+        sys.exit(f"title della pagina {lang} troppo lungo: {len(title)} caratteri, massimo 60")
+    if not 70 <= len(description) <= 160:
+        sys.exit(
+            f"description della pagina {lang} di {len(description)} caratteri: "
+            "deve stare fra 70 e 160"
+        )
     return page
 
 

@@ -51,13 +51,14 @@ CONTENT = {
             "Holti Bitri | CTO: agenti AI e persone, una squadra sola",
             "Holti Bitri | CTO: AI agents and people, one team",
         ),
+        # Fra 70 e 160 caratteri, altrimenti la build si ferma: Bing Webmaster Tools
+        # segnala come errore una description piu' lunga, e i motori la tagliano.
+        # L'11/11/2026 la prima versione era di 197 caratteri ed e' stata segnalata.
         "description": T(
-            "CTO di TIG Factory. Progetto flussi in cui agenti AI e persone costruiscono "
-            "software insieme. Le prove: ToroPulse, SaaS fintech per trader eToro, e "
-            "AI FinCast, podcast finanziario generato dall'AI.",
-            "CTO at TIG Factory. I design workflows where AI agents and people build "
-            "software together. The proof: ToroPulse, a fintech SaaS for eToro traders, "
-            "and AI FinCast, an AI-generated financial podcast.",
+            "Holti Bitri, CTO di TIG Factory. Progetto flussi in cui agenti AI e persone "
+            "costruiscono software insieme. In produzione: ToroPulse e AI FinCast.",
+            "Holti Bitri, CTO at TIG Factory. I design workflows where AI agents and people "
+            "build software together. In production: ToroPulse and AI FinCast.",
         ),
         "og_title": T(
             "Agenti AI e persone, una squadra sola. La progetto io.",
