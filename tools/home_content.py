@@ -71,6 +71,43 @@ CONTENT = {
             "build software together: written rules, a check at every step, human decisions.",
         ),
         "job_title": "CTO & AI Innovator",
+        # Data dell'ultima modifica vera ai testi. Si cambia a mano: finisce nei dati
+        # strutturati, in og:updated_time e, tramite build_sitemap.py, nel lastmod
+        # della sitemap. E' il segnale con cui i motori capiscono di dover ripassare.
+        "updated": "2026-11-11",
+        # Temi su cui i motori e i sistemi AI possono associare la persona.
+        "knows_about": T(
+            [
+                "Agenti AI nello sviluppo software",
+                "Flussi di lavoro agentici",
+                "Sviluppo software con agenti AI e persone",
+                "Claude Code",
+                "Architettura software",
+                "Microsoft Azure",
+                ".NET",
+                "Integrazione di sistemi",
+                "Direzione tecnica",
+            ],
+            [
+                "AI agents in software engineering",
+                "Agentic workflows",
+                "Software delivery with AI agents and people",
+                "Claude Code",
+                "Software architecture",
+                "Microsoft Azure",
+                ".NET",
+                "Systems integration",
+                "Technical leadership",
+            ],
+        ),
+        # Apertura di llms.txt: in terza persona, perche' e' la frase che un sistema
+        # AI puo' citare cosi' com'e' per dire chi e' Holti.
+        "llms_summary": (
+            "Holti Bitri is CTO at TIG Factory in Milan, Italy. He designs and leads "
+            "workflows where AI agents and people build software together: agents get "
+            "written rules and a check at every step, people keep the architecture and "
+            "the decisions. Eighteen years of enterprise software, from .NET developer to CTO."
+        ),
     },
     # ------------------------------------------------------------------- nav
     "nav": [

@@ -8,9 +8,15 @@ nuovo, inserendo un blocco <url> con una sostituzione di stringa. Funziona finch
 sbagli, e sbagliare vuol dire una pagina che Google non vede mai.
 
 Principio di progetto: **aggiunge e aggiorna, non rimescola.** I blocchi delle URL
-gia' presenti restano dove sono e come sono, salvo che gli hreflang della pagina siano
-cambiati davvero. Le pagine nuove si appendono in fondo. Cosi' il diff mostra solo
+gia' presenti restano dove sono e come sono, salvo due casi: gli hreflang della pagina
+sono cambiati davvero, oppure la pagina dichiara una data di aggiornamento diversa da
+quella in sitemap. Le pagine nuove si appendono in fondo. Cosi' il diff mostra solo
 quello che e' successo, e una sitemap senza modifiche produce zero righe di diff.
+
+La data dichiarata e' <meta property="og:updated_time">, che oggi mette solo la home
+(la scrive tools/build_home.py da meta.updated). Fino all'11/11/2026 le due home in
+sitemap non avevano lastmod: un motore non aveva modo di sapere che erano cambiate.
+Gli articoli non la dichiarano, e i loro blocchi restano fermi come prima.
 
 L'appaiamento fra lingue non e' inventato qui: viene dai tag <link rel="alternate">
 che stanno gia' nelle pagine. Se una pagina ha hreflang sbagliati, la sitemap lo
@@ -71,10 +77,14 @@ def scansiona():
         alts = re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"', testa)
         mod = re.search(r'<meta property="article:modified_time" content="(\d{4}-\d{2}-\d{2})', testa)
         pub = re.search(r'<meta property="article:published_time" content="(\d{4}-\d{2}-\d{2})', testa)
+        agg = re.search(r'<meta property="og:updated_time" content="(\d{4}-\d{2}-\d{2})', testa)
+        scritta = agg or mod or pub
         trovate[BASE + path_url] = {
             "path": path_url, "file": p, "alts": alts,
             "canonical": canon.group(1) if canon else None,
-            "lastmod": (mod or pub).group(1) if (mod or pub) else data_git(p),
+            "lastmod": scritta.group(1) if scritta else data_git(p),
+            # la sola data che fa aggiornare un blocco gia' presente
+            "dichiarata": agg.group(1) if agg else None,
         }
     return trovate
 
@@ -135,11 +145,17 @@ def main():
     corpo = []
     for b in esistenti:
         p = pagine.get(b["loc"])
-        if p and p["alts"] and not stesso_appaiamento(alts_del_blocco(b["testo"]), p["alts"]):
+        lm = re.search(r"<lastmod>([^<]+)", b["testo"])
+        attuale = lm.group(1) if lm else None
+        alts_blocco = alts_del_blocco(b["testo"])
+        alts_cambiati = bool(p and p["alts"] and not stesso_appaiamento(alts_blocco, p["alts"]))
+        data_cambiata = bool(p and p["dichiarata"] and p["dichiarata"] != attuale)
+        if alts_cambiati or data_cambiata:
             cf = re.search(r"<changefreq>([^<]+)", b["testo"]).group(1)
             pr = re.search(r"<priority>([^<]+)", b["testo"]).group(1)
-            lm = re.search(r"<lastmod>([^<]+)", b["testo"])
-            corpo.append(blocco(b["loc"], p["alts"], p["lastmod"] or (lm.group(1) if lm else None), cf, pr))
+            alts = p["alts"] if alts_cambiati else alts_blocco
+            data = p["dichiarata"] if data_cambiata else (p["lastmod"] or attuale)
+            corpo.append(blocco(b["loc"], alts, data, cf, pr))
             cambiati.append(b["loc"])
         else:
             corpo.append(b["testo"])

@@ -1,0 +1,74 @@
+# Holti Bitri
+
+> Holti Bitri is CTO at TIG Factory in Milan, Italy. He designs and leads workflows where AI agents and people build software together: agents get written rules and a check at every step, people keep the architecture and the decisions. Eighteen years of enterprise software, from .NET developer to CTO.
+
+I have been writing software since 2008: .NET and Oracle developer at Monte dei Paschi di Siena, then systems integration, architecture, and leading an innovation unit. Today I am CTO at TIG Factory.
+
+My job has changed shape. Most of the code is now written by AI agents. I decide the architecture, write the rules they work by, set the checks, and answer for what goes to production.
+
+This is not an experiment. It is how I build a trading platform, a podcast that ships every morning without me, and the tools my colleagues at TIG use every day.
+
+Before that I worked inside PwC, Medtronic Italia, Reply (for Eurizon) and Magneti Marelli, spent four years at Nexive and eight at Cloudia Research, from architect to Innovation Director. That is where I learned what software needs to hold up in a company, and it is what I now ask of the agents.
+
+Microsoft certified since 2011 (MCSD, MCTS), Anthropic certified since 2026 (Claude Code, Claude Cowork).
+
+How I work, five rules:
+
+- **First, decide whether AI is needed.** A client asked me for AI. Thirty minutes in, it was clear he needed an if statement. Being able to say so is part of the job.
+- **Agents get a contract, not a prompt.** Role, rules, sources, what it must never do. Written down, versioned, corrected after every mistake. At TIG Factory the company knowledge base is kept by an agent with one rule at the top: never make anything up.
+- **Sensitive data never reaches the model.** At TIG, a check on the production database used to take half an hour by hand. Now it takes seconds: personal data is masked on the PC and the model only gets the summary.
+- **Every step has a check.** An agent that writes without verification produces fast code and slow problems. Tests, review and acceptance live inside the workflow, not after it.
+- **Decisions stay with people.** Agents propose, write and verify. What to build, on which architecture and when it ships is decided by whoever answers for it.
+
+AI tooling at TIG Factory (CTO · since 2026). The same principles inside a real company, with colleagues and sensitive data.
+
+- **Company second brain.** Company knowledge kept by an agent. Every fact has a source, and an automatic check blocks notes that break the standard.
+- **Project knowledge for every colleague.** Everyone queries it from their own Claude: read-only, personal access, nothing exposed to the Internet.
+- **Database checks in seconds.** From half an hour by hand to a few seconds, with personal data masked before it reaches the model.
+
+Experience:
+
+- 2026 to today: CTO, TIG Factory. I lead technology strategy and delivery at TIG Factory, the business unit of TIG (The Innovation Group) focused on custom digital solutions and enterprise software. I bring AI agents into how the team designs, writes and verifies software.
+- 2024 to 2026: Innovation Director, Cloudia Research. Directed the Microsoft Hub (18+ consultants), overseeing project execution across Azure, Custom Dev, and Power Platform. Led product R&D for internal SaaS solutions and acted as Solution Architect for enterprise clients.
+- 2018 to 2024: Solution Architect · Team Leader, Cloudia Research. Designed and implemented cloud-first architectures on .NET Core and Azure. Application modernization, workflow automation, and data-driven reporting for enterprise clients. From 2023, coordinated .NET development and the integrations between CRM, ERP and PLM systems.
+- 2013 to 2017: Integration Specialist, Nexive. Architected QArc, a custom SOA middleware layer integrating Oracle, DB2, and Salesforce ERP across enterprise environments. Contributed to Nexibus, an Enterprise Service Bus built on TIBCO.
+- 2011 to 2013: .NET Consultant · Senior Developer, WICE Group. Consulting at PwC (data access layer over SAP, Active Directory and FIM, onboarding portal on SharePoint), Medtronic Italia (internal applications, multilayer architecture, training the IT team), Reply for Eurizon (services for real-time operations on insurance policies) and Magneti Marelli (power-of-attorney portal on SharePoint).
+- 2008 to 2011: Senior .NET Developer · Oracle DWH Developer, Monte dei Paschi di Siena. Owned ETL pipelines and metadata management for the financial data warehouse using Oracle Warehouse Builder. Delivered web reporting and banking services across Anagrafe and Finance divisions.
+
+Worked with: PwC, Medtronic Italia, Reply / Eurizon, Magneti Marelli, Monte dei Paschi di Siena, Nexive.
+
+## Pages
+
+- [Home, English](https://holtibitri.com/): who Holti Bitri is, how he works, projects, experience
+- [Home, Italian](https://holtibitri.com/it/): the same page in Italian
+
+## Guides
+
+- [One error, four causes: updating the Peugeot 3008 (2nd gen) firmware without losing your mind](https://holtibitri.com/articles/peugeot-3008-firmware-update-error/): The official tool shows one message for four different problems. The full USB procedure for the NAC Wave 4 firmware (Peugeot, Citroën, DS, Opel): UIN, UpdateID, license, CRL, folder structure. Hosted here, in full.
+- [An LLM wiki with Obsidian: building a second brain the AI reads before it answers](https://holtibitri.com/articles/llm-wiki-obsidian-second-brain-ai/): Every chat with a model starts from nothing: who you are, what you are building, what you already tried. One rule about structure, a written contract instead of a prompt, and a lint that stops the vault from rotting. With the technical backstage, hosted here.
+- [Transcribe and analyse meetings locally, without sending the data to the cloud](https://holtibitri.com/articles/transcribe-meetings-locally-without-cloud/): Copilot needs three conditions at once, and real meetings rarely meet them. The condition that actually matters is the fourth one: may that data leave the company at all? Two containers, Whisper and Pyannote on CPU, a local LLM. Full architecture, hosted here.
+
+## Guides in Italian
+
+- [Un errore, quattro cause: aggiornare il firmware della Peugeot 3008 (seconda serie) senza impazzire](https://holtibitri.com/it/articoli/peugeot-3008-aggiornamento-firmware-errore/): Il tool ufficiale mostra un solo messaggio per quattro problemi diversi. La procedura completa via USB per il firmware NAC Wave 4 (Peugeot, Citroën, DS, Opel): UIN, UpdateID, licenza, CRL, struttura della chiavetta. Qui sul sito, integrale.
+- [LLM wiki con Obsidian: costruire un secondo cervello che l'AI legge prima di rispondere](https://holtibitri.com/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/): Ogni chat con un modello riparte da zero: chi sei, cosa stai costruendo, cosa hai già provato. Una regola sola sulla struttura, un contratto scritto al posto di un prompt, e un lint che impedisce alla vault di marcire. Col dietro le quinte tecnico, ospitato qui.
+- [Trascrivere e analizzare le riunioni in locale, senza mandare i dati nel cloud](https://holtibitri.com/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/): Copilot chiede tre condizioni insieme e le riunioni vere non le rispettano quasi mai. Ma la condizione che conta davvero è la quarta: quei dati possono uscire dall'azienda? Due container, Whisper e Pyannote su CPU, un LLM locale. Architettura completa, ospitata qui.
+
+## Projects
+
+- [ToroPulse](https://toropulse.app): Your eToro account, supercharged. ToroPulse is an independent research project bringing smart compound alerts (RSI, EMA, Volume), deep copier analytics, and social automation to retail traders and Popular Investors. Built largely with AI agents: I act as architect and orchestrator.
+- [AI FinCast](https://fincast.holtibitri.com/): AI-generated daily financial podcast in Italian. An autonomous Python pipeline reads the financial sources overnight, selects the news that matters, writes an adaptive 5-7 section script, edits it, synthesizes the voice and publishes before European markets open on Spotify, Apple Podcasts and YouTube. 100+ episodes, Monday to Friday, plus the Saturday weekly recap.
+- [AI Meeting Assistant](https://github.com/holtibitri-arch/AI-Meeting-Assistant): Fully local AI pipeline for transcribing meetings, identifying speakers, and generating executive summaries. Works with any platform: Teams, Zoom, Webex. No cloud, no subscriptions, no data leaving your machine.
+
+## Profiles
+
+- [LinkedIn](https://linkedin.com/in/holtibitri)
+- [GitHub](https://github.com/holtibitri-arch)
+- Email: info@holtibitri.com
+
+## Optional
+
+- [Microsoft 'lost' the OpenAI exclusivity. Why the market rewarded them anyway.](https://www.linkedin.com/pulse/microsoft-ha-perso-lesclusiva-su-openai-perch%25C3%25A9-il-mercato-holti-bitri-owlaf/): LinkedIn, May 14, 2026
+- [Oracle closed a $16B data center deal. Now Wall Street is asking what my clients ask me.](https://www.linkedin.com/feed/update/urn:li:activity:7458063086437015553/): LinkedIn, May 7, 2026
+- [I got a Claude Code certification. But I had already accumulated 4.6 million tokens before starting.](https://www.linkedin.com/feed/update/urn:li:activity:7457338421670375426/): LinkedIn, May 5, 2026
+- [A client asked for AI. After thirty minutes, I understood he needed an if statement.](https://www.linkedin.com/feed/update/urn:li:activity:7452989725663084544/): LinkedIn, Apr 23, 2026

@@ -22,14 +22,18 @@ sono link fra le due pagine, senza rilevamento della lingua del browser.
 La build si ferma se nell'HTML finisce un em dash, se le due lingue di posts.json
 non hanno la stessa forma, o se una guida ospitata non ha la copertina.
 
+Dalla stessa fonte esce anche llms.txt, l'indice del sito per gli agenti AI
+(formato llmstxt.org): chi e' Holti, come lavora, dove stanno le guide.
+
 Uso:
     python tools/build_home.py            # dice cosa cambierebbe, non scrive
-    python tools/build_home.py --write    # scrive index.html e it/index.html
+    python tools/build_home.py --write    # scrive index.html, it/index.html e llms.txt
 """
 import html
 import json
 import os
 import sys
+from datetime import date
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from home_content import CONTENT, LINKS  # noqa: E402
@@ -116,24 +120,58 @@ def render_head(c, lang):
     m = c["meta"]
     url = BASE + page["url"]
     og_image = BASE + page["og_image"]
-    person = {
+    # Dati strutturati: il sito, la pagina profilo e la persona. L'@id della persona
+    # e' lo stesso che le pagine articolo citano come autore, cosi' i motori (e i
+    # sistemi AI che leggono i dati strutturati) collegano tutto a una sola entita'.
+    person_id = BASE + "/#person"
+    website_id = BASE + "/#website"
+    graph = {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Holti Bitri",
-        "jobTitle": m["job_title"],
-        "description": m["og_description"],
-        "url": url,
-        "image": BASE + "/avatar.jpg",
-        "email": "mailto:" + LINKS["email"],
-        "worksFor": {"@type": "Organization", "name": "TIG Factory"},
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Milan",
-            "addressCountry": "IT",
-        },
-        "sameAs": [LINKS["linkedin"], LINKS["github"]],
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": website_id,
+                "url": BASE + "/",
+                "name": "Holti Bitri",
+                "inLanguage": ["en", "it"],
+                "publisher": {"@id": person_id},
+            },
+            {
+                "@type": "ProfilePage",
+                "@id": url + "#profile",
+                "url": url,
+                "name": m["title"],
+                "description": m["description"],
+                "inLanguage": lang,
+                "isPartOf": {"@id": website_id},
+                "mainEntity": {"@id": person_id},
+                "dateModified": m["updated"],
+                "primaryImageOfPage": og_image,
+            },
+            {
+                "@type": "Person",
+                "@id": person_id,
+                "name": "Holti Bitri",
+                "givenName": "Holti",
+                "familyName": "Bitri",
+                "jobTitle": m["job_title"],
+                "description": m["og_description"],
+                "url": BASE + "/",
+                "image": BASE + "/avatar.jpg",
+                "email": "mailto:" + LINKS["email"],
+                "worksFor": {"@type": "Organization", "name": "TIG Factory"},
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Milan",
+                    "addressCountry": "IT",
+                },
+                "knowsAbout": m["knows_about"],
+                "knowsLanguage": ["it", "en"],
+                "sameAs": [LINKS["linkedin"], LINKS["github"]],
+            },
+        ],
     }
-    ld = json.dumps(person, ensure_ascii=False, indent=2).replace("\n", "\n  ")
+    ld = json.dumps(graph, ensure_ascii=False, indent=2).replace("\n", "\n  ")
     return f"""<!DOCTYPE html>
 <html lang="{lang}">
 <head>
@@ -143,6 +181,7 @@ def render_head(c, lang):
        gli articoli in posts.json. Non modificare questo file a mano. -->
   <title>{esc(m["title"])}</title>
   <meta name="description" content="{attr(m["description"])}">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="{url}">
   <link rel="alternate" hreflang="en" href="{BASE}/">
   <link rel="alternate" hreflang="it" href="{BASE}/it/">
@@ -157,6 +196,7 @@ def render_head(c, lang):
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="{page["locale"]}">
   <meta property="og:locale:alternate" content="{PAGES[other]["locale"]}">
+  <meta property="og:updated_time" content="{m["updated"]}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{attr(m["og_title"])}">
@@ -491,7 +531,8 @@ def render_contact(c):
     k = c["contact"]
 
     def link(href, mark, label, value, external=True):
-        ext = EXT if external else ""
+        # rel="me": questi profili sono la stessa persona del sito
+        ext = EXT.replace('rel="', 'rel="me ') if external else ""
         return (
             f'          <a href="{attr(href)}"{ext} class="contact-link">\n'
             f'            <div class="contact-link-icon" aria-hidden="true">{esc(mark)}</div>\n'
@@ -589,20 +630,107 @@ def render(lang, posts):
         + render_footer(c, lang)
         + SCRIPT
     )
-    for banned in ("—", "&mdash;"):
-        if banned in page:
-            where = page[max(0, page.index(banned) - 60): page.index(banned) + 20]
-            sys.exit(f"em dash nella pagina {lang}: ...{where}...")
+    no_em_dash(page, f"pagina {lang}")
     return page
+
+
+def no_em_dash(text, label):
+    for banned in (chr(0x2014), "&mdash;"):
+        if banned in text:
+            where = text[max(0, text.index(banned) - 60): text.index(banned) + 20]
+            sys.exit(f"em dash in {label}: ...{where}...")
+
+
+# --------------------------------------------------------------- llms.txt
+def render_llms(posts):
+    """Indice del sito per gli agenti AI, nel formato di llmstxt.org.
+
+    Stesso contenuto della home inglese, in Markdown e in terza persona dove serve:
+    un agente che arriva qui non deve interpretare HTML per sapere chi e' Holti,
+    come lavora e dove stanno le guide. Prima degli H2 il testo libero, dentro
+    gli H2 solo elenchi di link, come chiede il formato.
+    """
+    c = pick(CONTENT, "en")
+    m, a, p, x = c["meta"], c["about"], c["projects"], c["experience"]
+    out = ["# Holti Bitri", "", "> " + m["llms_summary"], ""]
+
+    out += [para + "\n" for para in a["paragraphs"]]
+
+    out += ["How I work, five rules:", ""]
+    out += [f"- **{rule['title']}.** {rule['text']}" for rule in c["method"]["rules"]]
+
+    tig = p["tig"]
+    out += ["", f"{tig['title']} ({tig['role']}). {tig['text']}", ""]
+    out += [f"- **{item['title']}.** {item['text']}" for item in tig["items"]]
+
+    out += ["", "Experience:", ""]
+    out += [
+        f"- {it['from']} to {it['to'] or x['now']}: {it['role']}, {it['company']}. {it['text']}"
+        for it in x["items"]
+    ]
+    out += ["", "Worked with: " + ", ".join(a["clients"]) + ".", ""]
+
+    out += [
+        "## Pages",
+        "",
+        f"- [Home, English]({BASE}/): who Holti Bitri is, how he works, projects, experience",
+        f"- [Home, Italian]({BASE}/it/): the same page in Italian",
+        "",
+        "## Guides",
+        "",
+    ]
+    out += [
+        f"- [{g['title']}]({BASE}{g['url']}): {g['excerpt']}"
+        for g in posts["en"]
+        if g["url"].startswith("/")
+    ]
+    out += ["", "## Guides in Italian", ""]
+    out += [
+        f"- [{g['title']}]({BASE}{g['url']}): {g['excerpt']}"
+        for g in posts["it"]
+        if g["url"].startswith("/")
+    ]
+
+    tp, fc = p["toropulse"], p["fincast"]
+    out += [
+        "",
+        "## Projects",
+        "",
+        f"- [{tp['title']}]({LINKS['toropulse']}): {tp['text']} {tp['proof']}",
+        f"- [{fc['title']}]({LINKS['fincast']}): {fc['text']} {fc['proof']}",
+    ]
+    out += [
+        f"- [{o['title']}]({o['link']['href']}): {o['text']}" for o in p["others"] if "link" in o
+    ]
+    out += [
+        "",
+        "## Profiles",
+        "",
+        f"- [LinkedIn]({LINKS['linkedin']})",
+        f"- [GitHub]({LINKS['github']})",
+        f"- Email: {LINKS['email']}",
+        "",
+        "## Optional",
+        "",
+    ]
+    out += [
+        f"- [{post['title']}]({post['url']}): LinkedIn, {post['date']}"
+        for post in posts["en"]
+        if not post["url"].startswith("/")
+    ]
+    text = "\n".join(out) + "\n"
+    no_em_dash(text, "llms.txt")
+    return text
 
 
 def main():
     write = "--write" in sys.argv[1:]
     posts = load_posts()
+    outputs = [(PAGES[lang]["file"], render(lang, posts)) for lang in ("en", "it")]
+    outputs.append(("llms.txt", render_llms(posts)))
     changed = 0
-    for lang in ("en", "it"):
-        target = os.path.join(ROOT, PAGES[lang]["file"])
-        new = render(lang, posts)
+    for rel, new in outputs:
+        target = os.path.join(ROOT, rel)
         old = ""
         if os.path.exists(target):
             # lettura con a-capo universali: se git consegna il file in CRLF
@@ -610,17 +738,26 @@ def main():
             with open(target, encoding="utf-8") as fh:
                 old = fh.read()
         if new == old:
-            print(f"{PAGES[lang]['file']}: invariata")
+            print(f"{rel}: invariata")
             continue
         changed += 1
         if write:
             with open(target, "w", encoding="utf-8", newline="\n") as fh:
                 fh.write(new)
-            print(f"{PAGES[lang]['file']}: scritta ({len(new.splitlines())} righe)")
+            print(f"{rel}: scritta ({len(new.splitlines())} righe)")
         else:
-            print(f"{PAGES[lang]['file']}: cambierebbe ({len(new.splitlines())} righe)")
+            print(f"{rel}: cambierebbe ({len(new.splitlines())} righe)")
     if changed and not write:
         print("Nessun file scritto. Per applicare: python tools/build_home.py --write")
+
+    # La data di aggiornamento si cambia a mano: se i testi sono cambiati e la data
+    # e' rimasta indietro, i motori non sanno di dover ripassare.
+    updated = CONTENT["meta"]["updated"]
+    if changed and updated != date.today().isoformat():
+        print(
+            f"Nota: qualcosa e' cambiato ma meta.updated in home_content.py e' ancora {updated}. "
+            "Se hai toccato i testi, aggiornalo, rilancia la build e poi tools/build_sitemap.py --write."
+        )
 
 
 if __name__ == "__main__":
