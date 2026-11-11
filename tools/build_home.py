@@ -32,6 +32,7 @@ Uso:
 import html
 import json
 import os
+import re
 import sys
 from datetime import date
 
@@ -483,7 +484,32 @@ def load_posts():
                     sys.exit(f"posts.json, voce {i}: guida ospitata senza il campo image")
                 if not os.path.exists(os.path.join(ROOT, image.lstrip("/"))):
                     sys.exit(f"posts.json, voce {i}: la copertina {image} non esiste")
+                entry["image_alt"] = cover_alt(entry["url"], image, i)
     return posts
+
+
+def cover_alt(url, image, i):
+    """Il testo alternativo della copertina, letto dalla pagina della guida.
+
+    La descrizione dell'immagine esiste gia', nella pagina articolo che la mostra:
+    si prende da li' invece di riscriverla in posts.json, cosi' vive in un posto solo.
+    L'11/11/2026 le copertine in home avevano alt vuoto e Bing Webmaster Tools le
+    segnalava come immagini senza testo alternativo.
+    """
+    page = os.path.join(ROOT, url.strip("/").replace("/", os.sep), "index.html")
+    if not os.path.exists(page):
+        sys.exit(f"posts.json, voce {i}: la pagina {url} non esiste sul disco")
+    with open(page, encoding="utf-8") as fh:
+        source = fh.read()
+    for tag in re.findall(r"<img[^>]*>", source):
+        if f'src="{image}"' in tag:
+            alt = re.search(r'alt="([^"]*)"', tag)
+            if alt and alt.group(1).strip():
+                return html.unescape(alt.group(1))
+    sys.exit(
+        f"posts.json, voce {i}: in {url} non trovo la copertina {image} con un testo "
+        "alternativo. Serve li', la home lo prende da quella pagina"
+    )
 
 
 def render_writing(c, posts):
@@ -492,7 +518,7 @@ def render_writing(c, posts):
     linked = [p for p in posts if not p["url"].startswith("/")]
     guide_cards = "\n".join(
         f'        <a href="{attr(g["url"])}" class="guide-card reveal">\n'
-        f'          <img src="{attr(g["image"])}" alt="" class="guide-cover" loading="lazy">\n'
+        f'          <img src="{attr(g["image"])}" alt="{attr(g["image_alt"])}" class="guide-cover" loading="lazy">\n'
         '          <div class="guide-body">\n'
         f'            <h3 class="guide-title">{esc(g["title"])}</h3>\n'
         f'            <p class="guide-excerpt">{esc(g["excerpt"])}</p>\n'
