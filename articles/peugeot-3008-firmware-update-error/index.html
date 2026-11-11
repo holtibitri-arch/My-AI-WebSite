@@ -175,6 +175,16 @@
     .author a { text-decoration: none; }
 
     footer { padding: 3rem 0 2rem; }
+
+    /* box "stesso metodo": la strada dalla guida al resto del sito (dall'11/11/2026) */
+    .next-box { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1.5rem 1.5rem 0.5rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0 3rem; }
+    .next-box .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+    .next-box .next-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; color: var(--text); margin: 0 0 0.6rem; }
+    .next-box p { font-size: 1rem; margin: 0 0 1rem; }
+    .next-links { list-style: none; margin: 0; padding: 0; }
+    .next-links li { border-top: 1px solid var(--border); margin: 0; }
+    .next-links a { display: block; padding: 0.8rem 0; text-decoration: none; font-size: 0.98rem; line-height: 1.45; }
+    .next-links a:hover { text-decoration: underline; }
   </style>
   <script defer src="https://cloud.umami.is/script.js" data-website-id="4d89a1e3-8961-4b64-9579-4c118118822f"></script>
 </head>
@@ -333,7 +343,18 @@ curl.exe -L -o "SWL\UPDATE-ID\Certificates\PSA-OVIP-G1.crl"    "http://pki.p3cs.
     <p>Building AI pipelines by day, reverse engineering a car's infotainment system by night. Not sure if that's concerning or just my normal.</p>
     <p>The holidays away from the PC ended with PowerShell open in the garden. I've made peace with it.</p>
     <p>I used Claude as a debugging partner to reconstruct the logic behind the error and organize the procedure. The result is here, free, for anyone stuck exactly where I was.</p>
-    <p>If you get stuck during the procedure, <a href="/#contact">reach out</a>.</p>
+    <p>If you get stuck during the procedure, <a href="/#contact" data-umami-event="peugeot-next" data-umami-event-target="contact" data-umami-event-lang="en">reach out</a>.</p>
+
+    <aside class="next-box" aria-label="Same method, day job">
+      <p class="next-eyebrow">Same method, day job</p>
+      <p class="next-title">Isolate, verify, don't assume</p>
+      <p>It is how I solved this one, and it is how I work as CTO at TIG Factory: AI agents write much of the code, every step has a check, people keep the decisions.</p>
+      <ul class="next-links">
+        <li><a href="/#method" data-umami-event="peugeot-next" data-umami-event-target="method" data-umami-event-lang="en">How I work: five rules learned from things that run &rarr;</a></li>
+        <li><a href="/articles/llm-wiki-obsidian-second-brain-ai/" data-umami-event="peugeot-next" data-umami-event-target="guide-llm-wiki" data-umami-event-lang="en">Guide: an LLM wiki with Obsidian, the AI reads it before it answers &rarr;</a></li>
+        <li><a href="/articles/transcribe-meetings-locally-without-cloud/" data-umami-event="peugeot-next" data-umami-event-target="guide-meetings" data-umami-event-lang="en">Guide: transcribe meetings locally, without sending data to the cloud &rarr;</a></li>
+      </ul>
+    </aside>
 
     <div class="linkedin-box">
       <span>The Italian version of this article is also on LinkedIn, if you prefer to comment there:</span>
@@ -368,7 +389,7 @@ curl.exe -L -o "SWL\UPDATE-ID\Certificates\PSA-OVIP-G1.crl"    "http://pki.p3cs.
       <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
       <div>
         <h3>Holti Bitri</h3>
-        <p>CTO &amp; AI Innovator, TIG Factory. Nearly 20 years in the Microsoft ecosystem, today between cloud architectures, AI pipelines and, apparently, second-hand infotainment systems. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/">holtibitri.com</a></p>
+        <p>CTO at TIG Factory. I design workflows where AI agents and people build software together and, apparently, I also fix second-hand infotainment systems. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/" data-umami-event="peugeot-next" data-umami-event-target="home" data-umami-event-lang="en">holtibitri.com</a></p>
       </div>
     </div>
   </article>
