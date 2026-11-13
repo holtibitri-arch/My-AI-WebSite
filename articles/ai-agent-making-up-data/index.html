@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My AI assistant was making up emails and I didn't notice: why AI agents make up data, and how to catch it in time | Holti Bitri</title>
+  <meta name="description" content="For days my AI assistant reported false data without a single error. What broke, why I missed it, and six rules to catch an AI agent making things up.">
+  <meta name="keywords" content="AI agent making up data, AI agent fabricating data, AI agent hallucination, AI hallucinations, AI agent guardrails, AI agent reliability, human in the loop, AI agent failure modes, AI agent monitoring, Hermes Agent">
+  <meta name="author" content="Holti Bitri">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
+  <link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
+  <link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/">
+  <link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://holtibitri.com/articles/ai-agent-making-up-data/">
+  <meta property="og:title" content="My AI assistant was making up emails and I didn't notice">
+  <meta property="og:description" content="For days my AI assistant reported false data without a single error. What broke, why I missed it, and six rules to catch an AI agent making things up.">
+  <meta property="og:image" content="https://holtibitri.com/img/assistente-ai-mail-inventate.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="it_IT">
+  <meta property="og:site_name" content="Holti Bitri">
+  <meta property="article:published_time" content="2026-11-13T10:00:00+01:00">
+  <meta property="article:modified_time" content="2026-11-13T10:00:00+01:00">
+  <meta property="article:author" content="https://linkedin.com/in/holtibitri">
+  <meta property="article:section" content="Tech">
+  <meta property="article:tag" content="AI agents">
+  <meta property="article:tag" content="AI hallucinations">
+  <meta property="article:tag" content="Reliability">
+  <meta property="article:tag" content="Guardrails">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="My AI assistant was making up emails and I didn't notice">
+  <meta name="twitter:description" content="For days my AI assistant reported false data without a single error. What broke, why I missed it, and six rules to catch an AI agent making things up.">
+  <meta name="twitter:image" content="https://holtibitri.com/img/assistente-ai-mail-inventate.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://holtibitri.com/articles/ai-agent-making-up-data/#article",
+        "headline": "My AI assistant was making up emails and I didn't notice: why AI agents make up data, and how to catch it in time",
+        "description": "A real case: a personal AI assistant that delivered false data for days without a single error. The three failures underneath, why no check caught it, two models compared on the same job, and the six rules for checks that came out of it.",
+        "image": "https://holtibitri.com/img/assistente-ai-mail-inventate.jpg",
+        "inLanguage": "en",
+        "datePublished": "2026-11-13T10:00:00+01:00",
+        "dateModified": "2026-11-13T10:00:00+01:00",
+        "wordCount": 2000,
+        "keywords": ["AI agent making up data", "AI hallucinations", "AI agents", "guardrails", "human in the loop", "reliability", "monitoring", "Hermes Agent"],
+        "proficiencyLevel": "Beginner",
+        "author": { "@id": "https://holtibitri.com/#person" },
+        "publisher": { "@id": "https://holtibitri.com/#person" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://holtibitri.com/articles/ai-agent-making-up-data/" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://holtibitri.com/#person",
+        "name": "Holti Bitri",
+        "url": "https://holtibitri.com/",
+        "jobTitle": "CTO & AI Innovator",
+        "sameAs": ["https://linkedin.com/in/holtibitri", "https://github.com/holtibitri-arch"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://holtibitri.com/articles/ai-agent-making-up-data/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://holtibitri.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Writing", "item": "https://holtibitri.com/#writing" },
+          { "@type": "ListItem", "position": 3, "name": "The AI assistant that made up emails" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://holtibitri.com/articles/ai-agent-making-up-data/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Why does AI make up answers?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A language model produces the most plausible text, not the true text. As long as it has the data in front of it, the two almost always coincide. When the data is missing and the instructions push it to answer anyway, it fills the gap with something believable. In my case it took the name of a service from its own instructions and built an email around it." } },
+          { "@type": "Question", "name": "Can AI hallucinations be avoided?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Not completely. They can be made much rarer: by giving the model the data instead of letting it imagine it, by removing instructions that force it to always answer, by choosing a model suited to the job. What you can really do is build your checks so that when it happens, you notice." } },
+          { "@type": "Question", "name": "How do you tell that an AI agent is making up data?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Not by reading the output, which is plausible by construction. You tell by checking the sources: was the agent actually able to read what it says it read? You need a separate check, one that is not itself a model, that verifies the state of the sources with a real call before the agent does its work." } },
+          { "@type": "Question", "name": "Does a more expensive model make things up less?",
+            "acceptedAnswer": { "@type": "Answer", "text": "What matters more is that it fits the job. I had put a free model built for writing code on summarizing mail and calendar, to save about $4.50 a month. On the exact same task another model reported 28 tasks out of 28 instead of 16, without making anything up." } },
+          { "@type": "Question", "name": "What does human in the loop mean?",
+            "acceptedAnswer": { "@type": "Answer", "text": "It means a person approves before an AI action takes effect. It works for actions: publishing, sending, paying. It is not enough for information: a false but plausible briefing gets past anyone's approval, because the reader has no way of knowing it is false. That is where you need checks on the sources." } },
+          { "@type": "Question", "name": "What are guardrails for an AI agent?",
+            "acceptedAnswer": { "@type": "Answer", "text": "They are the limits and checks placed around an agent: what it can do, what it has to ask, what gets verified before and after. The most useful ones do not live in the instructions given to the model, which the model can ignore, but outside it: scripts and rules that run anyway, whatever the model decides." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <style>
+    /* override della base per la colonna di lettura */
+    :root { --max-w: 720px; }
+    body { line-height: 1.75; }
+    h1, h2, h3 { line-height: 1.15; }
+    a { color: var(--accent); }
+
+    .article-header { padding: 9rem 0 2.5rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
+    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
+    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .meta strong { color: var(--text); font-weight: 500; }
+
+    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
+    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
+    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
+
+    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
+    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
+    article li { margin-bottom: 0.5rem; }
+    article li strong { font-weight: 500; }
+    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
+    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
+    .callout p { margin: 0; font-size: 1rem; }
+
+    /* tabella di confronto: sui telefoni si stringe per restare tutta visibile; lo scorrimento resta come rete di sicurezza */
+    .table-wrap { overflow-x: auto; margin: 0 0 1.5rem; }
+    .cmp { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .cmp th, .cmp td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .cmp thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .cmp tbody th { font-weight: 500; }
+    @media (max-width: 520px) { .cmp { font-size: 0.85rem; } .cmp th, .cmp td { padding: 0.55rem 0.4rem; } .cmp thead th { font-size: 0.62rem; letter-spacing: 0.02em; } }
+
+    .next-box { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1.5rem 1.5rem 0.5rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0 3rem; }
+    .next-box .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+    .next-box .next-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; color: var(--text); margin: 0 0 0.6rem; }
+    .next-box p { font-size: 1rem; margin: 0 0 1rem; }
+    .next-links { list-style: none; margin: 0; padding: 0; }
+    .next-links li { border-top: 1px solid var(--border); margin: 0; }
+    .next-links a { display: block; padding: 0.8rem 0; text-decoration: none; font-size: 0.98rem; line-height: 1.45; }
+    .next-links a:hover { text-decoration: underline; }
+
+    .faq { margin: 3rem 0; }
+    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--border); }
+    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
+
+    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
+    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+    .author a { text-decoration: none; }
+
+    footer { padding: 3rem 0 2rem; }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="4d89a1e3-8961-4b64-9579-4c118118822f"></script>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="/" class="nav-logo">HB_</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#writing">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <a class="lang-btn active" href="/articles/ai-agent-making-up-data/" hreflang="en" aria-current="page">EN</a>
+        <a class="lang-btn" href="/it/articoli/assistente-ai-inventa-mail-come-accorgersene/" hreflang="it">IT</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="/#writing">Writing</a> &nbsp;/&nbsp; The AI assistant that made up emails</p>
+      <p class="eyebrow">Real case &middot; AI agents &middot; Reliability</p>
+      <h1>My AI assistant was making up emails and I didn't notice: why AI agents make up data, and how to catch it in time</h1>
+      <p class="lead">One morning in July, the daily briefing my AI assistant sends me listed two emails that never existed. Looking for the reason, I found out it had been handing me false data for days, without a single error and looking perfectly healthy. Here is what broke, why I didn't notice, and the six rules I have used since to catch it in time.</p>
+      <div class="meta">
+        <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
+        <span><strong>Holti Bitri</strong></span>
+        <span>&bull;</span>
+        <time datetime="2026-11-13">November 13, 2026</time>
+        <span>&bull;</span>
+        <span>9 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <figure class="hero">
+    <img src="/img/assistente-ai-mail-inventate.jpg" width="1280" height="720" alt="Illustration: a morning briefing showing status OK and five emails on the list, two of them drawn with dashed outlines and marked as not found" fetchpriority="high">
+    <figcaption>The status said ok. Two of the emails on the list had never existed.</figcaption>
+  </figure>
+
+  <article class="container">
+
+    <h2>An email that wasn't in my inbox</h2>
+
+    <p>I have a personal AI assistant. Every morning, shortly after six, it sends me a briefing: unread mail, the day's appointments, what is still open, the state of the systems I keep running. I read it before coffee.</p>
+
+    <p>On the morning of July 27, 2026, the unread mail included two messages from senders I had never seen. One was about a service I actually use, with a perfectly plausible subject line. I looked for it in my inbox and it wasn't there. I looked everywhere, spam and trash included. Nothing.</p>
+
+    <p><strong>That email had never existed.</strong> The real unread messages were three, weeks old, all from the same automated sender. The model had picked the name of that service out of its own instructions, which contained the rules for handling its notifications, and had stitched a believable sender and subject around it.</p>
+
+    <p>So far it sounds like the usual story about AI making things up. The interesting part came later, when I looked for the reason: working backwards, the false data had been going on for days.</p>
+
+    <h2>Three failures, stacked</h2>
+
+    <p>Underneath there were three independent failures. None of them was visible from the outside. Together they produced a briefing that looked normal.</p>
+
+    <h3>1. Mail access had expired, and it was meant to</h3>
+
+    <p>The assistant reads mail and calendar through a Google authorization. The app I had registered was still in "Testing" status in the console, and in that status Google expires the authorization after seven days. It wasn't a fault: it was the expected behavior.</p>
+
+    <p>My notes said "the token renews itself, no action needed". True for the token that lasts an hour. False for the one used to renew it, which was the one dying. It had already happened the week before: I had signed in again and everything had started working, for exactly seven more days.</p>
+
+    <h3>2. The script that talks to Google had been half rewritten</h3>
+
+    <p>The file the assistant uses to read mail and calendar was 4 KB instead of 43. At the bottom there was a comment: the rest of the logic is omitted for brevity, the full version is in the repository.</p>
+
+    <p>It wasn't a truncated file. It was a file <strong>rewritten by a model</strong> during a working session the evening before: it had carefully copied the header and replaced everything else with a pointer. A summary where the program should be.</p>
+
+    <p>That morning's automatic update didn't repair it, and for a sensible reason: Hermes Agent, the tool the assistant runs on, does not overwrite files the user has modified. But from the outside, a corruption looks exactly like a customization.</p>
+
+    <h3>3. The instructions asked for two incompatible things</h3>
+
+    <p>At the top of the briefing's instructions there was a rule, in capitals: never return an empty answer. At the bottom there was another: if a piece of data is unavailable say so, never make anything up.</p>
+
+    <p>As long as everything works, the two rules live together without trouble. When the sources stop answering they contradict each other, and the model picked the one that came first and was written louder.</p>
+
+    <div class="callout"><p><strong>Conflicting instructions get resolved in the worst possible way.</strong> The moment they matter is exactly the moment they contradict each other.</p></div>
+
+    <h2>Why I didn't notice</h2>
+
+    <p>This is the part that matters more than the failures.</p>
+
+    <ul>
+      <li><strong>The briefing arrived every morning.</strong> A well formatted message, with its sections in place, does not look like a failure</li>
+      <li><strong>The run status said "ok"</strong>, even for briefings made up from top to bottom</li>
+      <li><strong>I was checking that the output existed, not what was in it.</strong> The day before I had written in my notes "last run verified, result ok". I had verified that the file existed. Inside it, the assistant was saying it could not reach Google</li>
+      <li><strong>The false data was plausible.</strong> An email about that service is exactly the kind of email I really get</li>
+    </ul>
+
+    <p><strong>A crash gets noticed. A list of made-up emails doesn't.</strong> Every check I had verified that something was present: the file is there, the job started, the assistant answered. None of them looked at the content. A service that answers is not a service that works.</p>
+
+    <h2>The multiplier: the wrong model for the job</h2>
+
+    <p>To save money I had set <code>cohere/north-mini-code:free</code> as the main model: a free model built for writing code, doing a job that has nothing to do with code, which is reading mail, calendar and tasks and summarizing them. The estimated saving was about $4.50 a month.</p>
+
+    <p>That same morning, after repairing the sources, I ran the exact same briefing on <code>deepseek/deepseek-v4-flash</code>.</p>
+
+    <div class="table-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th></th><th>north-mini-code, 06:07</th><th>deepseek-v4-flash, 12:19</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Unread mail</th><td>2 made-up senders</td><td>1 email, real</td></tr>
+          <tr><th>Open tasks</th><td>16 of 28, the rest cut without saying so</td><td>28 of 28</td></tr>
+          <tr><th>Anomalies from another system</th><td>2 identical lines, duplicated</td><td>5 distinct anomalies, with date and cause</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>On mail the comparison is not like for like: at 06:07 access was broken, and the first model had nothing to read. On the other two rows it is: those sources worked in both runs, and the difference is all down to the model.</p>
+
+    <p>The same model, when I asked it in chat to look for that email, answered four times without executing anything. At one point it asked me which mail provider I used. It had it in its own configuration.</p>
+
+    <p><strong>An unsuitable model doesn't produce errors, it produces plausible results.</strong> It turned silent failures into false data, and that makes the saving a false saving. This is no criticism of that model, which is built for a different job. The mistake was mine: putting it on this one.</p>
+
+    <h2>What I changed</h2>
+
+    <ul>
+      <li><strong>The model:</strong> <code>deepseek/deepseek-v4-flash</code> as primary, <code>openai/gpt-oss-120b:free</code> as fallback</li>
+      <li><strong>Access:</strong> app moved to production in the Google console, so the authorization no longer expires every seven days</li>
+      <li><strong>The script:</strong> restored from the good copy</li>
+      <li><strong>The instructions:</strong> the "never empty" rule is gone. A block with no data now says "not available" and why</li>
+      <li><strong>Detection:</strong> a check that runs before the briefing, every morning</li>
+    </ul>
+
+    <p>The last one is the piece that matters. It is deliberately <strong>a script and not an agent</strong>: it doesn't interpret and it doesn't summarize, so it cannot report an outcome different from the real one. If everything is fine it stays silent. It checks three things, one for each failure of that day, and it checks the first by making a real call to the service, not by looking at whether the credentials exist.</p>
+
+    <h2>The six rules I have used since</h2>
+
+    <p>In the months that followed I wrote about ten checks like that one. Going back over the cases where they had failed, I kept finding the same four shapes: they verified presence instead of state, they detected without repairing, they went quiet when they were the ones breaking, and what was running no longer matched what I had written down. Six rules came out of that.</p>
+
+    <h3>1. Check the state, not the presence</h3>
+    <p>The question is "can it do its job?", not "does it answer?". A check that can pass while the function is broken is not a check of that function. Mine, on the credentials, passed even with revoked credentials: it looked at whether the file was there.</p>
+
+    <h3>2. Repair on your own, if the repair is safe and can be undone</h3>
+    <p>For weeks an alert told me "retry manually". If the only action an alert suggests is one the script could have done itself, that is the repair. On two conditions: keep a copy of what was there before, and never delete.</p>
+
+    <h3>3. Speak in two cases only</h3>
+    <p>It repaired: one line, with the clue about what had broken it. It cannot repair: one line with the exact action to take, not generic advice. Silence means one thing only: I checked and everything was fine.</p>
+
+    <h3>4. "I couldn't check" must not look like "ok"</h3>
+    <p>Retry, and if it still fails, say so. And never take a destructive action on a passing error: one of my checks deleted the credentials on every failed verification, including the ones that failed because the network was down at that moment.</p>
+
+    <h3>5. It must be testable without touching the real thing</h3>
+    <p>A check whose failure mode is silence has to be put in front of a fake breakage, in every branch, before you trust its silence. Otherwise you are just hoping.</p>
+
+    <h3>6. What runs must be what is written</h3>
+    <p>One copy of the check, under version control, and from there it reaches the place where it runs. And a check that has something to say is not a failed check: if the system treats every message it sends as an error, within a week you stop reading them.</p>
+
+    <h2>If you have an AI agent working for you, or for your team</h2>
+
+    <p>Five questions. If you can't answer one of them, that is where I would look.</p>
+
+    <ol>
+      <li><strong>Do your checks look at the content, or only at whether something arrived?</strong></li>
+      <li><strong>When a source stops answering, does the agent say so or fill the gap?</strong> Try it: unplug a source and look at what it writes</li>
+      <li><strong>Do the instructions hold when something breaks?</strong> Look for pairs that contradict each other under failure, like "always answer" and "never make things up"</li>
+      <li><strong>Was the model chosen for the job, or for the price?</strong></li>
+      <li><strong>Is the thing checking the agent another model?</strong> Then it can fail in the same way. A real check is a script with nothing to interpret</li>
+    </ol>
+
+    <p>You cannot fully stop a model from making things up. What you can do is build things so that, when it happens, you are the one who notices. And before whoever receives the result.</p>
+
+    <p>If you are setting up something similar and want to compare notes, <a href="/#contact" data-umami-event="inventa-next" data-umami-event-target="contact" data-umami-event-lang="en">reach out</a>.</p>
+
+    <aside class="next-box" aria-label="Same method, at work">
+      <p class="next-eyebrow">Same method, at work</p>
+      <p class="next-title">Written rules, a check at every step</p>
+      <p>This incident is one of the cases behind the rules I use to make AI agents work, on my own and in a team.</p>
+      <ul class="next-links">
+        <li><a href="/#method" data-umami-event="inventa-next" data-umami-event-target="method" data-umami-event-lang="en">How I work: five rules learned from things that run &rarr;</a></li>
+        <li><a href="/articles/llm-wiki-obsidian-second-brain-ai/" data-umami-event="inventa-next" data-umami-event-target="guide-llm-wiki" data-umami-event-lang="en">Guide: an LLM wiki with Obsidian, the memory this assistant starts from &rarr;</a></li>
+        <li><a href="/articles/transcribe-meetings-locally-without-cloud/" data-umami-event="inventa-next" data-umami-event-target="guide-meetings" data-umami-event-lang="en">Guide: transcribe meetings locally, without sending data to the cloud &rarr;</a></li>
+      </ul>
+    </aside>
+
+    <section class="faq" id="faq">
+      <h2>Frequently asked questions</h2>
+      <details>
+        <summary>Why does AI make up answers?</summary>
+        <p>A language model produces the most plausible text, not the true text. As long as it has the data in front of it, the two almost always coincide. When the data is missing and the instructions push it to answer anyway, it fills the gap with something believable. In my case it took the name of a service from its own instructions and built an email around it.</p>
+      </details>
+      <details>
+        <summary>Can AI hallucinations be avoided?</summary>
+        <p>Not completely. They can be made much rarer: by giving the model the data instead of letting it imagine it, by removing instructions that force it to always answer, by choosing a model suited to the job. What you can really do is build your checks so that when it happens, you notice.</p>
+      </details>
+      <details>
+        <summary>How do you tell that an AI agent is making up data?</summary>
+        <p>Not by reading the output, which is plausible by construction. You tell by checking the sources: was the agent actually able to read what it says it read? You need a separate check, one that is not itself a model, that verifies the state of the sources with a real call before the agent does its work.</p>
+      </details>
+      <details>
+        <summary>Does a more expensive model make things up less?</summary>
+        <p>What matters more is that it fits the job. I had put a free model built for writing code on summarizing mail and calendar, to save about $4.50 a month. On the exact same task another model reported 28 tasks out of 28 instead of 16, without making anything up.</p>
+      </details>
+      <details>
+        <summary>What does human in the loop mean?</summary>
+        <p>It means a person approves before an AI action takes effect. It works for actions: publishing, sending, paying. It is not enough for information: a false but plausible briefing gets past anyone's approval, because the reader has no way of knowing it is false. That is where you need checks on the sources.</p>
+      </details>
+      <details>
+        <summary>What are guardrails for an AI agent?</summary>
+        <p>They are the limits and checks placed around an agent: what it can do, what it has to ask, what gets verified before and after. The most useful ones do not live in the instructions given to the model, which the model can ignore, but outside it: scripts and rules that run anyway, whatever the model decides.</p>
+      </details>
+    </section>
+
+    <div class="author">
+      <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
+      <div>
+        <h3>Holti Bitri</h3>
+        <p>CTO &amp; AI Innovator. I design workflows where AI agents and people build software together, and I spend a fair amount of time working out when a model is wrong without telling you. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/" data-umami-event="inventa-next" data-umami-event-target="home" data-umami-event-lang="en">holtibitri.com</a></p>
+      </div>
+    </div>
+  </article>
+
+  <footer>Milan, Italy &middot; CTO &amp; AI Innovator</footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>

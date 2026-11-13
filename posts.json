@@ -1,6 +1,14 @@
 {
   "en": [
     {
+      "url": "/articles/ai-agent-making-up-data/",
+      "date": "Nov 13, 2026",
+      "readTime": "9 min",
+      "title": "My AI assistant was making up emails and I didn't notice: why AI agents make up data, and how to catch it in time",
+      "excerpt": "For days my morning briefing delivered false data without a single error. The three failures underneath, why no check caught it, and the six rules that came out of it. Hosted here, in full.",
+      "image": "/img/assistente-ai-mail-inventate.jpg"
+    },
+    {
       "url": "/articles/peugeot-3008-firmware-update-error/",
       "date": "Aug 25, 2026",
       "readTime": "8 min",
@@ -54,6 +62,14 @@
     }
   ],
   "it": [
+    {
+      "url": "/it/articoli/assistente-ai-inventa-mail-come-accorgersene/",
+      "date": "13 nov 2026",
+      "readTime": "9 min",
+      "title": "Il mio assistente AI inventava le mail e non me ne accorgevo: perché l'AI inventa, e come scoprirlo in tempo",
+      "excerpt": "Per giorni il riepilogo del mattino mi ha consegnato dati falsi, senza un errore. I tre guasti che c'erano sotto, perché nessun controllo se n'è accorto e le sei regole nate da lì. Qui sul sito, integrale.",
+      "image": "/img/assistente-ai-mail-inventate.jpg"
+    },
     {
       "url": "/it/articoli/peugeot-3008-aggiornamento-firmware-errore/",
       "date": "25 ago 2026",

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+  Sorgente della copertina della guida "Il mio assistente AI inventava le mail", 1280x720:
+  img/assistente-ai-mail-inventate.jpg. Non e' una pagina del sito.
+  Niente frasi: la stessa immagine serve la guida italiana e quella inglese.
+  Si rigenera con Chrome senza interfaccia, dalla radice del repo:
+
+    chrome --headless=new --hide-scrollbars --window-size=1280,720 --virtual-time-budget=6000 \
+      --screenshot=cover.png "file:///<percorso>/tools/cover-mail-inventate.html"
+
+  poi il PNG si converte in JPG (qualita' 88) e va in img/.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex">
+  <title>cover</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1280px; height: 720px; overflow: hidden; }
+    body {
+      background: #F9F7F3;
+      color: #111110;
+      font-family: 'JetBrains Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      width: 880px;
+      background: #FFFFFF;
+      border: 1px solid #E5E3DE;
+      border-radius: 14px;
+      padding: 40px 48px 44px;
+      box-shadow: 0 24px 60px rgba(17, 17, 16, 0.08);
+      zoom: 1.2; /* la scheda riempie il quadro: in home la copertina si vede piccola */
+    }
+    .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+    .time { font-family: 'Fraunces', Georgia, serif; font-weight: 300; font-size: 54px; letter-spacing: -0.01em; line-height: 1; }
+    .status {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 20px; font-weight: 500; letter-spacing: 0.14em;
+      color: #1F7A3D; border: 1.5px solid #1F7A3D; border-radius: 999px; padding: 9px 20px 9px 16px;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: #1F7A3D; }
+    .label { font-size: 15px; letter-spacing: 0.16em; color: #7A7A73; margin-bottom: 14px; }
+    .row {
+      display: flex; align-items: center; gap: 20px;
+      height: 62px; padding: 0 20px; margin-bottom: 12px;
+      border: 1.5px solid #E5E3DE; border-radius: 8px; background: #FBFAF7;
+    }
+    .row:last-child { margin-bottom: 0; }
+    .ico { width: 30px; height: 22px; border: 2px solid #B9B6AE; border-radius: 4px; position: relative; flex-shrink: 0; }
+    .ico::after {
+      content: ""; position: absolute; left: 3px; right: 3px; top: -1px; height: 12px;
+      border-left: 2px solid #B9B6AE; border-bottom: 2px solid #B9B6AE;
+      transform: skewX(0) rotate(-45deg) scale(0.62); transform-origin: 50% 50%;
+    }
+    .bar { height: 12px; border-radius: 6px; background: #D9D6CF; }
+    .b1 { width: 170px; } .b2 { width: 330px; background: #E7E4DD; }
+    .b3 { width: 210px; } .b4 { width: 280px; background: #E7E4DD; }
+    .b5 { width: 150px; } .b6 { width: 360px; background: #E7E4DD; }
+    .spacer { flex: 1; }
+    .ghost { border: 2px dashed #0038FF; background: transparent; }
+    .ghost .ico, .ghost .ico::after { border-color: #0038FF; opacity: 0.55; }
+    .ghost .bar { background: transparent; border: 1.5px dashed #0038FF; opacity: 0.55; }
+    .tag { font-size: 16px; font-weight: 500; letter-spacing: 0.12em; color: #0038FF; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="time">06:07</div>
+      <div class="status"><span class="dot"></span>STATUS: OK</div>
+    </div>
+    <div class="label">INBOX &middot; 5</div>
+    <div class="row ghost"><span class="ico"></span><span class="bar b1"></span><span class="bar b2"></span><span class="spacer"></span><span class="tag">NOT FOUND</span></div>
+    <div class="row ghost"><span class="ico"></span><span class="bar b3"></span><span class="bar b4"></span><span class="spacer"></span><span class="tag">NOT FOUND</span></div>
+    <div class="row"><span class="ico"></span><span class="bar b5"></span><span class="bar b6"></span></div>
+    <div class="row"><span class="ico"></span><span class="bar b1"></span><span class="bar b4"></span></div>
+    <div class="row"><span class="ico"></span><span class="bar b3"></span><span class="bar b2"></span></div>
+  </div>
+</body>
+</html>

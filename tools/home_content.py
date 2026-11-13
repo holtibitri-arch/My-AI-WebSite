@@ -75,7 +75,7 @@ CONTENT = {
         # Data dell'ultima modifica vera ai testi. Si cambia a mano: finisce nei dati
         # strutturati, in og:updated_time e, tramite build_sitemap.py, nel lastmod
         # della sitemap. E' il segnale con cui i motori capiscono di dover ripassare.
-        "updated": "2026-11-11",
+        "updated": "2026-11-13",
         # Temi su cui i motori e i sistemi AI possono associare la persona.
         "knows_about": T(
             [

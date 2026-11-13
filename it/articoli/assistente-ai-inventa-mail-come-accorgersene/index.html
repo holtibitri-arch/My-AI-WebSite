@@ -13,14 +13,13 @@
   <link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
   <link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
 
-  <!-- COPERTINA: da creare prima della pubblicazione. Poi: figure.hero sotto l'header, og:image, twitter:image e "image" nei dati strutturati -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/">
   <meta property="og:title" content="Il mio assistente AI inventava le mail e non me ne accorgevo">
   <meta property="og:description" content="Per giorni il mio assistente AI ha scritto dati falsi senza un errore. Cosa si era rotto, perché non l'ho visto e le sei regole per accorgersene in tempo.">
-  <meta property="og:image" content="https://holtibitri.com/img/og-it.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image" content="https://holtibitri.com/img/assistente-ai-mail-inventate.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
   <meta property="og:locale" content="it_IT">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:site_name" content="Holti Bitri">
@@ -36,7 +35,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Il mio assistente AI inventava le mail e non me ne accorgevo">
   <meta name="twitter:description" content="Per giorni il mio assistente AI ha scritto dati falsi senza un errore. Cosa si era rotto, perché non l'ho visto e le sei regole per accorgersene in tempo.">
-  <meta name="twitter:image" content="https://holtibitri.com/img/og-it.png">
+  <meta name="twitter:image" content="https://holtibitri.com/img/assistente-ai-mail-inventate.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,6 +51,7 @@
         "@id": "https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/#article",
         "headline": "Il mio assistente AI inventava le mail e non me ne accorgevo: perché l'AI inventa, e come scoprirlo in tempo",
         "description": "Un caso reale: un assistente AI personale che per giorni ha consegnato dati falsi senza un errore. I tre guasti che c'erano sotto, perché nessun controllo se n'è accorto, il confronto fra due modelli sullo stesso lavoro e le sei regole per i controlli nate da lì.",
+        "image": "https://holtibitri.com/img/assistente-ai-mail-inventate.jpg",
         "inLanguage": "it",
         "datePublished": "2026-11-13T10:00:00+01:00",
         "dateModified": "2026-11-13T10:00:00+01:00",
@@ -120,6 +120,10 @@
     .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
     .meta strong { color: var(--text); font-weight: 500; }
 
+    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
+    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
+    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
+
     article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
     article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
     article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
@@ -177,8 +181,8 @@
         <li><a href="/it/#contact">Contatti</a></li>
       </ul>
       <div class="lang-toggle">
-        <a class="lang-btn" href="https://holtibitri.com/articles/ai-agent-making-up-data/" hreflang="en">EN</a>
-        <a class="lang-btn active" href="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/" hreflang="it" aria-current="page">IT</a>
+        <a class="lang-btn" href="/articles/ai-agent-making-up-data/" hreflang="en">EN</a>
+        <a class="lang-btn active" href="/it/articoli/assistente-ai-inventa-mail-come-accorgersene/" hreflang="it" aria-current="page">IT</a>
       </div>
     </div>
   </nav>
@@ -199,6 +203,11 @@
       </div>
     </div>
   </header>
+
+  <figure class="hero">
+    <img src="/img/assistente-ai-mail-inventate.jpg" width="1280" height="720" alt="Illustrazione: un riepilogo del mattino con lo stato OK e cinque mail in elenco, due delle quali tratteggiate e marcate come mai trovate" fetchpriority="high">
+    <figcaption>Lo stato diceva ok. Due delle mail in elenco non erano mai esistite.</figcaption>
+  </figure>
 
   <article class="container">
 
@@ -369,7 +378,7 @@
       <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
       <div>
         <h3>Holti Bitri</h3>
-        <p>CTO &amp; AI Innovator. Quasi vent'anni di software, oggi fra architetture cloud, pipeline AI in produzione e il mestiere di capire quando un modello sta sbagliando senza dirtelo. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/it/">holtibitri.com</a></p>
+        <p>CTO &amp; AI Innovator. Quasi vent'anni di software, oggi fra architetture cloud, pipeline AI in produzione e il mestiere di capire quando un modello sta sbagliando senza dirtelo. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/it/" data-umami-event="inventa-next" data-umami-event-target="home" data-umami-event-lang="it">holtibitri.com</a></p>
       </div>
     </div>
   </article>
