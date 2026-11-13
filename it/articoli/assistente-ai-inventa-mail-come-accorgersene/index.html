@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio assistente AI inventava le mail e non me ne accorgevo: perché l'AI inventa, e come scoprirlo in tempo | Holti Bitri</title>
+  <meta name="description" content="Per giorni il mio assistente AI ha scritto dati falsi senza un errore. Cosa si era rotto, perché non l'ho visto e le sei regole per accorgersene in tempo.">
+  <meta name="keywords" content="AI inventa, AI inventa le risposte, allucinazioni AI, agenti AI, agente AI inventa dati, guardrail agenti AI, human in the loop, controlli agenti AI, affidabilità agenti AI, Hermes Agent">
+  <meta name="author" content="Holti Bitri">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/">
+  <link rel="alternate" hreflang="it" href="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/">
+  <link rel="alternate" hreflang="en" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
+  <link rel="alternate" hreflang="x-default" href="https://holtibitri.com/articles/ai-agent-making-up-data/">
+
+  <!-- COPERTINA: da creare prima della pubblicazione. Poi: figure.hero sotto l'header, og:image, twitter:image e "image" nei dati strutturati -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/">
+  <meta property="og:title" content="Il mio assistente AI inventava le mail e non me ne accorgevo">
+  <meta property="og:description" content="Per giorni il mio assistente AI ha scritto dati falsi senza un errore. Cosa si era rotto, perché non l'ho visto e le sei regole per accorgersene in tempo.">
+  <meta property="og:image" content="https://holtibitri.com/img/og-it.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Holti Bitri">
+  <meta property="article:published_time" content="2026-11-13T10:00:00+01:00">
+  <meta property="article:modified_time" content="2026-11-13T10:00:00+01:00">
+  <meta property="article:author" content="https://linkedin.com/in/holtibitri">
+  <meta property="article:section" content="Tech">
+  <meta property="article:tag" content="Agenti AI">
+  <meta property="article:tag" content="Allucinazioni AI">
+  <meta property="article:tag" content="Affidabilità">
+  <meta property="article:tag" content="Controlli">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Il mio assistente AI inventava le mail e non me ne accorgevo">
+  <meta name="twitter:description" content="Per giorni il mio assistente AI ha scritto dati falsi senza un errore. Cosa si era rotto, perché non l'ho visto e le sei regole per accorgersene in tempo.">
+  <meta name="twitter:image" content="https://holtibitri.com/img/og-it.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/#article",
+        "headline": "Il mio assistente AI inventava le mail e non me ne accorgevo: perché l'AI inventa, e come scoprirlo in tempo",
+        "description": "Un caso reale: un assistente AI personale che per giorni ha consegnato dati falsi senza un errore. I tre guasti che c'erano sotto, perché nessun controllo se n'è accorto, il confronto fra due modelli sullo stesso lavoro e le sei regole per i controlli nate da lì.",
+        "inLanguage": "it",
+        "datePublished": "2026-11-13T10:00:00+01:00",
+        "dateModified": "2026-11-13T10:00:00+01:00",
+        "wordCount": 2000,
+        "keywords": ["AI inventa", "allucinazioni AI", "agenti AI", "guardrail", "human in the loop", "affidabilità", "controlli", "Hermes Agent"],
+        "proficiencyLevel": "Beginner",
+        "author": { "@id": "https://holtibitri.com/#person" },
+        "publisher": { "@id": "https://holtibitri.com/#person" },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": "https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://holtibitri.com/#person",
+        "name": "Holti Bitri",
+        "url": "https://holtibitri.com/",
+        "jobTitle": "CTO & AI Innovator",
+        "sameAs": ["https://linkedin.com/in/holtibitri", "https://github.com/holtibitri-arch"]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://holtibitri.com/it/" },
+          { "@type": "ListItem", "position": 2, "name": "Articoli", "item": "https://holtibitri.com/it/#writing" },
+          { "@type": "ListItem", "position": 3, "name": "L'assistente AI che inventava le mail" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Perché l'AI inventa le risposte?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Un modello linguistico produce il testo più plausibile, non il testo vero. Finché ha i dati davanti, le due cose coincidono quasi sempre. Quando i dati mancano e le istruzioni lo spingono a rispondere comunque, riempie il buco con qualcosa di verosimile. Nel mio caso ha preso il nome di un servizio dalle proprie istruzioni e ci ha costruito intorno una mail." } },
+          { "@type": "Question", "name": "Le allucinazioni dell'AI si possono evitare?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Del tutto no. Si possono rendere molto più rare: dando al modello i dati invece di lasciarglieli immaginare, togliendo le istruzioni che lo obbligano a rispondere sempre, scegliendo un modello adatto al lavoro. Quello che si può fare davvero è costruire i controlli in modo che quando succede te ne accorgi." } },
+          { "@type": "Question", "name": "Come ci si accorge che un agente AI sta inventando?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Non leggendo l'output, che è plausibile per costruzione. Ci si accorge controllando le fonti: l'agente ha potuto davvero leggere quello che dice di aver letto? Serve un controllo separato, che non sia a sua volta un modello, e che verifichi lo stato delle fonti con una chiamata vera prima che l'agente lavori." } },
+          { "@type": "Question", "name": "Un modello più costoso inventa di meno?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Conta più che sia adatto al lavoro. Io avevo messo un modello gratuito pensato per scrivere codice a riassumere posta e calendario, per risparmiare circa 4,50 dollari al mese. Sullo stesso identico lavoro un altro modello ha riportato 28 attività su 28 invece di 16, senza inventare niente." } },
+          { "@type": "Question", "name": "Cosa vuol dire human in the loop?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Vuol dire che una persona approva prima che un'azione dell'AI abbia effetto. Funziona per le azioni: pubblicare, inviare, pagare. Non basta per le informazioni: un riepilogo falso ma plausibile supera l'approvazione di chiunque, perché chi lo legge non ha modo di sapere che è falso. Lì servono controlli sulle fonti." } },
+          { "@type": "Question", "name": "Cosa sono i guardrail per un agente AI?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sono i limiti e i controlli messi intorno a un agente: cosa può fare, cosa deve chiedere, cosa viene verificato prima e dopo. I più utili non stanno nelle istruzioni date al modello, che il modello può ignorare, ma fuori: script e regole che girano comunque, qualunque cosa il modello decida." } }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/site.css">
+  <style>
+    /* override della base per la colonna di lettura */
+    :root { --max-w: 720px; }
+    body { line-height: 1.75; }
+    h1, h2, h3 { line-height: 1.15; }
+    a { color: var(--accent); }
+
+    .article-header { padding: 9rem 0 2.5rem; }
+    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
+    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
+    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
+    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+    .meta strong { color: var(--text); font-weight: 500; }
+
+    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
+    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
+    article li { margin-bottom: 0.5rem; }
+    article li strong { font-weight: 500; }
+    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
+    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
+    .callout p { margin: 0; font-size: 1rem; }
+
+    /* tabella di confronto: sui telefoni si stringe per restare tutta visibile; lo scorrimento resta come rete di sicurezza */
+    .table-wrap { overflow-x: auto; margin: 0 0 1.5rem; }
+    .cmp { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    .cmp th, .cmp td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .cmp thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+    .cmp tbody th { font-weight: 500; }
+    @media (max-width: 520px) { .cmp { font-size: 0.85rem; } .cmp th, .cmp td { padding: 0.55rem 0.4rem; } .cmp thead th { font-size: 0.62rem; letter-spacing: 0.02em; } }
+
+    .next-box { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1.5rem 1.5rem 0.5rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0 3rem; }
+    .next-box .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+    .next-box .next-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; color: var(--text); margin: 0 0 0.6rem; }
+    .next-box p { font-size: 1rem; margin: 0 0 1rem; }
+    .next-links { list-style: none; margin: 0; padding: 0; }
+    .next-links li { border-top: 1px solid var(--border); margin: 0; }
+    .next-links a { display: block; padding: 0.8rem 0; text-decoration: none; font-size: 0.98rem; line-height: 1.45; }
+    .next-links a:hover { text-decoration: underline; }
+
+    .faq { margin: 3rem 0; }
+    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
+    .faq details:last-child { border-bottom: 1px solid var(--border); }
+    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
+
+    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
+    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+    .author a { text-decoration: none; }
+
+    footer { padding: 3rem 0 2rem; }
+  </style>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="4d89a1e3-8961-4b64-9579-4c118118822f"></script>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="/it/" class="nav-logo">HB_</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="/it/#about">Chi sono</a></li>
+        <li><a href="/it/#writing">Articoli</a></li>
+        <li><a href="/it/#contact">Contatti</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <a class="lang-btn" href="https://holtibitri.com/articles/ai-agent-making-up-data/" hreflang="en">EN</a>
+        <a class="lang-btn active" href="https://holtibitri.com/it/articoli/assistente-ai-inventa-mail-come-accorgersene/" hreflang="it" aria-current="page">IT</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="article-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="/it/">Home</a> &nbsp;/&nbsp; <a href="/it/#writing">Articoli</a> &nbsp;/&nbsp; L'assistente AI che inventava le mail</p>
+      <p class="eyebrow">Caso reale &middot; Agenti AI &middot; Affidabilità</p>
+      <h1>Il mio assistente AI inventava le mail e non me ne accorgevo: perché l'AI inventa, e come scoprirlo in tempo</h1>
+      <p class="lead">Una mattina di luglio il riepilogo che il mio assistente AI mi manda ogni giorno elencava due mail che non sono mai esistite. Cercando il perché ho scoperto che da giorni mi consegnava dati falsi, senza un errore e con l'aria di funzionare benissimo. Qui c'è cosa si era rotto, perché non me ne ero accorto, e le sei regole che uso da allora per accorgermene in tempo.</p>
+      <div class="meta">
+        <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
+        <span><strong>Holti Bitri</strong></span>
+        <span>&bull;</span>
+        <time datetime="2026-11-13">13 novembre 2026</time>
+        <span>&bull;</span>
+        <span>9 min di lettura</span>
+      </div>
+    </div>
+  </header>
+
+  <article class="container">
+
+    <h2>Una mail che in casella non c'era</h2>
+
+    <p>Ho un assistente AI personale. Ogni mattina, poco dopo le sei, mi manda un riepilogo: la posta non letta, gli appuntamenti del giorno, le cose rimaste aperte, lo stato dei sistemi che tengo in piedi. Lo leggo prima del caffè.</p>
+
+    <p>La mattina del 27 luglio 2026, fra la posta non letta, c'erano due mail da mittenti che non avevo mai visto. Una parlava di un servizio che uso davvero, con un oggetto del tutto plausibile. L'ho cercata in casella e non c'era. L'ho cercata dappertutto, spam e cestino compresi. Niente.</p>
+
+    <p><strong>Quella mail non era mai esistita.</strong> Le non lette vere erano tre, vecchie di settimane, tutte dello stesso mittente automatico. Il modello aveva pescato il nome di quel servizio dalle proprie istruzioni, dove c'erano le regole per gestire le sue notifiche, e ci aveva cucito intorno un mittente e un oggetto verosimili.</p>
+
+    <p>Fin qui sembra la solita storia dell'AI che inventa. La parte interessante è venuta dopo, quando ho cercato il perché: ricostruendo all'indietro, i dati falsi andavano avanti da giorni.</p>
+
+    <h2>Tre guasti, uno sopra l'altro</h2>
+
+    <p>Sotto c'erano tre guasti indipendenti. Nessuno dei tre si vedeva da fuori. Insieme producevano un riepilogo che sembrava normale.</p>
+
+    <h3>1. L'accesso alla posta era scaduto, e doveva scadere</h3>
+
+    <p>L'assistente legge posta e calendario con un'autorizzazione di Google. L'applicazione che avevo registrato era rimasta in stato di prova, "Testing" nella console, e in quello stato Google fa scadere l'autorizzazione dopo sette giorni. Non era un guasto: era il comportamento previsto.</p>
+
+    <p>I miei appunti dicevano "il token si rinnova da solo, nessun intervento necessario". Vero per il token che dura un'ora. Falso per quello che serve a rinnovarlo, che era quello che moriva. Era già successo la settimana prima: avevo rifatto l'accesso ed era ripartito tutto, per altri sette giorni esatti.</p>
+
+    <h3>2. Lo script che parla con Google era stato riscritto a metà</h3>
+
+    <p>Il file che l'assistente usa per leggere posta e calendario pesava 4 KB invece di 43. In fondo c'era un commento in inglese: il resto della logica è stato omesso per brevità, la versione completa è nel repository.</p>
+
+    <p>Non era un file troncato. Era un file <strong>riscritto da un modello</strong> durante una sessione di lavoro della sera prima: aveva copiato con cura l'intestazione e sostituito tutto il resto con un rimando. Un riassunto al posto del programma.</p>
+
+    <p>L'aggiornamento automatico di quella mattina non l'ha riparato, e per un motivo sensato: Hermes Agent, lo strumento su cui gira l'assistente, non sovrascrive i file che l'utente ha modificato. Solo che una corruzione, vista da fuori, è identica a una personalizzazione.</p>
+
+    <h3>3. Le istruzioni chiedevano due cose incompatibili</h3>
+
+    <p>In cima alle istruzioni del riepilogo c'era una regola, in maiuscolo: mai restituire una risposta vuota. In fondo ce n'era un'altra: se un dato non è disponibile scrivilo, non inventare mai.</p>
+
+    <p>Finché tutto funziona le due regole convivono senza problemi. Quando le fonti non rispondono si contraddicono, e il modello ha scelto quella che veniva prima ed era scritta più forte.</p>
+
+    <div class="callout"><p><strong>Le istruzioni in conflitto si risolvono nel modo peggiore.</strong> Il momento in cui contano è esattamente il momento in cui si contraddicono.</p></div>
+
+    <h2>Perché non me ne sono accorto</h2>
+
+    <p>Questa è la parte che conta più dei guasti.</p>
+
+    <ul>
+      <li><strong>Il riepilogo arrivava tutte le mattine.</strong> Un messaggio ben formattato, con le sue sezioni al loro posto, non ha l'aspetto di un guasto</li>
+      <li><strong>Lo stato dell'esecuzione diceva "ok"</strong>, anche per i riepiloghi inventati da cima a fondo</li>
+      <li><strong>Controllavo che l'output ci fosse, non cosa c'era dentro.</strong> Il giorno prima avevo scritto nei miei appunti "ultima esecuzione verificata, esito ok". Avevo verificato che il file esistesse. Dentro, l'assistente diceva di non riuscire ad accedere a Google</li>
+      <li><strong>I dati falsi erano plausibili.</strong> Una mail su quel servizio è esattamente il tipo di mail che ricevo davvero</li>
+    </ul>
+
+    <p><strong>Un crash si nota. Una lista di mail inventate no.</strong> Tutti i controlli che avevo verificavano la presenza di qualcosa: il file c'è, il lavoro è partito, l'assistente ha risposto. Nessuno guardava il contenuto. Un servizio che risponde non è un servizio che funziona.</p>
+
+    <h2>Il moltiplicatore: il modello sbagliato per quel lavoro</h2>
+
+    <p>Per risparmiare avevo messo come modello principale <code>cohere/north-mini-code:free</code>, un modello gratuito pensato per scrivere codice, a fare un lavoro che di codice non ha niente: leggere posta, calendario e attività, e riassumerli. Il risparmio stimato era di circa 4,50 dollari al mese.</p>
+
+    <p>Quella stessa mattina, dopo aver riparato le fonti, ho fatto girare lo stesso identico riepilogo su <code>deepseek/deepseek-v4-flash</code>.</p>
+
+    <div class="table-wrap">
+      <table class="cmp">
+        <thead>
+          <tr><th></th><th>north-mini-code, ore 06:07</th><th>deepseek-v4-flash, ore 12:19</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Posta non letta</th><td>2 mittenti inventati</td><td>1 mail, vera</td></tr>
+          <tr><th>Attività aperte</th><td>16 su 28, le altre tagliate senza dirlo</td><td>28 su 28</td></tr>
+          <tr><th>Anomalie di un altro sistema</th><td>2 righe identiche, duplicate</td><td>5 anomalie distinte, con data e causa</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Sulla posta il confronto non è alla pari: alle 06:07 l'accesso era rotto, e il primo modello non aveva niente da leggere. Sulle altre due righe sì: quelle fonti funzionavano in tutti e due i casi, e la differenza è tutta del modello.</p>
+
+    <p>Lo stesso modello, quando gli ho chiesto in chat di cercare quella mail, ha risposto per quattro volte senza eseguire niente. A un certo punto mi ha chiesto quale servizio di posta usassi. Lo aveva nella propria configurazione.</p>
+
+    <p><strong>Un modello non adatto non produce errori, produce risultati verosimili.</strong> Trasformava guasti silenziosi in dati falsi, e questo rende il risparmio un falso risparmio. Non è una critica a quel modello, che fa un altro mestiere. L'errore era mio: averlo messo a fare questo.</p>
+
+    <h2>Cosa ho cambiato</h2>
+
+    <ul>
+      <li><strong>Il modello:</strong> <code>deepseek/deepseek-v4-flash</code> come principale, <code>openai/gpt-oss-120b:free</code> come riserva</li>
+      <li><strong>L'accesso:</strong> applicazione portata in produzione sulla console di Google, così l'autorizzazione non scade più ogni sette giorni</li>
+      <li><strong>Lo script:</strong> ripristinato dalla copia buona</li>
+      <li><strong>Le istruzioni:</strong> via la regola "mai vuoto". Un blocco senza dati ora dice "non disponibile" e il motivo</li>
+      <li><strong>Il rilevamento:</strong> un controllo che parte prima del riepilogo, tutte le mattine</li>
+    </ul>
+
+    <p>L'ultimo è il pezzo che conta. È volutamente <strong>uno script e non un agente</strong>: non interpreta e non riassume, quindi non può raccontare un esito diverso da quello vero. Se è tutto a posto tace. Controlla tre cose, una per ogni guasto di quel giorno, e la prima la controlla facendo una chiamata vera al servizio, non guardando se le credenziali esistono.</p>
+
+    <h2>Le sei regole che uso da allora</h2>
+
+    <p>Nei mesi dopo ho scritto una decina di controlli come quello. Rileggendo i casi in cui avevano fallito ho trovato sempre le stesse quattro forme: verificavano la presenza invece dello stato, rilevavano senza riparare, tacevano quando erano loro a rompersi, e quello che girava non corrispondeva più a quello che avevo scritto. Da lì sono uscite sei regole.</p>
+
+    <h3>1. Controlla lo stato, non la presenza</h3>
+    <p>La domanda è "può fare il suo lavoro?", non "risponde?". Un controllo che può riuscire mentre la funzione è rotta non è un controllo di quella funzione. Il mio, sulle credenziali, passava anche a credenziali revocate: guardava se il file c'era.</p>
+
+    <h3>2. Ripara da solo, se la riparazione è sicura e si può annullare</h3>
+    <p>Per settimane un avviso mi ha detto "riprova a mano". Se l'unica azione che un avviso suggerisce è una che lo script poteva fare da solo, quella è la riparazione. Con due condizioni: una copia di quello che c'era prima, e mai cancellare.</p>
+
+    <h3>3. Parla in due casi soli</h3>
+    <p>Ha riparato: una riga, con l'indizio su cosa aveva rotto. Non può riparare: una riga con l'azione esatta da fare, non un consiglio generico. Il silenzio vuol dire una cosa sola: ho controllato ed era tutto a posto.</p>
+
+    <h3>4. "Non ho potuto controllare" non deve sembrare "ok"</h3>
+    <p>Si riprova, e se non passa lo si dice. E mai un'azione distruttiva su un errore passeggero: un mio controllo cancellava le credenziali a ogni verifica fallita, comprese quelle fallite perché in quel momento non c'era rete.</p>
+
+    <h3>5. Si deve poter provare senza toccare la cosa vera</h3>
+    <p>Un controllo il cui guasto è il silenzio va messo davanti a una rottura finta, in tutti i suoi rami, prima di fidarsi del suo silenzio. Altrimenti stai solo sperando.</p>
+
+    <h3>6. Quello che gira deve essere quello che è scritto</h3>
+    <p>Una copia sola del controllo, sotto controllo di versione, e da lì arriva dove deve girare. E un controllo che ha qualcosa da dire non è un controllo fallito: se il sistema tratta ogni suo messaggio come un errore, in una settimana smetti di leggerli.</p>
+
+    <h2>Se hai un agente AI che lavora per te, o per il tuo team</h2>
+
+    <p>Cinque domande. Se a una non sai rispondere, è lì che guarderei.</p>
+
+    <ol>
+      <li><strong>I tuoi controlli guardano il contenuto, o solo che qualcosa sia arrivato?</strong></li>
+      <li><strong>Quando una fonte non risponde, l'agente lo dice o riempie il buco?</strong> Provalo: stacca una fonte e guarda cosa scrive</li>
+      <li><strong>Le istruzioni reggono quando qualcosa si rompe?</strong> Cerca le coppie che si contraddicono sotto guasto, come "rispondi sempre" e "non inventare"</li>
+      <li><strong>Il modello è stato scelto per il lavoro, o per il prezzo?</strong></li>
+      <li><strong>Chi controlla l'agente è un altro modello?</strong> Allora può sbagliare nello stesso modo. Un controllo vero è uno script che non ha niente da interpretare</li>
+    </ol>
+
+    <p>Che un modello inventi non si elimina del tutto. Quello che si può fare è costruire le cose in modo che, quando succede, te ne accorgi tu. E prima di chi riceve il risultato.</p>
+
+    <p>Se stai mettendo in piedi qualcosa di simile e vuoi confrontarti, <a href="/it/#contact" data-umami-event="inventa-next" data-umami-event-target="contact" data-umami-event-lang="it">scrivimi</a>.</p>
+
+    <aside class="next-box" aria-label="Stesso metodo, al lavoro">
+      <p class="next-eyebrow">Stesso metodo, al lavoro</p>
+      <p class="next-title">Regole scritte, un controllo a ogni passaggio</p>
+      <p>Questo incidente è uno dei casi da cui vengono le regole con cui faccio lavorare gli agenti AI, da solo e in squadra.</p>
+      <ul class="next-links">
+        <li><a href="/it/#method" data-umami-event="inventa-next" data-umami-event-target="method" data-umami-event-lang="it">Come lavoro: cinque regole nate da cose che girano &rarr;</a></li>
+        <li><a href="/it/articoli/llm-wiki-obsidian-secondo-cervello-ai/" data-umami-event="inventa-next" data-umami-event-target="guide-llm-wiki" data-umami-event-lang="it">Guida: una LLM wiki con Obsidian, la memoria da cui parte questo assistente &rarr;</a></li>
+        <li><a href="/it/articoli/trascrivere-riunioni-in-locale-senza-cloud/" data-umami-event="inventa-next" data-umami-event-target="guide-meetings" data-umami-event-lang="it">Guida: trascrivere le riunioni in locale, senza mandare i dati nel cloud &rarr;</a></li>
+      </ul>
+    </aside>
+
+    <section class="faq" id="faq">
+      <h2>Domande frequenti</h2>
+      <details>
+        <summary>Perché l'AI inventa le risposte?</summary>
+        <p>Un modello linguistico produce il testo più plausibile, non il testo vero. Finché ha i dati davanti, le due cose coincidono quasi sempre. Quando i dati mancano e le istruzioni lo spingono a rispondere comunque, riempie il buco con qualcosa di verosimile. Nel mio caso ha preso il nome di un servizio dalle proprie istruzioni e ci ha costruito intorno una mail.</p>
+      </details>
+      <details>
+        <summary>Le allucinazioni dell'AI si possono evitare?</summary>
+        <p>Del tutto no. Si possono rendere molto più rare: dando al modello i dati invece di lasciarglieli immaginare, togliendo le istruzioni che lo obbligano a rispondere sempre, scegliendo un modello adatto al lavoro. Quello che si può fare davvero è costruire i controlli in modo che quando succede te ne accorgi.</p>
+      </details>
+      <details>
+        <summary>Come ci si accorge che un agente AI sta inventando?</summary>
+        <p>Non leggendo l'output, che è plausibile per costruzione. Ci si accorge controllando le fonti: l'agente ha potuto davvero leggere quello che dice di aver letto? Serve un controllo separato, che non sia a sua volta un modello, e che verifichi lo stato delle fonti con una chiamata vera prima che l'agente lavori.</p>
+      </details>
+      <details>
+        <summary>Un modello più costoso inventa di meno?</summary>
+        <p>Conta più che sia adatto al lavoro. Io avevo messo un modello gratuito pensato per scrivere codice a riassumere posta e calendario, per risparmiare circa 4,50 dollari al mese. Sullo stesso identico lavoro un altro modello ha riportato 28 attività su 28 invece di 16, senza inventare niente.</p>
+      </details>
+      <details>
+        <summary>Cosa vuol dire human in the loop?</summary>
+        <p>Vuol dire che una persona approva prima che un'azione dell'AI abbia effetto. Funziona per le azioni: pubblicare, inviare, pagare. Non basta per le informazioni: un riepilogo falso ma plausibile supera l'approvazione di chiunque, perché chi lo legge non ha modo di sapere che è falso. Lì servono controlli sulle fonti.</p>
+      </details>
+      <details>
+        <summary>Cosa sono i guardrail per un agente AI?</summary>
+        <p>Sono i limiti e i controlli messi intorno a un agente: cosa può fare, cosa deve chiedere, cosa viene verificato prima e dopo. I più utili non stanno nelle istruzioni date al modello, che il modello può ignorare, ma fuori: script e regole che girano comunque, qualunque cosa il modello decida.</p>
+      </details>
+    </section>
+
+    <div class="author">
+      <img src="/avatar.jpg" alt="Holti Bitri" width="64" height="64" loading="lazy">
+      <div>
+        <h3>Holti Bitri</h3>
+        <p>CTO &amp; AI Innovator. Quasi vent'anni di software, oggi fra architetture cloud, pipeline AI in produzione e il mestiere di capire quando un modello sta sbagliando senza dirtelo. <a href="https://linkedin.com/in/holtibitri" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="/it/">holtibitri.com</a></p>
+      </div>
+    </div>
+  </article>
+
+  <footer>Milano, Italia &middot; CTO &amp; AI Innovator</footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>
