@@ -1,0 +1,164 @@
+/* ============================================================
+   Stile delle guide (pagine articolo), dal 13/11/2026.
+   Si carica dopo site.css e vale per tutte le guide: prima ogni
+   pagina aveva la sua copia dentro un <style>, e una modifica
+   grafica andava ripetuta in ogni file.
+
+   L'idea: il nero e' una cornice. Barra in alto, apertura con
+   titolo e copertina, fondo pagina sono scuri; il testo in mezzo
+   resta chiaro. Niente a cavallo del bordo fra scuro e chiaro.
+   ============================================================ */
+
+/* ---- base della colonna di lettura ---- */
+:root { --max-w: 720px; --ink: #111110; --ink-text: #F9F7F3; --ink-muted: #8F8D86; --ink-soft: #B9B6AE; --ink-accent: #8FA6FF; }
+body { line-height: 1.75; }
+h1, h2, h3 { line-height: 1.15; }
+a { color: var(--accent); }
+
+/* ---- cornice: barra in alto e fondo pagina ---- */
+nav { background: rgba(17, 17, 16, 0.9); }
+nav.scrolled { border-color: rgba(255, 255, 255, 0.12); }
+.nav-logo { color: var(--ink-text); }
+.nav-links a, .lang-btn { color: var(--ink-soft); }
+.nav-links a:hover { color: var(--ink-text); }
+.lang-toggle { border-color: rgba(255, 255, 255, 0.22); }
+.lang-btn.active { background: var(--ink-text); color: var(--ink); }
+footer { margin-top: 4rem; padding: 3rem var(--pad); background: var(--ink); color: var(--ink-muted); }
+
+/* ---- apertura: titolo, numeri e copertina dentro la fascia scura ---- */
+.article-header { padding: 8.5rem 0 4rem; background: var(--ink); color: var(--ink-text); }
+.breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted); margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--ink-muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--ink-text); }
+.eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-accent); margin-bottom: 1.25rem; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
+/* titolo in due tempi: la scena in grande, il resto come sottotitolo */
+h1 .h1-main { display: block; }
+h1 .h1-sub { display: block; font-size: clamp(1.15rem, 2.6vw, 1.6rem); font-style: italic; color: var(--ink-accent); line-height: 1.3; margin-top: 0.75rem; letter-spacing: 0; }
+.lead { font-size: 1.15rem; color: var(--ink-soft); margin-bottom: 1.75rem; }
+.meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted); letter-spacing: 0.03em; align-items: center; }
+.meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.meta strong { color: var(--ink-text); font-weight: 500; }
+
+/* numeri in evidenza, come le stat-card della home */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin: 2.25rem 0 0; }
+.stat-card { padding: 1.1rem 1rem; border: 1px solid rgba(255, 255, 255, 0.14); border-radius: 6px; background: rgba(255, 255, 255, 0.04); }
+.stat-number { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--ink-accent); line-height: 1; margin-bottom: 0.45rem; white-space: nowrap; }
+.stat-label { font-size: 0.78rem; color: var(--ink-soft); line-height: 1.4; }
+@media (max-width: 640px) { .stats { grid-template-columns: 1fr 1fr; } }
+
+/* copertina: tutta dentro la fascia scura */
+figure.hero { max-width: 1000px; margin: 3.5rem auto 0; padding: 0 var(--pad); }
+figure.hero img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.16); }
+figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
+figure.hero figcaption { color: var(--ink-muted); }
+
+/* ---- testo ---- */
+article.container { padding-top: 4.5rem; }
+article > h2:first-child { margin-top: 0; }
+article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
+article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
+article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
+article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
+article li { margin-bottom: 0.5rem; }
+article li strong { font-weight: 500; }
+article hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+article pre { background: #111110; color: #E8E6E1; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; padding: 1.1rem 1.25rem; border-radius: 6px; overflow-x: auto; margin: 0 0 1.5rem; }
+article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
+article pre code { background: none; padding: 0; font-size: inherit; }
+.callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
+.callout p { margin: 0; font-size: 1rem; }
+/* frase chiave */
+.pull { margin: 2.25rem 0; padding: 0.1rem 0 0.1rem 1.25rem; border-left: 3px solid var(--accent); font-family: var(--font-display); font-weight: 300; font-size: clamp(1.3rem, 3vw, 1.7rem); line-height: 1.25; letter-spacing: -0.01em; }
+
+/* ---- tabella: sui telefoni si stringe per restare tutta visibile ---- */
+.table-wrap { overflow-x: auto; margin: 0 0 1.5rem; }
+.cmp { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+.cmp th, .cmp td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.cmp thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.cmp tbody th { font-weight: 500; }
+@media (max-width: 520px) { .cmp { font-size: 0.85rem; } .cmp th, .cmp td { padding: 0.55rem 0.4rem; } .cmp thead th { font-size: 0.62rem; letter-spacing: 0.02em; } }
+
+/* ---- etichette ---- */
+.chip { align-self: flex-start; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.05em; line-height: 1.3; text-transform: uppercase; padding: 0.2rem 0.45rem; border-radius: 3px; border: 1px solid var(--border); color: var(--muted); }
+.chip.small { border-color: var(--accent); color: var(--accent); }
+.chip.large { background: var(--accent); border-color: var(--accent); color: #fff; }
+.chip.ok { background: #E3F1E7; border-color: #BFE0C9; color: #1F7A3D; }
+
+/* ---- schema in fila: piu' largo del testo, un'icona per passaggio, appoggiato su una fascia scura ---- */
+.wide { width: min(1000px, calc(100vw - 2 * var(--pad))); margin-left: 50%; transform: translateX(-50%); }
+.team { margin-top: 2.25rem; margin-bottom: 2.5rem; }
+.team-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.75rem; }
+.team-step { position: relative; margin: 0; padding: 1.25rem 1.1rem 1.1rem; background: var(--bg-card); border: 1px solid var(--border); border-bottom: none; border-radius: 8px 8px 0 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.team-step:not(:last-child)::after { content: "→"; position: absolute; right: -1.4rem; top: 2rem; font-family: var(--font-mono); color: var(--muted); }
+.team-ico { width: 40px; height: 40px; color: var(--accent); }
+.team-n { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); }
+.team-t { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.1; }
+.team-d { font-size: 0.86rem; color: #55554F; line-height: 1.4; flex: 1; }
+.team-out { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text); border-top: 1px solid var(--border); padding-top: 0.6rem; }
+.team-base { margin: 0; padding: 0.85rem 1rem; background: var(--ink); color: var(--ink-text); border-radius: 0 0 8px 8px; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.04em; text-align: center; }
+@media (max-width: 860px) {
+  .team-row { grid-template-columns: 1fr; gap: 0.6rem; }
+  .team-step { border-bottom: 1px solid var(--border); border-radius: 8px; display: grid; grid-template-columns: 40px 1fr; column-gap: 1rem; row-gap: 0.35rem; align-items: start; }
+  .team-ico { grid-row: 1 / span 5; }
+  .team-step > span { grid-column: 2; justify-self: start; }
+  .team-out { justify-self: stretch !important; }
+  .team-step:not(:last-child)::after { content: none; }
+  .team-base { border-radius: 8px; margin-top: 0.6rem; }
+}
+
+/* ---- schema a strati: cosa si vede sopra, cosa c'e' sotto ---- */
+.stack { margin: 2rem 0 2.25rem; }
+.stack-top { margin: 0; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; padding: 1rem 1.1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px 8px 0 0; font-size: 0.98rem; }
+.stack-rows { list-style: none; margin: 0; padding: 0; }
+.stack-rows li { margin: 0; display: grid; grid-template-columns: 2.2rem 1fr; column-gap: 0.75rem; align-items: baseline; padding: 0.9rem 1.1rem; background: var(--ink); color: var(--ink-text); border-top: 1px solid rgba(255, 255, 255, 0.12); }
+.stack-rows li:last-child { border-radius: 0 0 8px 8px; }
+.stack-n { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; color: var(--ink-accent); }
+.stack-t { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.25; }
+.stack-d { grid-column: 2; font-size: 0.86rem; color: var(--ink-soft); line-height: 1.4; }
+
+/* ---- piccole figure dentro il racconto ---- */
+.mini { margin: 2rem 0; padding: 1.25rem 1.25rem 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; }
+.mini figcaption { text-align: left; }
+.mini-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.mini-h { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 0 0 0.6rem; }
+.rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.rows li { margin: 0; height: 1.55rem; border-radius: 4px; background: #EFEDE8; display: flex; align-items: center; justify-content: space-between; padding: 0 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
+.rows li.pick { background: transparent; border: 1.5px solid var(--accent); color: var(--accent); }
+.rows li.used { background: var(--accent); color: #fff; }
+.days { display: grid; grid-template-columns: 5.5rem repeat(10, 1fr); gap: 0.35rem; align-items: center; font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
+.days .c { height: 1.7rem; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.days .ok { background: #E3F1E7; color: #1F7A3D; }
+.days .res { background: #EFEDE8; color: var(--text); }
+
+/* ---- riquadri in fondo ---- */
+.linkedin-box { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 1px solid var(--border); background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: 6px; margin: 3rem 0; }
+.linkedin-box span { font-size: 0.95rem; color: var(--muted); }
+.btn { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.05em; padding: 0.7rem 1.25rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
+.btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
+.btn-primary:hover { background: var(--accent); border-color: var(--accent); }
+
+/* box "stesso metodo": la strada dalla guida al resto del sito */
+.next-box { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1.5rem 1.5rem 0.5rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0 3rem; }
+.next-box .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
+.next-box .next-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; color: var(--text); margin: 0 0 0.6rem; }
+.next-box p { font-size: 1rem; margin: 0 0 1rem; }
+.next-links { list-style: none; margin: 0; padding: 0; }
+.next-links li { border-top: 1px solid var(--border); margin: 0; }
+.next-links a { display: block; padding: 0.8rem 0; text-decoration: none; font-size: 0.98rem; line-height: 1.45; }
+.next-links a:hover { text-decoration: underline; }
+
+.faq { margin: 3rem 0; }
+.faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
+.faq details:last-child { border-bottom: 1px solid var(--border); }
+.faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+.faq details[open] summary::after { content: "–"; }
+.faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
+
+.author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
+.author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
+.author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+.author a { text-decoration: none; }

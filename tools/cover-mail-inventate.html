@@ -20,8 +20,8 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 1280px; height: 720px; overflow: hidden; }
     body {
-      background: #F9F7F3;
-      color: #111110;
+      background: #111110;
+      color: #F9F7F3;
       font-family: 'JetBrains Mono', monospace;
       -webkit-font-smoothing: antialiased;
       display: flex;
@@ -30,8 +30,8 @@
     }
     .card {
       width: 880px;
-      background: #FFFFFF;
-      border: 1px solid #E5E3DE;
+      background: #222220;
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 14px;
       padding: 40px 48px 44px;
       box-shadow: 0 24px 60px rgba(17, 17, 16, 0.08);
@@ -42,31 +42,31 @@
     .status {
       display: flex; align-items: center; gap: 12px;
       font-size: 20px; font-weight: 500; letter-spacing: 0.14em;
-      color: #1F7A3D; border: 1.5px solid #1F7A3D; border-radius: 999px; padding: 9px 20px 9px 16px;
+      color: #4CC38A; border: 1.5px solid #4CC38A; border-radius: 999px; padding: 9px 20px 9px 16px;
     }
-    .dot { width: 12px; height: 12px; border-radius: 50%; background: #1F7A3D; }
-    .label { font-size: 15px; letter-spacing: 0.16em; color: #7A7A73; margin-bottom: 14px; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; background: #4CC38A; }
+    .label { font-size: 15px; letter-spacing: 0.16em; color: #8F8D86; margin-bottom: 14px; }
     .row {
       display: flex; align-items: center; gap: 20px;
       height: 62px; padding: 0 20px; margin-bottom: 12px;
-      border: 1.5px solid #E5E3DE; border-radius: 8px; background: #FBFAF7;
+      border: 1.5px solid rgba(255, 255, 255, 0.14); border-radius: 8px; background: rgba(255, 255, 255, 0.03);
     }
     .row:last-child { margin-bottom: 0; }
-    .ico { width: 30px; height: 22px; border: 2px solid #B9B6AE; border-radius: 4px; position: relative; flex-shrink: 0; }
+    .ico { width: 30px; height: 22px; border: 2px solid #8F8D86; border-radius: 4px; position: relative; flex-shrink: 0; }
     .ico::after {
       content: ""; position: absolute; left: 3px; right: 3px; top: -1px; height: 12px;
-      border-left: 2px solid #B9B6AE; border-bottom: 2px solid #B9B6AE;
+      border-left: 2px solid #8F8D86; border-bottom: 2px solid #8F8D86;
       transform: skewX(0) rotate(-45deg) scale(0.62); transform-origin: 50% 50%;
     }
-    .bar { height: 12px; border-radius: 6px; background: #D9D6CF; }
-    .b1 { width: 170px; } .b2 { width: 330px; background: #E7E4DD; }
-    .b3 { width: 210px; } .b4 { width: 280px; background: #E7E4DD; }
-    .b5 { width: 150px; } .b6 { width: 360px; background: #E7E4DD; }
+    .bar { height: 12px; border-radius: 6px; background: #6F6D66; }
+    .b1 { width: 170px; } .b2 { width: 330px; background: #4F4D48; }
+    .b3 { width: 210px; } .b4 { width: 280px; background: #4F4D48; }
+    .b5 { width: 150px; } .b6 { width: 360px; background: #4F4D48; }
     .spacer { flex: 1; }
-    .ghost { border: 2px dashed #0038FF; background: transparent; }
-    .ghost .ico, .ghost .ico::after { border-color: #0038FF; opacity: 0.55; }
-    .ghost .bar { background: transparent; border: 1.5px dashed #0038FF; opacity: 0.55; }
-    .tag { font-size: 16px; font-weight: 500; letter-spacing: 0.12em; color: #0038FF; white-space: nowrap; }
+    .ghost { border: 2px dashed #8FA6FF; background: transparent; }
+    .ghost .ico, .ghost .ico::after { border-color: #8FA6FF; opacity: 0.55; }
+    .ghost .bar { background: transparent; border: 1.5px dashed #8FA6FF; opacity: 0.55; }
+    .tag { font-size: 16px; font-weight: 500; letter-spacing: 0.12em; color: #8FA6FF; white-space: nowrap; }
   </style>
 </head>
 <body>

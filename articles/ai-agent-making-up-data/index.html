@@ -102,72 +102,7 @@
   </script>
 
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-    /* override della base per la colonna di lettura */
-    :root { --max-w: 720px; }
-    body { line-height: 1.75; }
-    h1, h2, h3 { line-height: 1.15; }
-    a { color: var(--accent); }
-
-    .article-header { padding: 9rem 0 2.5rem; }
-    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
-    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
-    .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--text); }
-    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
-    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
-    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
-    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-    .meta strong { color: var(--text); font-weight: 500; }
-
-    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
-    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
-    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
-
-    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
-    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
-    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
-    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
-    article li { margin-bottom: 0.5rem; }
-    article li strong { font-weight: 500; }
-    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
-    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
-    .callout p { margin: 0; font-size: 1rem; }
-
-    /* tabella di confronto: sui telefoni si stringe per restare tutta visibile; lo scorrimento resta come rete di sicurezza */
-    .table-wrap { overflow-x: auto; margin: 0 0 1.5rem; }
-    .cmp { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-    .cmp th, .cmp td { text-align: left; padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-    .cmp thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
-    .cmp tbody th { font-weight: 500; }
-    @media (max-width: 520px) { .cmp { font-size: 0.85rem; } .cmp th, .cmp td { padding: 0.55rem 0.4rem; } .cmp thead th { font-size: 0.62rem; letter-spacing: 0.02em; } }
-
-    .next-box { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1.5rem 1.5rem 0.5rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0 3rem; }
-    .next-box .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
-    .next-box .next-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; color: var(--text); margin: 0 0 0.6rem; }
-    .next-box p { font-size: 1rem; margin: 0 0 1rem; }
-    .next-links { list-style: none; margin: 0; padding: 0; }
-    .next-links li { border-top: 1px solid var(--border); margin: 0; }
-    .next-links a { display: block; padding: 0.8rem 0; text-decoration: none; font-size: 0.98rem; line-height: 1.45; }
-    .next-links a:hover { text-decoration: underline; }
-
-    .faq { margin: 3rem 0; }
-    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
-    .faq details:last-child { border-bottom: 1px solid var(--border); }
-    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
-    .faq details[open] summary::after { content: "–"; }
-    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
-
-    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
-    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
-    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
-    .author a { text-decoration: none; }
-
-    footer { padding: 3rem 0 2rem; }
-  </style>
+  <link rel="stylesheet" href="/css/article.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="4d89a1e3-8961-4b64-9579-4c118118822f"></script>
 </head>
 <body>
@@ -191,7 +126,7 @@
     <div class="container">
       <p class="breadcrumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="/#writing">Writing</a> &nbsp;/&nbsp; The AI assistant that made up emails</p>
       <p class="eyebrow">Real case &middot; AI agents &middot; Reliability</p>
-      <h1>My AI assistant was making up emails and I didn't notice: why AI agents make up data, and how to catch it in time</h1>
+      <h1><span class="h1-main">My AI assistant was making up emails and I didn't notice</span> <span class="h1-sub">Why AI agents make up data, and how to catch it in time</span></h1>
       <p class="lead">One morning in July, the daily briefing my AI assistant sends me listed two emails that never existed. Looking for the reason, I found out it had been handing me false data for days, without a single error and looking perfectly healthy. Here is what broke, why I didn't notice, and the six rules I have used since to catch it in time.</p>
       <div class="meta">
         <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
@@ -201,13 +136,18 @@
         <span>&bull;</span>
         <span>9 min read</span>
       </div>
+      <div class="stats">
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">stacked failures, none visible from outside</div></div>
+        <div class="stat-card"><div class="stat-number">16/28</div><div class="stat-label">tasks reported by the wrong model</div></div>
+        <div class="stat-card"><div class="stat-number">$4.50</div><div class="stat-label">a month: the saving that multiplied the damage</div></div>
+        <div class="stat-card"><div class="stat-number">6</div><div class="stat-label">rules for checks that came out of it</div></div>
+      </div>
     </div>
-  </header>
-
   <figure class="hero">
     <img src="/img/assistente-ai-mail-inventate.jpg" width="1280" height="720" alt="Illustration: a morning briefing showing status OK and five emails on the list, two of them drawn with dashed outlines and marked as not found" fetchpriority="high">
     <figcaption>The status said ok. Two of the emails on the list had never existed.</figcaption>
   </figure>
+  </header>
 
   <article class="container">
 
@@ -224,6 +164,16 @@
     <h2>Three failures, stacked</h2>
 
     <p>Underneath there were three independent failures. None of them was visible from the outside. Together they produced a briefing that looked normal.</p>
+
+    <figure class="stack">
+      <p class="stack-top"><span class="chip ok">status: ok</span> The briefing arrives every morning, neatly formatted</p>
+      <ol class="stack-rows">
+        <li><span class="stack-n">01</span><span class="stack-t">Mail access has expired</span><span class="stack-d">Mail and calendar can no longer be read</span></li>
+        <li><span class="stack-n">02</span><span class="stack-t">The script that reads them was half rewritten</span><span class="stack-d">Even with valid access, it reads nothing</span></li>
+        <li><span class="stack-n">03</span><span class="stack-t">The instructions ask for two incompatible things</span><span class="stack-d">With no data, the model fills the gaps</span></li>
+      </ol>
+      <figcaption>Three independent failures, stacked. From the outside you see none.</figcaption>
+    </figure>
 
     <h3>1. Mail access had expired, and it was meant to</h3>
 
@@ -245,7 +195,9 @@
 
     <p>As long as everything works, the two rules live together without trouble. When the sources stop answering they contradict each other, and the model picked the one that came first and was written louder.</p>
 
-    <div class="callout"><p><strong>Conflicting instructions get resolved in the worst possible way.</strong> The moment they matter is exactly the moment they contradict each other.</p></div>
+    <p class="pull">Conflicting instructions get resolved in the worst possible way.</p>
+
+    <p>The moment they matter is exactly the moment they contradict each other.</p>
 
     <h2>Why I didn't notice</h2>
 
@@ -258,7 +210,9 @@
       <li><strong>The false data was plausible.</strong> An email about that service is exactly the kind of email I really get</li>
     </ul>
 
-    <p><strong>A crash gets noticed. A list of made-up emails doesn't.</strong> Every check I had verified that something was present: the file is there, the job started, the assistant answered. None of them looked at the content. A service that answers is not a service that works.</p>
+    <p class="pull">A crash gets noticed. A list of made-up emails doesn't.</p>
+
+    <p>Every check I had verified that something was present: the file is there, the job started, the assistant answered. None of them looked at the content. A service that answers is not a service that works.</p>
 
     <h2>The multiplier: the wrong model for the job</h2>
 
@@ -283,7 +237,9 @@
 
     <p>The same model, when I asked it in chat to look for that email, answered four times without executing anything. At one point it asked me which mail provider I used. It had it in its own configuration.</p>
 
-    <p><strong>An unsuitable model doesn't produce errors, it produces plausible results.</strong> It turned silent failures into false data, and that makes the saving a false saving. This is no criticism of that model, which is built for a different job. The mistake was mine: putting it on this one.</p>
+    <p class="pull">An unsuitable model doesn't produce errors, it produces plausible results.</p>
+
+    <p>It turned silent failures into false data, and that makes the saving a false saving. This is no criticism of that model, which is built for a different job. The mistake was mine: putting it on this one.</p>
 
     <h2>What I changed</h2>
 

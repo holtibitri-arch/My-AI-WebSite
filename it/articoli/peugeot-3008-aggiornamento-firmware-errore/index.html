@@ -119,74 +119,7 @@
   </script>
 
   <link rel="stylesheet" href="/css/site.css">
-  <style>
-    /* override della base per la colonna di lettura */
-    :root { --max-w: 720px; }
-    body { line-height: 1.75; }
-    h1, h2, h3 { line-height: 1.15; }
-    a { color: var(--accent); }
-
-    .article-header { padding: 9rem 0 2.5rem; }
-    .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem; }
-    .breadcrumb { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; }
-    .breadcrumb a { color: var(--muted); text-decoration: none; }
-    .breadcrumb a:hover { color: var(--text); }
-    h1 { font-size: clamp(2rem, 5vw, 3.1rem); margin-bottom: 1.25rem; }
-    .lead { font-size: 1.15rem; color: var(--muted); margin-bottom: 1.75rem; }
-    .meta { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.03em; align-items: center; }
-    .meta img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
-    .meta strong { color: var(--text); font-weight: 500; }
-
-    figure.hero { max-width: 1000px; margin: 0 auto 3rem; padding: 0 var(--pad); }
-    figure.hero img { width: 100%; height: auto; display: block; border-radius: 6px; border: 1px solid var(--border); }
-    figcaption { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-top: 0.75rem; text-align: center; }
-
-    article p { margin-bottom: 1.25rem; font-size: 1.05rem; }
-    article h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: 3rem 0 1rem; }
-    article h3 { font-size: 1.25rem; margin: 2rem 0 0.75rem; }
-    article ul, article ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.05rem; }
-    article li { margin-bottom: 0.5rem; }
-    article li strong { font-weight: 500; }
-    article hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
-    article pre { background: #111110; color: #E8E6E1; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; padding: 1.1rem 1.25rem; border-radius: 6px; overflow-x: auto; margin: 0 0 1.5rem; }
-    article code { font-family: var(--font-mono); font-size: 0.9em; background: #EFEDE8; padding: 0.1em 0.4em; border-radius: 3px; }
-    article pre code { background: none; padding: 0; font-size: inherit; }
-    .callout { border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1rem 1.25rem; margin: 0 0 1.5rem; border-radius: 0 6px 6px 0; }
-    .callout p { margin: 0; font-size: 1rem; }
-
-    .linkedin-box { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; border: 1px solid var(--border); background: var(--bg-card); padding: 1.25rem 1.5rem; border-radius: 6px; margin: 3rem 0; }
-    .linkedin-box span { font-size: 0.95rem; color: var(--muted); }
-    .btn { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.05em; padding: 0.7rem 1.25rem; border-radius: 4px; text-decoration: none; transition: all 0.2s; }
-    .btn-primary { background: var(--text); color: var(--bg); border: 1px solid var(--text); }
-    .btn-primary:hover { background: var(--accent); border-color: var(--accent); }
-
-    .faq { margin: 3rem 0; }
-    .faq details { border-top: 1px solid var(--border); padding: 1rem 0; }
-    .faq details:last-child { border-bottom: 1px solid var(--border); }
-    .faq summary { cursor: pointer; font-weight: 400; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
-    .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
-    .faq details[open] summary::after { content: "–"; }
-    .faq details p { margin: 0.75rem 0 0; font-size: 1rem; color: #3A3A36; }
-
-    .author { display: flex; gap: 1.25rem; align-items: flex-start; border-top: 1px solid var(--border); padding: 2.5rem 0 1rem; margin-top: 3rem; }
-    .author img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
-    .author h3 { font-size: 1.15rem; margin-bottom: 0.25rem; }
-    .author p { font-size: 0.95rem; color: var(--muted); margin: 0; }
-    .author a { text-decoration: none; }
-
-    footer { padding: 3rem 0 2rem; }
-
-    /* box "stesso metodo": la strada dalla guida al resto del sito (dall'11/11/2026) */
-    .next-box { border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--bg-card); padding: 1.5rem 1.5rem 0.5rem; border-radius: 0 6px 6px 0; margin: 2.5rem 0 3rem; }
-    .next-box .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin: 0 0 0.6rem; }
-    .next-box .next-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; color: var(--text); margin: 0 0 0.6rem; }
-    .next-box p { font-size: 1rem; margin: 0 0 1rem; }
-    .next-links { list-style: none; margin: 0; padding: 0; }
-    .next-links li { border-top: 1px solid var(--border); margin: 0; }
-    .next-links a { display: block; padding: 0.8rem 0; text-decoration: none; font-size: 0.98rem; line-height: 1.45; }
-    .next-links a:hover { text-decoration: underline; }
-  </style>
+  <link rel="stylesheet" href="/css/article.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="4d89a1e3-8961-4b64-9579-4c118118822f"></script>
 </head>
 <body>
@@ -210,7 +143,7 @@
     <div class="container">
       <p class="breadcrumb"><a href="/it/">Home</a> &nbsp;/&nbsp; <a href="/it/#writing">Articoli</a> &nbsp;/&nbsp; Peugeot 3008 firmware</p>
       <p class="eyebrow">Guida pratica &middot; Peugeot 3008 &middot; NAC Wave 4</p>
-      <h1>Un errore, quattro cause: aggiornare il firmware della Peugeot 3008 (seconda serie) senza impazzire</h1>
+      <h1><span class="h1-main">Un errore, quattro cause</span> <span class="h1-sub">Aggiornare il firmware della Peugeot 3008 (seconda serie) senza impazzire</span></h1>
       <p class="lead">Il tool ufficiale Peugeot Update mostra un solo messaggio, "Versione incompatibile con l'Hardware", per quattro problemi completamente diversi. Questa è la procedura completa via USB che avrei voluto trovare io all'inizio. Vale per Peugeot, Citroën, DS e Opel con sistema NAC Wave 4.</p>
       <div class="meta">
         <img src="/avatar.jpg" alt="Holti Bitri" width="36" height="36">
@@ -221,12 +154,11 @@
         <span>8 min di lettura</span>
       </div>
     </div>
-  </header>
-
   <figure class="hero">
     <img src="/img/peugeot-3008-nac-firmware-before-after.jpg" width="1600" height="893" alt="Schermo infotainment Peugeot 3008 prima e dopo l'aggiornamento firmware NAC: versione 42.03.31.32 del 2020 a sinistra, versione 44.07.33.32 a destra" fetchpriority="high">
     <figcaption>Prima e dopo: il NAC della mia 3008 era fermo alla versione 42.03.31.32 del luglio 2020. Dopo la procedura, 44.07.33.32.</figcaption>
   </figure>
+  </header>
 
   <article class="container">
     <p>Il piano per le ferie era chiaro: stare lontano dal PC.</p>
